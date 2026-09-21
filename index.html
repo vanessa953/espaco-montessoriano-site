@@ -1,190 +1,757 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-  <title>Espaço Montessoriano</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Espaço Montessoriano | Neurodesenvolvimento e Aprendizagem</title>
+
+  <meta
+    name="description"
+    content="Espaço Montessoriano em Brasília. Neurodesenvolvimento, aprendizagem, Fonoaudiologia, Psicopedagogia, Psicologia, Psicomotricidade, ABA, avaliações e acompanhamento integrado."
+  >
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    :root {
+      --verde-escuro: #075f59;
+      --verde: #087b70;
+      --turquesa: #42bca8;
+      --menta: #eaf5f1;
+      --creme: #faf8f3;
+      --bege: #f2eadc;
+      --dourado: #c79b4b;
+      --texto: #173b3a;
+      --cinza: #60706e;
+      --branco: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       font-family: Arial, Helvetica, sans-serif;
+      background: var(--creme);
+      color: var(--texto);
+      line-height: 1.6;
     }
 
-    body{
-      background:#f7f5f2;
-      color:#1f2937;
+    a {
+      text-decoration: none;
     }
 
-    header{
-      background:#0f766e;
-      color:white;
-      padding:80px 20px;
-      text-align:center;
+    /* MENU */
+
+    nav {
+      width: 100%;
+      background: rgba(255,255,255,.97);
+      padding: 18px 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 18px rgba(0,0,0,.05);
     }
 
-    header h1{
-      font-size:56px;
-      margin-bottom:20px;
+    .marca {
+      font-size: 25px;
+      font-weight: 700;
+      color: var(--turquesa);
     }
 
-    header p{
-      font-size:22px;
-      max-width:800px;
-      margin:auto;
-      line-height:1.6;
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
     }
 
-    .btn{
-      display:inline-block;
-      margin-top:30px;
-      background:white;
-      color:#0f766e;
-      padding:16px 30px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:bold;
-      font-size:18px;
+    .menu a {
+      color: var(--texto);
+      font-size: 14px;
     }
 
-    section{
-      padding:70px 20px;
-      max-width:1200px;
-      margin:auto;
+    .menu a:hover {
+      color: var(--turquesa);
     }
 
-    .titulo{
-      font-size:42px;
-      margin-bottom:20px;
-      color:#0f766e;
-      text-align:center;
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 30px;
+      background: var(--verde-escuro);
+      color: white;
+      font-weight: 700;
+      transition: .25s;
     }
 
-    .texto{
-      font-size:20px;
-      line-height:1.8;
-      text-align:center;
-      max-width:900px;
-      margin:auto;
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--verde);
     }
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:25px;
-      margin-top:50px;
+    .btn-claro {
+      background: transparent;
+      border: 1px solid var(--verde-escuro);
+      color: var(--verde-escuro);
+      margin-left: 8px;
     }
 
-    .card{
-      background:white;
-      padding:30px;
-      border-radius:20px;
-      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    /* HERO */
+
+    .hero {
+      min-height: 650px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(250,248,243,1) 0%,
+          rgba(250,248,243,.97) 48%,
+          rgba(234,245,241,.7) 100%
+        );
     }
 
-    .card h3{
-      color:#0f766e;
-      margin-bottom:15px;
-      font-size:24px;
+    .hero-texto {
+      padding: 80px 8%;
     }
 
-    .card p{
-      line-height:1.7;
-      font-size:17px;
+    .tag {
+      color: var(--dourado);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 18px;
     }
 
-    footer{
-      background:#0f766e;
-      color:white;
-      text-align:center;
-      padding:40px 20px;
-      margin-top:60px;
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+      font-size: clamp(45px, 6vw, 78px);
+      line-height: 1.05;
+      margin-bottom: 25px;
+      color: var(--texto);
     }
 
-    .whatsapp{
-      position:fixed;
-      right:20px;
-      bottom:20px;
-      background:#25d366;
-      color:white;
-      padding:18px 24px;
-      border-radius:100px;
-      text-decoration:none;
-      font-weight:bold;
-      box-shadow:0 10px 20px rgba(0,0,0,0.2);
+    .hero h1 span {
+      color: var(--turquesa);
+    }
+
+    .hero p {
+      max-width: 660px;
+      font-size: 19px;
+      color: var(--cinza);
+      margin-bottom: 34px;
+    }
+
+    .hero-visual {
+      height: 100%;
+      min-height: 650px;
+      background:
+        radial-gradient(circle at 50% 45%, #ffffff 0%, #eaf5f1 42%, #d9ece6 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,.82);
+      padding: 50px;
+      border-radius: 35px;
+      max-width: 480px;
+      box-shadow: 0 30px 70px rgba(7,95,89,.12);
+    }
+
+    .hero-card h2 {
+      font-family: Georgia, serif;
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 18px;
+    }
+
+    .hero-card p {
+      font-size: 17px;
+      margin: 0;
+    }
+
+    /* DIFERENCIAIS */
+
+    .diferenciais {
+      background: white;
+      padding: 28px 6%;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      text-align: center;
+    }
+
+    .diferencial {
+      padding: 22px 15px;
+      border-right: 1px solid #e2e8e5;
+    }
+
+    .diferencial:last-child {
+      border-right: 0;
+    }
+
+    .icone {
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    /* SEÇÕES */
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .subtitulo {
+      color: var(--dourado);
+      letter-spacing: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .titulo {
+      font-family: Georgia, serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 25px;
+    }
+
+    .descricao {
+      max-width: 850px;
+      color: var(--cinza);
+      font-size: 18px;
+    }
+
+    /* SOBRE */
+
+    .sobre {
+      background: var(--verde-escuro);
+      color: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .sobre .descricao {
+      color: rgba(255,255,255,.82);
+    }
+
+    .sobre-box {
+      background: rgba(255,255,255,.08);
+      padding: 45px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    .sobre-box blockquote {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 31px;
+      line-height: 1.35;
+    }
+
+    /* SERVIÇOS */
+
+    .servicos {
+      background: white;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 45px;
+    }
+
+    .card {
+      padding: 30px 24px;
+      background: var(--creme);
+      border-radius: 20px;
+      min-height: 190px;
+      transition: .25s;
+      border: 1px solid #eeeae1;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.08);
+    }
+
+    .card h3 {
+      color: var(--verde-escuro);
+      margin: 15px 0 10px;
+      font-size: 19px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: var(--cinza);
+    }
+
+    /* JORNADA */
+
+    .jornada {
+      background: var(--bege);
+    }
+
+    .etapas {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 12px;
+      margin-top: 45px;
+    }
+
+    .etapa {
+      background: rgba(255,255,255,.65);
+      padding: 25px 15px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .numero {
+      width: 38px;
+      height: 38px;
+      background: var(--dourado);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 0 auto 15px;
+      font-weight: bold;
+    }
+
+    .etapa h3 {
+      margin-bottom: 8px;
+      color: var(--verde-escuro);
+    }
+
+    .etapa p {
+      font-size: 14px;
+      color: var(--cinza);
+    }
+
+    /* TECNOLOGIA */
+
+    .tecnologia {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      background: white;
+    }
+
+    .app-box {
+      background: var(--menta);
+      border-radius: 35px;
+      padding: 55px;
+      text-align: center;
+    }
+
+    .app-box .phone {
+      font-size: 80px;
+      margin-bottom: 15px;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+      background:
+        linear-gradient(135deg, var(--creme), var(--menta));
+    }
+
+    .cta .descricao {
+      margin: 0 auto 30px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #073f3c;
+      color: white;
+      padding: 55px 7% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    footer h3 {
+      color: var(--turquesa);
+      margin-bottom: 15px;
+    }
+
+    footer a {
+      color: rgba(255,255,255,.8);
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,.15);
+      padding-top: 25px;
+      text-align: center;
+      color: rgba(255,255,255,.6);
+      font-size: 13px;
+    }
+
+    /* WHATSAPP */
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+      background: #25d366;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    }
+
+    /* CELULAR */
+
+    @media (max-width: 900px) {
+
+      nav {
+        padding: 15px 5%;
+      }
+
+      .menu {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-texto {
+        padding: 70px 7%;
+      }
+
+      .hero-visual {
+        min-height: auto;
+        padding: 45px 7%;
+      }
+
+      .diferenciais {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .diferencial {
+        border-right: 0;
+      }
+
+      .sobre,
+      .tecnologia {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .etapas {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .grid,
+      .etapas,
+      .diferenciais {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 45px;
+      }
+
+      section {
+        padding: 65px 6%;
+      }
+
+      .btn-claro {
+        display: block;
+        margin: 12px 0 0;
+        width: max-content;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<header>
+<nav>
 
-  <h1>Espaço Montessoriano</h1>
+  <div class="marca">
+    ESPAÇO Montessoriano
+  </div>
 
-  <p>
-    Centro Integrado de Neurodesenvolvimento, Aprendizagem e Inclusão.
-    Atendimento humanizado com abordagem Montessori, Fonoaudiologia,
-    Psicopedagogia, ABA, Neurodesenvolvimento e acompanhamento escolar.
-  </p>
+  <div class="menu">
+    <a href="#inicio">Início</a>
+    <a href="#espaco">O Espaço</a>
+    <a href="#especialidades">Especialidades</a>
+    <a href="#jornada">Como funciona</a>
+    <a href="#tecnologia">Tecnologia</a>
+    <a href="#contato">Contato</a>
+  </div>
 
-  <a class="btn" href="https://app.espacomontessoriano.com">
-    Entrar no Aplicativo
+  <a
+    class="btn"
+    href="https://wa.me/5561993183351"
+    target="_blank"
+    rel="noopener"
+  >
+    Agende uma conversa
   </a>
 
-</header>
+</nav>
 
-<section>
 
-  <h2 class="titulo">Quem Somos</h2>
+<main>
 
-  <p class="texto">
-    O Espaço Montessoriano nasceu com o propósito de oferecer um atendimento
-    acolhedor, integrado e individualizado para crianças, adolescentes e famílias.
-    Trabalhamos com foco no desenvolvimento global, autonomia,
-    aprendizagem e inclusão.
-  </p>
+<section class="hero" id="inicio">
+
+  <div class="hero-texto">
+
+    <div class="tag">
+      Desenvolvimento com sentido
+    </div>
+
+    <h1>
+      Cada criança é única.<br>
+      <span>O cuidado também precisa ser.</span>
+    </h1>
+
+    <p>
+      Neurodesenvolvimento, aprendizagem e desenvolvimento integral
+      conectando ciência, educação, família e escola.
+    </p>
+
+    <a
+      class="btn"
+      href="https://wa.me/5561993183351"
+      target="_blank"
+      rel="noopener"
+    >
+      Agende uma conversa
+    </a>
+
+    <a class="btn btn-claro" href="#espaco">
+      Conheça o Espaço
+    </a>
+
+  </div>
+
+  <div class="hero-visual">
+
+    <div class="hero-card">
+
+      <div class="tag">
+        Espaço Montessoriano
+      </div>
+
+      <h2>
+        Um olhar integral para o desenvolvimento.
+      </h2>
+
+      <p>
+        Cada criança é acolhida em sua singularidade.
+        Avaliamos, planejamos e acompanhamos seu desenvolvimento
+        respeitando necessidades, potencialidades e ritmo individual.
+      </p>
+
+    </div>
+
+  </div>
 
 </section>
 
-<section>
 
-  <h2 class="titulo">Nossos Serviços</h2>
+<div class="diferenciais">
 
-  <div class="cards">
+  <div class="diferencial">
+    <div class="icone">♡</div>
+    Atendimento individualizado
+  </div>
 
-    <div class="card">
-      <h3>Fonoaudiologia</h3>
-      <p>
-        Desenvolvimento da linguagem, fala, leitura, escrita,
-        comunicação e aprendizagem.
-      </p>
+  <div class="diferencial">
+    <div class="icone">◎</div>
+    Equipe interdisciplinar
+  </div>
+
+  <div class="diferencial">
+    <div class="icone">❧</div>
+    Método Montessori
+  </div>
+
+  <div class="diferencial">
+    <div class="icone">⌂</div>
+    Família, escola e clínica
+  </div>
+
+  <div class="diferencial">
+    <div class="icone">◫</div>
+    Tecnologia a serviço do cuidado
+  </div>
+
+</div>
+
+
+<section class="sobre" id="espaco">
+
+  <div>
+
+    <div class="subtitulo">
+      O Espaço Montessoriano
     </div>
 
+    <h2 class="titulo">
+      Mais do que atender uma dificuldade, compreender uma história.
+    </h2>
+
+    <p class="descricao">
+      Aprendizagem, linguagem, comportamento, emoções,
+      funções executivas, autonomia e desenvolvimento fazem parte
+      de um mesmo percurso.
+      <br><br>
+      Integramos diferentes áreas para compreender cada criança
+      e construir objetivos individualizados de acompanhamento.
+    </p>
+
+  </div>
+
+  <div class="sobre-box">
+
+    <blockquote>
+      “Ajude-me a fazer por mim mesmo.”
+    </blockquote>
+
+    <p style="margin-top:20px;color:#d9c18d;">
+      — Maria Montessori
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="servicos" id="especialidades">
+
+  <div class="subtitulo">
+    Áreas de atuação
+  </div>
+
+  <h2 class="titulo">
+    Diferentes especialidades.<br>
+    Um mesmo propósito.
+  </h2>
+
+  <p class="descricao">
+    Cuidado interdisciplinar e individualizado para crianças
+    e adolescentes.
+  </p>
+
+  <div class="grid">
+
     <div class="card">
+      <div class="icone">📖</div>
       <h3>Psicopedagogia</h3>
       <p>
-        Intervenção nas dificuldades escolares, funções executivas,
-        alfabetização e organização da aprendizagem.
+        Aprendizagem, alfabetização, leitura, escrita,
+        matemática e funções executivas.
       </p>
     </div>
 
     <div class="card">
-      <h3>Método Montessori</h3>
+      <div class="icone">💬</div>
+      <h3>Fonoaudiologia</h3>
       <p>
-        Educação baseada na autonomia, respeito ao desenvolvimento infantil
-        e ambientes preparados.
+        Linguagem, fala, comunicação, leitura, escrita
+        e habilidades relacionadas à aprendizagem.
       </p>
     </div>
 
     <div class="card">
-      <h3>Neurodesenvolvimento</h3>
+      <div class="icone">♡</div>
+      <h3>Psicologia</h3>
       <p>
-        Avaliações e intervenções integradas voltadas para TEA,
-        TDAH, linguagem e desenvolvimento cognitivo.
+        Desenvolvimento emocional, comportamental
+        e habilidades necessárias à participação cotidiana.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icone">◯</div>
+      <h3>Psicomotricidade</h3>
+      <p>
+        Desenvolvimento corporal, motor, perceptivo,
+        espacial e organização da ação.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icone">◇</div>
+      <h3>ABA</h3>
+      <p>
+        Estratégias baseadas nos princípios da
+        Análise do Comportamento Aplicada.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icone">✎</div>
+      <h3>Acompanhamento Pedagógico</h3>
+      <p>
+        Apoio acadêmico individualizado e desenvolvimento
+        de estratégias de aprendizagem.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icone">♫</div>
+      <h3>Musicoterapia</h3>
+      <p>
+        Utilização terapêutica da música dentro
+        de objetivos individualizados.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="icone">◉</div>
+      <h3>Nutrição</h3>
+      <p>
+        Acompanhamento nutricional considerando
+        desenvolvimento, alimentação e rotina.
       </p>
     </div>
 
@@ -192,31 +759,206 @@
 
 </section>
 
-<section>
 
-  <h2 class="titulo">Contato</h2>
+<section class="jornada" id="jornada">
 
-  <p class="texto">
-    📍 Brasília - DF<br><br>
+  <div class="subtitulo">
+    Nossa forma de cuidar
+  </div>
 
-    📲 WhatsApp: (61) 99318-3351<br><br>
+  <h2 class="titulo">
+    Uma jornada construída para cada criança.
+  </h2>
 
-    📸 Instagram:
-    @espaco.montessoriano
-  </p>
+  <div class="etapas">
+
+    <div class="etapa">
+      <div class="numero">1</div>
+      <h3>Acolher</h3>
+      <p>Escutamos a família e compreendemos a demanda inicial.</p>
+    </div>
+
+    <div class="etapa">
+      <div class="numero">2</div>
+      <h3>Conhecer</h3>
+      <p>Investigamos história, desenvolvimento e contexto.</p>
+    </div>
+
+    <div class="etapa">
+      <div class="numero">3</div>
+      <h3>Avaliar</h3>
+      <p>Utilizamos procedimentos específicos quando necessários.</p>
+    </div>
+
+    <div class="etapa">
+      <div class="numero">4</div>
+      <h3>Planejar</h3>
+      <p>Definimos objetivos e um plano individualizado.</p>
+    </div>
+
+    <div class="etapa">
+      <div class="numero">5</div>
+      <h3>Intervir</h3>
+      <p>Realizamos sessões orientadas pelos objetivos definidos.</p>
+    </div>
+
+    <div class="etapa">
+      <div class="numero">6</div>
+      <h3>Acompanhar</h3>
+      <p>Monitoramos evolução e ajustamos as estratégias.</p>
+    </div>
+
+    <div class="etapa">
+      <div class="numero">7</div>
+      <h3>Conectar</h3>
+      <p>Família, escola e profissionais trabalhando em sintonia.</p>
+    </div>
+
+  </div>
 
 </section>
 
+
+<section class="tecnologia" id="tecnologia">
+
+  <div>
+
+    <div class="subtitulo">
+      Tecnologia a serviço do cuidado
+    </div>
+
+    <h2 class="titulo">
+      Tudo mais simples, organizado e próximo.
+    </h2>
+
+    <p class="descricao">
+      Nosso aplicativo aproxima família e profissionais,
+      centralizando informações importantes do acompanhamento.
+    </p>
+
+    <br>
+
+    <a
+      class="btn"
+      href="https://app.espacomontessoriano.com"
+      target="_blank"
+      rel="noopener"
+    >
+      Entrar no Aplicativo
+    </a>
+
+  </div>
+
+  <div class="app-box">
+
+    <div class="phone">📱</div>
+
+    <h2>
+      Espaço Montessoriano
+    </h2>
+
+    <p>
+      Agenda • Atendimentos • Registros • Relatórios • Comunicação
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="cta" id="contato">
+
+  <div class="subtitulo">
+    Vamos conversar?
+  </div>
+
+  <h2 class="titulo">
+    Cada desenvolvimento tem uma história.
+  </h2>
+
+  <p class="descricao">
+    Nossa equipe está pronta para orientar sua família
+    sobre o caminho inicial mais adequado.
+  </p>
+
+  <a
+    class="btn"
+    href="https://wa.me/5561993183351"
+    target="_blank"
+    rel="noopener"
+  >
+    Falar com a equipe
+  </a>
+
+</section>
+
+</main>
+
+
 <footer>
 
-  © 2026 Espaço Montessoriano — Todos os direitos reservados.
+  <div class="footer-grid">
+
+    <div>
+      <h3>ESPAÇO MONTESSORIANO</h3>
+
+      <p>
+        Neurodesenvolvimento, aprendizagem,
+        Montessori e tecnologia.
+      </p>
+
+      <p style="margin-top:15px;">
+        Brasília — Distrito Federal
+      </p>
+    </div>
+
+    <div>
+      <h3>Contato</h3>
+
+      <p>
+        <a
+          href="https://wa.me/5561993183351"
+          target="_blank"
+          rel="noopener"
+        >
+          WhatsApp
+        </a>
+      </p>
+
+      <p>
+        Instagram: @espaco.montessoriano
+      </p>
+    </div>
+
+    <div>
+      <h3>Acesso</h3>
+
+      <p>
+        <a
+          href="https://app.espacomontessoriano.com"
+          target="_blank"
+          rel="noopener"
+        >
+          Aplicativo
+        </a>
+      </p>
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    © 2026 Espaço Montessoriano. Todos os direitos reservados.
+  </div>
 
 </footer>
+
 
 <a
   class="whatsapp"
   href="https://wa.me/5561993183351"
   target="_blank"
+  rel="noopener"
+  aria-label="Falar com o Espaço Montessoriano pelo WhatsApp"
 >
   WhatsApp
 </a>
