@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Especialidades | Espaço Montessoriano</title>
+
+  <meta
+    name="description"
+    content="Conheça as especialidades do Espaço Montessoriano em Brasília: Psicopedagogia, Fonoaudiologia, Psicologia, Psicomotricidade, intervenções baseadas em ABA, Acompanhamento Pedagógico, Musicoterapia e Nutrição."
+  >
+
+  <style>
+
+    :root {
+      --verde-escuro: #075f59;
+      --verde: #087b70;
+      --turquesa: #42bca8;
+      --menta: #eaf5f1;
+      --creme: #faf8f3;
+      --bege: #f2eadc;
+      --dourado: #c79b4b;
+      --texto: #173b3a;
+      --cinza: #60706e;
+      --branco: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--creme);
+      color: var(--texto);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* CABEÇALHO */
+
+    nav {
+      width: 100%;
+      min-height: 92px;
+      background: rgba(255,255,255,.98);
+      padding: 12px 6%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      box-shadow: 0 2px 18px rgba(0,0,0,.05);
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      display: block;
+      height: 64px;
+      width: auto;
+      max-width: 270px;
+      object-fit: contain;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: var(--texto);
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .menu a:hover,
+    .menu a.ativo {
+      color: var(--turquesa);
+    }
+
+    /* BOTÕES */
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 30px;
+      background: var(--verde-escuro);
+      color: white;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--verde);
+    }
+
+    .btn-claro {
+      background: transparent;
+      border: 1px solid var(--verde-escuro);
+      color: var(--verde-escuro);
+      margin-left: 8px;
+    }
+
+    /* ABERTURA */
+
+    .hero {
+      min-height: 520px;
+      padding: 90px 8%;
+
+      display: flex;
+      align-items: center;
+
+      background:
+        radial-gradient(
+          circle at 85% 30%,
+          rgba(66,188,168,.18),
+          transparent 32%
+        ),
+        linear-gradient(
+          135deg,
+          var(--creme),
+          var(--menta)
+        );
+    }
+
+    .hero-conteudo {
+      max-width: 920px;
+    }
+
+    .tag {
+      color: var(--dourado);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 6vw, 76px);
+      line-height: 1.05;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--turquesa);
+    }
+
+    .hero p {
+      max-width: 800px;
+      font-size: 20px;
+      color: var(--cinza);
+    }
+
+    /* PADRÃO */
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .subtitulo {
+      color: var(--dourado);
+      letter-spacing: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .titulo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 25px;
+    }
+
+    .descricao {
+      color: var(--cinza);
+      font-size: 18px;
+      max-width: 880px;
+    }
+
+    /* INTRODUÇÃO */
+
+    .introducao {
+      background: white;
+
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .intro-box {
+      background: var(--verde-escuro);
+      color: white;
+
+      padding: 45px;
+      border-radius: 30px;
+    }
+
+    .intro-box h3 {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .intro-box p {
+      color: rgba(255,255,255,.82);
+    }
+
+    /* ESPECIALIDADES */
+
+    .especialidades {
+      background: var(--creme);
+    }
+
+    .especialidades-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 50px;
+    }
+
+    .especialidade {
+      background: white;
+
+      border: 1px solid #ece8df;
+      border-radius: 26px;
+
+      padding: 38px;
+
+      transition: .25s;
+    }
+
+    .especialidade:hover {
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 18px 45px rgba(7,95,89,.09);
+    }
+
+    .numero {
+      color: var(--dourado);
+
+      font-family: Georgia, serif;
+      font-size: 34px;
+
+      margin-bottom: 12px;
+    }
+
+    .especialidade h2 {
+      color: var(--verde-escuro);
+
+      font-family: Georgia, serif;
+      font-size: 30px;
+      font-weight: 400;
+
+      margin-bottom: 15px;
+    }
+
+    .especialidade p {
+      color: var(--cinza);
+      margin-bottom: 15px;
+    }
+
+    .especialidade h3 {
+      color: var(--verde-escuro);
+      font-size: 16px;
+      margin: 22px 0 10px;
+    }
+
+    .especialidade ul {
+      padding-left: 20px;
+      color: var(--cinza);
+    }
+
+    .especialidade li {
+      margin-bottom: 6px;
+    }
+
+    /* INTERDISCIPLINAR */
+
+    .interdisciplinar {
+      background: var(--verde-escuro);
+      color: white;
+      text-align: center;
+    }
+
+    .interdisciplinar .descricao {
+      color: rgba(255,255,255,.82);
+      margin: 0 auto;
+    }
+
+    .fluxo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 14px;
+
+      margin-top: 45px;
+    }
+
+    .fluxo-item {
+      min-width: 170px;
+
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+
+      padding: 20px 24px;
+
+      border-radius: 40px;
+
+      font-weight: bold;
+    }
+
+    .seta {
+      color: #d9c18d;
+      font-size: 25px;
+    }
+
+    /* COMO DEFINIMOS */
+
+    .definicao {
+      background: var(--menta);
+    }
+
+    .passos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 45px;
+    }
+
+    .passo {
+      background: white;
+      padding: 30px 25px;
+      border-radius: 22px;
+    }
+
+    .passo-numero {
+      width: 42px;
+      height: 42px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background: var(--dourado);
+      color: white;
+
+      border-radius: 50%;
+
+      margin-bottom: 18px;
+
+      font-weight: bold;
+    }
+
+    .passo h3 {
+      color: var(--verde-escuro);
+      margin-bottom: 8px;
+    }
+
+    .passo p {
+      color: var(--cinza);
+      font-size: 15px;
+    }
+
+    /* NÃO É DIAGNÓSTICO */
+
+    .singularidade {
+      background: white;
+
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .singularidade-box {
+      background: var(--bege);
+      padding: 45px;
+      border-radius: 30px;
+    }
+
+    .singularidade-box h3 {
+      font-family: Georgia, serif;
+      font-size: 29px;
+      font-weight: 400;
+      color: var(--verde-escuro);
+      margin-bottom: 15px;
+    }
+
+    .singularidade-box p {
+      color: var(--cinza);
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--creme),
+          var(--menta)
+        );
+    }
+
+    .cta .descricao {
+      margin: 0 auto 30px;
+    }
+
+    /* RODAPÉ */
+
+    footer {
+      background: #073f3c;
+      color: white;
+      padding: 55px 7% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    footer h3 {
+      color: var(--turquesa);
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    footer a {
+      color: rgba(255,255,255,.82);
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,.15);
+      padding-top: 25px;
+      text-align: center;
+      color: rgba(255,255,255,.6);
+      font-size: 13px;
+    }
+
+    /* WHATSAPP */
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+
+      background: #25d366;
+      color: white;
+
+      padding: 15px 20px;
+      border-radius: 50px;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.2);
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 1050px) {
+
+      .menu {
+        display: none;
+      }
+
+      .introducao,
+      .singularidade {
+        grid-template-columns: 1fr;
+      }
+
+      .passos {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 750px) {
+
+      .especialidades-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      nav {
+        min-height: 76px;
+        padding: 10px 4%;
+      }
+
+      .logo {
+        height: 48px;
+        max-width: 200px;
+      }
+
+      nav > .btn {
+        padding: 10px 13px;
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 430px;
+        padding: 65px 6%;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      section {
+        padding: 65px 6%;
+      }
+
+      .passos {
+        grid-template-columns: 1fr;
+      }
+
+      .especialidade,
+      .intro-box,
+      .singularidade-box {
+        padding: 30px 25px;
+      }
+
+      .seta {
+        display: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .btn-claro {
+        display: block;
+        width: max-content;
+        margin: 12px auto 0;
+      }
+
+      .whatsapp {
+        right: 15px;
+        bottom: 15px;
+        padding: 13px 17px;
+        font-size: 14px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<!-- CABEÇALHO -->
+
+<nav>
+
+  <a
+    class="marca"
+    href="index.html"
+    aria-label="Espaço Montessoriano - Página inicial"
+  >
+
+    <img
+      src="logo-espaco-montessoriano.jpg"
+      alt="Espaço Montessoriano"
+      class="logo"
+    >
+
+  </a>
+
+
+  <div class="menu">
+
+    <a href="index.html">
+      Início
+    </a>
+
+    <a href="o-espaco.html">
+      O Espaço
+    </a>
+
+    <a
+      href="especialidades.html"
+      class="ativo"
+    >
+      Especialidades
+    </a>
+
+    <a href="index.html#avaliacoes">
+      Avaliações
+    </a>
+
+    <a href="index.html#jornada">
+      Como funciona
+    </a>
+
+    <a href="index.html#tecnologia">
+      Tecnologia
+    </a>
+
+    <a href="index.html#contato">
+      Contato
+    </a>
+
+  </div>
+
+
+  <a
+    class="btn"
+    href="https://wa.me/5561993183351"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Agende uma conversa
+  </a>
+
+</nav>
+
+
+<main>
+
+<!-- ABERTURA -->
+
+<section class="hero">
+
+  <div class="hero-conteudo">
+
+    <div class="tag">
+      Especialidades
+    </div>
+
+    <h1>
+      Diferentes conhecimentos.
+      <br>
+      <span>Um olhar integrado.</span>
+    </h1>
+
+    <p>
+      Cada criança e adolescente apresenta necessidades,
+      potencialidades e formas próprias de aprender,
+      comunicar-se, relacionar-se e participar do cotidiano.
+      Por isso, o acompanhamento é definido de maneira
+      individualizada.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- INTRODUÇÃO -->
+
+<section class="introducao">
+
+  <div>
+
+    <div class="subtitulo">
+      Cuidado interdisciplinar
+    </div>
+
+    <h2 class="titulo">
+      A especialidade é importante.
+      A integração também.
+    </h2>
+
+    <p class="descricao">
+      No Espaço Montessoriano, cada área possui seus
+      objetivos e procedimentos específicos. Quando
+      necessário, diferentes profissionais podem
+      compartilhar informações e alinhar objetivos
+      para favorecer um acompanhamento mais integrado.
+    </p>
+
+    <br>
+
+    <p class="descricao">
+      Isso não significa que toda criança precise
+      de todas as especialidades. A composição do
+      acompanhamento depende das necessidades
+      identificadas em cada caso.
+    </p>
+
+  </div>
+
+
+  <div class="intro-box">
+
+    <h3>
+      Um plano para cada desenvolvimento.
+    </h3>
+
+    <p>
+      A definição do acompanhamento considera
+      história, demanda, avaliação, contexto familiar
+      e escolar, necessidades atuais e objetivos
+      prioritários.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ESPECIALIDADES -->
+
+<section class="especialidades">
+
+  <div class="subtitulo">
+    Áreas de atuação
+  </div>
+
+  <h2 class="titulo">
+    Conheça nossas especialidades.
+  </h2>
+
+  <p class="descricao">
+    As áreas podem atuar individualmente ou,
+    quando indicado, de forma articulada.
+  </p>
+
+
+  <div class="especialidades-grid">
+
+    <!-- PSICOPEDAGOGIA -->
+
+    <article class="especialidade">
+
+      <div class="numero">01</div>
+
+      <h2>
+        Psicopedagogia
+      </h2>
+
+      <p>
+        A Psicopedagogia investiga e intervém
+        nos processos envolvidos na aprendizagem,
+        considerando aspectos acadêmicos, cognitivos,
+        emocionais e contextuais.
+      </p>
+
+      <h3>
+        O trabalho pode envolver:
+      </h3>
+
+      <ul>
+        <li>alfabetização;</li>
+        <li>leitura e compreensão;</li>
+        <li>escrita e ortografia;</li>
+        <li>raciocínio matemático;</li>
+        <li>estratégias de aprendizagem;</li>
+        <li>organização dos estudos;</li>
+        <li>funções executivas;</li>
+        <li>metacognição e autonomia acadêmica.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- FONOAUDIOLOGIA -->
+
+    <article class="especialidade">
+
+      <div class="numero">02</div>
+
+      <h2>
+        Fonoaudiologia
+      </h2>
+
+      <p>
+        A Fonoaudiologia atua em aspectos relacionados
+        à comunicação, linguagem, fala e habilidades
+        envolvidas nos processos de leitura e escrita,
+        conforme a necessidade identificada.
+      </p>
+
+      <h3>
+        O trabalho pode envolver:
+      </h3>
+
+      <ul>
+        <li>linguagem oral;</li>
+        <li>compreensão e expressão;</li>
+        <li>fala e inteligibilidade;</li>
+        <li>consciência fonológica;</li>
+        <li>processamento de habilidades linguísticas;</li>
+        <li>leitura e escrita;</li>
+        <li>comunicação funcional;</li>
+        <li>estratégias para diferentes contextos.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- PSICOLOGIA -->
+
+    <article class="especialidade">
+
+      <div class="numero">03</div>
+
+      <h2>
+        Psicologia
+      </h2>
+
+      <p>
+        O acompanhamento psicológico considera
+        aspectos emocionais, comportamentais,
+        relacionais e do desenvolvimento que
+        podem repercutir na vida cotidiana.
+      </p>
+
+      <h3>
+        O trabalho pode envolver:
+      </h3>
+
+      <ul>
+        <li>regulação emocional;</li>
+        <li>repertórios comportamentais;</li>
+        <li>habilidades sociais;</li>
+        <li>autoconhecimento;</li>
+        <li>estratégias de enfrentamento;</li>
+        <li>relações familiares e sociais;</li>
+        <li>autonomia;</li>
+        <li>participação em diferentes contextos.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- PSICOMOTRICIDADE -->
+
+    <article class="especialidade">
+
+      <div class="numero">04</div>
+
+      <h2>
+        Psicomotricidade
+      </h2>
+
+      <p>
+        A Psicomotricidade trabalha a relação entre
+        corpo, movimento, percepção, organização
+        espacial e temporal e participação nas
+        atividades do cotidiano.
+      </p>
+
+      <h3>
+        O trabalho pode envolver:
+      </h3>
+
+      <ul>
+        <li>coordenação motora global;</li>
+        <li>coordenação motora fina;</li>
+        <li>equilíbrio;</li>
+        <li>esquema corporal;</li>
+        <li>lateralidade;</li>
+        <li>organização espacial;</li>
+        <li>organização temporal;</li>
+        <li>planejamento e execução motora.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- ABA -->
+
+    <article class="especialidade">
+
+      <div class="numero">05</div>
+
+      <h2>
+        Intervenções baseadas em ABA
+      </h2>
+
+      <p>
+        Estratégias fundamentadas nos princípios
+        da Análise do Comportamento Aplicada podem
+        ser utilizadas quando pertinentes aos
+        objetivos individualizados do acompanhamento.
+      </p>
+
+      <h3>
+        O trabalho pode envolver:
+      </h3>
+
+      <ul>
+        <li>aquisição de novas habilidades;</li>
+        <li>comunicação funcional;</li>
+        <li>habilidades sociais;</li>
+        <li>autonomia;</li>
+        <li>participação em rotinas;</li>
+        <li>análise funcional do comportamento;</li>
+        <li>generalização de habilidades;</li>
+        <li>orientação aos diferentes contextos.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- ACOMPANHAMENTO PEDAGÓGICO -->
+
+    <article class="especialidade">
+
+      <div class="numero">06</div>
+
+      <h2>
+        Acompanhamento Pedagógico
+      </h2>
+
+      <p>
+        O acompanhamento pedagógico oferece apoio
+        individualizado às demandas acadêmicas,
+        articulando conteúdo escolar, estratégias
+        de estudo e desenvolvimento da autonomia.
+      </p>
+
+      <h3>
+        O trabalho pode envolver:
+      </h3>
+
+      <ul>
+        <li>conteúdos escolares;</li>
+        <li>organização da rotina de estudos;</li>
+        <li>planejamento de tarefas;</li>
+        <li>preparação para avaliações;</li>
+        <li>compreensão de enunciados;</li>
+        <li>estratégias de estudo;</li>
+        <li>recuperação de habilidades acadêmicas;</li>
+        <li>desenvolvimento da autonomia.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- MUSICOTERAPIA -->
+
+    <article class="especialidade">
+
+      <div class="numero">07</div>
+
+      <h2>
+        Musicoterapia
+      </h2>
+
+      <p>
+        A Musicoterapia utiliza profissionalmente
+        a música e seus elementos dentro de um
+        processo terapêutico orientado por objetivos
+        individualizados.
+      </p>
+
+      <h3>
+        Conforme os objetivos, pode favorecer:
+      </h3>
+
+      <ul>
+        <li>comunicação;</li>
+        <li>expressão;</li>
+        <li>interação;</li>
+        <li>participação;</li>
+        <li>atenção compartilhada;</li>
+        <li>organização da atividade;</li>
+        <li>experiências relacionais;</li>
+        <li>desenvolvimento de habilidades específicas.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- NUTRIÇÃO -->
+
+    <article class="especialidade">
+
+      <div class="numero">08</div>
+
+      <h2>
+        Nutrição
+      </h2>
+
+      <p>
+        O acompanhamento nutricional considera
+        alimentação, desenvolvimento, rotina e
+        necessidades individuais da criança ou
+        adolescente.
+      </p>
+
+      <h3>
+        O trabalho pode envolver:
+      </h3>
+
+      <ul>
+        <li>avaliação da rotina alimentar;</li>
+        <li>orientação nutricional;</li>
+        <li>organização das refeições;</li>
+        <li>educação alimentar;</li>
+        <li>acompanhamento do desenvolvimento;</li>
+        <li>orientação familiar;</li>
+        <li>necessidades alimentares específicas;</li>
+        <li>articulação com outros profissionais quando necessária.</li>
+      </ul>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- TRABALHO INTERDISCIPLINAR -->
+
+<section class="interdisciplinar">
+
+  <div class="subtitulo">
+    Trabalho interdisciplinar
+  </div>
+
+  <h2 class="titulo">
+    Profissionais diferentes.
+    Objetivos que podem se conectar.
+  </h2>
+
+  <p class="descricao">
+    Quando uma criança é acompanhada por mais de uma
+    especialidade, o compartilhamento responsável de
+    informações pode contribuir para objetivos mais
+    coerentes entre os diferentes atendimentos.
+  </p>
+
+
+  <div class="fluxo">
+
+    <div class="fluxo-item">
+      Observar
+    </div>
+
+    <div class="seta">→</div>
+
+    <div class="fluxo-item">
+      Avaliar
+    </div>
+
+    <div class="seta">→</div>
+
+    <div class="fluxo-item">
+      Planejar
+    </div>
+
+    <div class="seta">→</div>
+
+    <div class="fluxo-item">
+      Intervir
+    </div>
+
+    <div class="seta">→</div>
+
+    <div class="fluxo-item">
+      Monitorar
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- COMO DEFINIMOS -->
+
+<section class="definicao">
+
+  <div class="subtitulo">
+    Como definimos o acompanhamento
+  </div>
+
+  <h2 class="titulo">
+    Nem toda criança precisa do mesmo caminho.
+  </h2>
+
+  <p class="descricao">
+    A indicação das áreas e dos objetivos depende
+    da compreensão individual de cada caso.
+  </p>
+
+
+  <div class="passos">
+
+    <div class="passo">
+
+      <div class="passo-numero">
+        1
+      </div>
+
+      <h3>
+        Demanda inicial
+      </h3>
+
+      <p>
+        Compreendemos as principais preocupações
+        e necessidades apresentadas.
+      </p>
+
+    </div>
+
+
+    <div class="passo">
+
+      <div class="passo-numero">
+        2
+      </div>
+
+      <h3>
+        História
+      </h3>
+
+      <p>
+        Consideramos desenvolvimento, aprendizagem,
+        rotina, família e contexto escolar.
+      </p>
+
+    </div>
+
+
+    <div class="passo">
+
+      <div class="passo-numero">
+        3
+      </div>
+
+      <h3>
+        Avaliação
+      </h3>
+
+      <p>
+        Quando indicada, a avaliação contribui
+        para compreender habilidades e dificuldades.
+      </p>
+
+    </div>
+
+
+    <div class="passo">
+
+      <div class="passo-numero">
+        4
+      </div>
+
+      <h3>
+        Plano individualizado
+      </h3>
+
+      <p>
+        Definimos prioridades, objetivos e
+        estratégias de acompanhamento.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PARA ALÉM DO DIAGNÓSTICO -->
+
+<section class="singularidade">
+
+  <div>
+
+    <div class="subtitulo">
+      A criança antes do diagnóstico
+    </div>
+
+    <h2 class="titulo">
+      Um diagnóstico não conta toda a história.
+    </h2>
+
+    <p class="descricao">
+      Crianças com o mesmo diagnóstico podem
+      apresentar perfis, habilidades, necessidades
+      e formas de participação muito diferentes.
+    </p>
+
+    <br>
+
+    <p class="descricao">
+      Por isso, nosso planejamento considera
+      o funcionamento individual, o contexto,
+      as demandas atuais e os objetivos relevantes
+      para aquela criança e sua família.
+    </p>
+
+  </div>
+
+
+  <div class="singularidade-box">
+
+    <h3>
+      A pergunta não é apenas:
+      “Qual é o diagnóstico?”
+    </h3>
+
+    <p>
+      Também buscamos compreender o que a criança
+      já consegue fazer, onde encontra dificuldades,
+      quais recursos utiliza, o que precisa aprender
+      e quais mudanças podem ampliar sua autonomia
+      e participação.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+  <div class="subtitulo">
+    Por onde começar?
+  </div>
+
+  <h2 class="titulo">
+    Não sabe qual especialidade procurar?
+  </h2>
+
+  <p class="descricao">
+    A família não precisa chegar com essa resposta.
+    O primeiro contato pode ajudar a compreender
+    a demanda e orientar os próximos passos.
+  </p>
+
+  <a
+    class="btn"
+    href="https://wa.me/5561993183351"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Falar com nossa equipe
+  </a>
+
+  <a
+    class="btn btn-claro"
+    href="index.html"
+  >
+    Voltar à página inicial
+  </a>
+
+</section>
+
+</main>
+
+
+<!-- RODAPÉ -->
+
+<footer>
+
+  <div class="footer-grid">
+
+    <div>
+
+      <h3>
+        ESPAÇO MONTESSORIANO
+      </h3>
+
+      <p>
+        Neurodesenvolvimento, aprendizagem,
+        Montessori e tecnologia.
+      </p>
+
+      <p>
+        Brasília — Distrito Federal
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h3>
+        Navegação
+      </h3>
+
+      <p>
+        <a href="index.html">
+          Início
+        </a>
+      </p>
+
+      <p>
+        <a href="o-espaco.html">
+          O Espaço
+        </a>
+      </p>
+
+      <p>
+        <a href="especialidades.html">
+          Especialidades
+        </a>
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h3>
+        Contato
+      </h3>
+
+      <p>
+        <a
+          href="https://wa.me/5561993183351"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://app.espacomontessoriano.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Aplicativo
+        </a>
+      </p>
+
+      <p>
+        Instagram: @espaco.montessoriano
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="copyright">
+    © 2026 Espaço Montessoriano.
+    Todos os direitos reservados.
+  </div>
+
+</footer>
+
+
+<!-- WHATSAPP FIXO -->
+
+<a
+  class="whatsapp"
+  href="https://wa.me/5561993183351"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Falar com o Espaço Montessoriano pelo WhatsApp"
+>
+  WhatsApp
+</a>
+
+</body>
+</html>
