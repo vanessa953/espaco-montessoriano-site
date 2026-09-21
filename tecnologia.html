@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Neurodesenvolvimento e Tecnologia | Espaço Montessoriano</title>
+
+  <meta
+    name="description"
+    content="Conheça os recursos de neurotecnologia do Espaço Montessoriano em Brasília, incluindo qEEG, Neurofeedback, HEG e tDCS, utilizados conforme avaliação, objetivos e indicação profissional."
+  >
+
+  <style>
+
+    :root {
+      --verde-escuro: #075f59;
+      --verde: #087b70;
+      --turquesa: #42bca8;
+      --menta: #eaf5f1;
+      --creme: #faf8f3;
+      --bege: #f2eadc;
+      --dourado: #c79b4b;
+      --texto: #173b3a;
+      --cinza: #60706e;
+      --branco: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--creme);
+      color: var(--texto);
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* CABEÇALHO */
+
+    nav {
+      width: 100%;
+      min-height: 92px;
+      background: rgba(255,255,255,.98);
+      padding: 12px 6%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      box-shadow: 0 2px 18px rgba(0,0,0,.05);
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      display: block;
+      height: 64px;
+      width: auto;
+      max-width: 270px;
+      object-fit: contain;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 19px;
+    }
+
+    .menu a {
+      color: var(--texto);
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .menu a:hover,
+    .menu a.ativo {
+      color: var(--turquesa);
+    }
+
+    /* BOTÕES */
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 30px;
+      background: var(--verde-escuro);
+      color: white;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--verde);
+    }
+
+    .btn-claro {
+      background: transparent;
+      border: 1px solid var(--verde-escuro);
+      color: var(--verde-escuro);
+      margin-left: 8px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 560px;
+      padding: 90px 8%;
+
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
+
+      background:
+        radial-gradient(
+          circle at 82% 30%,
+          rgba(66,188,168,.22),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          var(--creme),
+          var(--menta)
+        );
+    }
+
+    .tag {
+      color: var(--dourado);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(46px, 6vw, 76px);
+      line-height: 1.05;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--turquesa);
+    }
+
+    .hero p {
+      max-width: 760px;
+      font-size: 20px;
+      color: var(--cinza);
+    }
+
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+    }
+
+    .cerebro-abstrato {
+      width: 340px;
+      height: 340px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+
+      background:
+        radial-gradient(
+          circle,
+          rgba(255,255,255,.95) 0%,
+          rgba(234,245,241,.9) 48%,
+          rgba(66,188,168,.20) 100%
+        );
+
+      box-shadow:
+        0 30px 70px rgba(7,95,89,.13);
+    }
+
+    .cerebro-abstrato::before {
+      content: "";
+      width: 230px;
+      height: 230px;
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(7,95,89,.18);
+    }
+
+    .cerebro-abstrato::after {
+      content: "";
+      width: 145px;
+      height: 145px;
+
+      position: absolute;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(199,155,75,.55);
+    }
+
+    .centro {
+      width: 82px;
+      height: 82px;
+
+      border-radius: 50%;
+
+      background: var(--verde-escuro);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      color: white;
+
+      font-family: Georgia, serif;
+      font-size: 30px;
+
+      z-index: 2;
+    }
+
+    /* PADRÃO */
+
+    section {
+      padding: 90px 7%;
+    }
+
+    .subtitulo {
+      color: var(--dourado);
+      letter-spacing: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .titulo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 25px;
+    }
+
+    .descricao {
+      color: var(--cinza);
+      font-size: 18px;
+      max-width: 880px;
+    }
+
+    /* INTRODUÇÃO */
+
+    .introducao {
+      background: white;
+
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .intro-box {
+      background: var(--verde-escuro);
+      color: white;
+
+      padding: 45px;
+      border-radius: 30px;
+
+      box-shadow:
+        0 25px 60px rgba(7,95,89,.12);
+    }
+
+    .intro-box h3 {
+      font-family: Georgia, serif;
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .intro-box p {
+      color: rgba(255,255,255,.82);
+    }
+
+    /* RECURSOS */
+
+    .recursos {
+      background: var(--creme);
+    }
+
+    .recursos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+      margin-top: 50px;
+    }
+
+    .recurso-card {
+      background: white;
+
+      border: 1px solid #ece8df;
+      border-radius: 28px;
+
+      padding: 40px;
+
+      transition: .25s;
+    }
+
+    .recurso-card:hover {
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 18px 45px rgba(7,95,89,.09);
+    }
+
+    .numero {
+      color: var(--dourado);
+      font-family: Georgia, serif;
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .categoria {
+      display: inline-block;
+
+      background: var(--menta);
+      color: var(--verde-escuro);
+
+      padding: 7px 13px;
+      border-radius: 20px;
+
+      font-size: 12px;
+      font-weight: bold;
+
+      margin-bottom: 16px;
+    }
+
+    .recurso-card h2 {
+      font-family: Georgia, serif;
+      color: var(--verde-escuro);
+
+      font-size: 31px;
+      font-weight: 400;
+
+      margin-bottom: 15px;
+    }
+
+    .recurso-card p {
+      color: var(--cinza);
+      margin-bottom: 15px;
+    }
+
+    .recurso-card h3 {
+      color: var(--verde-escuro);
+      font-size: 16px;
+      margin: 22px 0 10px;
+    }
+
+    .recurso-card ul {
+      color: var(--cinza);
+      padding-left: 20px;
+    }
+
+    .recurso-card li {
+      margin-bottom: 7px;
+    }
+
+    /* DIFERENÇA */
+
+    .diferenca {
+      background: var(--bege);
+    }
+
+    .comparacao {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-top: 45px;
+    }
+
+    .comparacao-card {
+      padding: 38px;
+      border-radius: 26px;
+      background: rgba(255,255,255,.75);
+    }
+
+    .comparacao-card h3 {
+      font-family: Georgia, serif;
+      color: var(--verde-escuro);
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .comparacao-card p {
+      color: var(--cinza);
+    }
+
+    /* COMO É DEFINIDO */
+
+    .indicacao {
+      background: var(--verde-escuro);
+      color: white;
+    }
+
+    .indicacao .descricao {
+      color: rgba(255,255,255,.82);
+    }
+
+    .etapas {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+      margin-top: 45px;
+    }
+
+    .etapa {
+      padding: 28px 18px;
+
+      border-radius: 22px;
+
+      background: rgba(255,255,255,.09);
+      border: 1px solid rgba(255,255,255,.14);
+
+      text-align: center;
+    }
+
+    .etapa-numero {
+      width: 40px;
+      height: 40px;
+
+      border-radius: 50%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 16px;
+
+      background: var(--dourado);
+      color: white;
+
+      font-weight: bold;
+    }
+
+    .etapa h3 {
+      margin-bottom: 8px;
+    }
+
+    .etapa p {
+      color: rgba(255,255,255,.74);
+      font-size: 14px;
+    }
+
+    /* INTEGRAÇÃO */
+
+    .integracao {
+      background: white;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .integracao-box {
+      background: var(--menta);
+
+      padding: 42px;
+
+      border-radius: 30px;
+    }
+
+    .integracao-item {
+      padding: 15px 0;
+
+      border-bottom: 1px solid #d5e5e0;
+
+      color: var(--verde-escuro);
+      font-weight: 600;
+    }
+
+    .integracao-item:last-child {
+      border-bottom: 0;
+    }
+
+    /* PRINCÍPIOS */
+
+    .principios {
+      background: var(--creme);
+    }
+
+    .principios-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 45px;
+    }
+
+    .principio {
+      background: white;
+
+      padding: 30px 25px;
+
+      border-radius: 22px;
+
+      border: 1px solid #ece8df;
+    }
+
+    .principio h3 {
+      color: var(--verde-escuro);
+      margin-bottom: 10px;
+    }
+
+    .principio p {
+      color: var(--cinza);
+      font-size: 15px;
+    }
+
+    /* AVISO */
+
+    .responsabilidade {
+      background: var(--bege);
+
+      text-align: center;
+    }
+
+    .responsabilidade-conteudo {
+      max-width: 950px;
+      margin: 0 auto;
+    }
+
+    .responsabilidade .descricao {
+      margin: 0 auto;
+    }
+
+    /* CTA */
+
+    .cta {
+      text-align: center;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--creme),
+          var(--menta)
+        );
+    }
+
+    .cta .descricao {
+      margin: 0 auto 30px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #073f3c;
+      color: white;
+      padding: 55px 7% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    footer h3 {
+      color: var(--turquesa);
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    footer a {
+      color: rgba(255,255,255,.82);
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,.15);
+      padding-top: 25px;
+      text-align: center;
+      color: rgba(255,255,255,.6);
+      font-size: 13px;
+    }
+
+    /* WHATSAPP */
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+
+      background: #25d366;
+      color: white;
+
+      padding: 15px 20px;
+      border-radius: 50px;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.2);
+
+      transition: .2s;
+    }
+
+    .whatsapp:hover {
+      transform: translateY(-3px);
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 1100px) {
+
+      .menu {
+        display: none;
+      }
+
+      .hero,
+      .introducao,
+      .integracao {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .etapas {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .principios-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+    }
+
+    @media (max-width: 750px) {
+
+      .recursos-grid,
+      .comparacao {
+        grid-template-columns: 1fr;
+      }
+
+      .etapas {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      nav {
+        min-height: 76px;
+        padding: 10px 4%;
+      }
+
+      .logo {
+        height: 48px;
+        max-width: 200px;
+      }
+
+      nav > .btn {
+        padding: 10px 13px;
+        font-size: 12px;
+      }
+
+      .hero {
+        min-height: 430px;
+        padding: 65px 6%;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      section {
+        padding: 65px 6%;
+      }
+
+      .principios-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .recurso-card,
+      .intro-box,
+      .integracao-box {
+        padding: 30px 25px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .btn-claro {
+        display: block;
+        width: max-content;
+        margin: 12px auto 0;
+      }
+
+      .whatsapp {
+        right: 15px;
+        bottom: 15px;
+        padding: 13px 17px;
+        font-size: 14px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<!-- CABEÇALHO -->
+
+<nav>
+
+  <a
+    class="marca"
+    href="index.html"
+    aria-label="Espaço Montessoriano - Página inicial"
+  >
+    <img
+      src="logo-espaco-montessoriano.jpg"
+      alt="Espaço Montessoriano"
+      class="logo"
+    >
+  </a>
+
+
+  <div class="menu">
+
+    <a href="index.html">
+      Início
+    </a>
+
+    <a href="o-espaco.html">
+      O Espaço
+    </a>
+
+    <a href="especialidades.html">
+      Especialidades
+    </a>
+
+    <a href="avaliacoes.html">
+      Avaliações
+    </a>
+
+    <a
+      href="tecnologia.html"
+      class="ativo"
+    >
+      Tecnologia
+    </a>
+
+    <a href="index.html#contato">
+      Contato
+    </a>
+
+  </div>
+
+
+  <a
+    class="btn"
+    href="https://wa.me/5561993183351"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Agende uma conversa
+  </a>
+
+</nav>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div>
+
+    <div class="tag">
+      Neurodesenvolvimento e Tecnologia
+    </div>
+
+    <h1>
+      Tecnologia com
+      <span>propósito.</span>
+    </h1>
+
+    <p>
+      Recursos tecnológicos podem ampliar possibilidades
+      de avaliação, acompanhamento e intervenção quando
+      utilizados com objetivos definidos, indicação
+      adequada e integrados à compreensão individual
+      de cada criança ou adolescente.
+    </p>
+
+  </div>
+
+
+  <div class="hero-visual">
+
+    <div class="cerebro-abstrato">
+
+      <div class="centro">
+        +
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- INTRODUÇÃO -->
+
+<section class="introducao">
+
+  <div>
+
+    <div class="subtitulo">
+      Tecnologia a serviço do cuidado
+    </div>
+
+    <h2 class="titulo">
+      O recurso não vem antes da pessoa.
+    </h2>
+
+    <p class="descricao">
+      No Espaço Montessoriano, a tecnologia é compreendida
+      como uma ferramenta que pode complementar determinados
+      processos. A escolha de um recurso deve partir da
+      necessidade identificada e dos objetivos estabelecidos.
+    </p>
+
+    <br>
+
+    <p class="descricao">
+      Isso significa que a utilização de uma tecnologia
+      não é automática e não substitui a compreensão clínica,
+      educacional e funcional de cada caso.
+    </p>
+
+  </div>
+
+
+  <div class="intro-box">
+
+    <h3>
+      Primeiro compreender.
+      Depois decidir como intervir.
+    </h3>
+
+    <p>
+      História, avaliação, necessidades, objetivos,
+      contexto e acompanhamento são elementos importantes
+      para qualquer decisão sobre a utilização de recursos
+      tecnológicos.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- RECURSOS -->
+
+<section class="recursos">
+
+  <div class="subtitulo">
+    Recursos
+  </div>
+
+  <h2 class="titulo">
+    Conheça as tecnologias utilizadas.
+  </h2>
+
+  <p class="descricao">
+    Cada recurso possui características, objetivos
+    e limites próprios. A indicação depende da análise
+    individual e da atuação profissional correspondente.
+  </p>
+
+
+  <div class="recursos-grid">
+
+    <!-- QEEG -->
+
+    <article class="recurso-card">
+
+      <div class="numero">
+        01
+      </div>
+
+      <div class="categoria">
+        MAPEAMENTO
+      </div>
+
+      <h2>
+        qEEG
+      </h2>
+
+      <p>
+        O eletroencefalograma quantitativo, conhecido
+        como qEEG, utiliza o registro da atividade elétrica
+        cerebral para realizar análises quantitativas
+        dos sinais obtidos.
+      </p>
+
+      <p>
+        Em contextos específicos, essas informações podem
+        ser utilizadas como recurso complementar dentro
+        de um processo de análise mais amplo.
+      </p>
+
+      <h3>
+        É importante compreender:
+      </h3>
+
+      <ul>
+        <li>o qEEG não deve ser interpretado isoladamente;</li>
+        <li>não substitui avaliação clínica ou neuropsicológica;</li>
+        <li>não estabelece, sozinho, um diagnóstico;</li>
+        <li>seus resultados precisam ser contextualizados.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- NEUROFEEDBACK -->
+
+    <article class="recurso-card">
+
+      <div class="numero">
+        02
+      </div>
+
+      <div class="categoria">
+        TREINAMENTO
+      </div>
+
+      <h2>
+        Neurofeedback
+      </h2>
+
+      <p>
+        O Neurofeedback é uma modalidade de treinamento
+        baseada no fornecimento de informações em tempo real
+        relacionadas à atividade cerebral registrada durante
+        a sessão.
+      </p>
+
+      <p>
+        Protocolos e objetivos precisam ser definidos
+        conforme o contexto de utilização e a indicação
+        profissional.
+      </p>
+
+      <h3>
+        O planejamento considera:
+      </h3>
+
+      <ul>
+        <li>objetivos previamente estabelecidos;</li>
+        <li>características individuais;</li>
+        <li>protocolo selecionado;</li>
+        <li>acompanhamento ao longo do processo;</li>
+        <li>reavaliação das estratégias quando necessária.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- HEG -->
+
+    <article class="recurso-card">
+
+      <div class="numero">
+        03
+      </div>
+
+      <div class="categoria">
+        BIOFEEDBACK
+      </div>
+
+      <h2>
+        HEG
+      </h2>
+
+      <p>
+        O HEG — Hemoencefalografia — é uma modalidade
+        de biofeedback que utiliza sinais relacionados
+        à atividade hemodinâmica cortical para fornecer
+        feedback durante o treinamento.
+      </p>
+
+      <p>
+        Sua utilização deve estar vinculada a objetivos
+        específicos e inserida em um planejamento
+        individualizado.
+      </p>
+
+      <h3>
+        Durante o processo são considerados:
+      </h3>
+
+      <ul>
+        <li>objetivos do treinamento;</li>
+        <li>resposta individual;</li>
+        <li>tolerabilidade;</li>
+        <li>evolução observada;</li>
+        <li>necessidade de ajustes no planejamento.</li>
+      </ul>
+
+    </article>
+
+
+    <!-- TDCS -->
+
+    <article class="recurso-card">
+
+      <div class="numero">
+        04
+      </div>
+
+      <div class="categoria">
+        NEUROMODULAÇÃO NÃO INVASIVA
+      </div>
+
+      <h2>
+        tDCS
+      </h2>
+
+      <p>
+        A estimulação transcraniana por corrente contínua,
+        ou tDCS, é uma técnica de neuromodulação não invasiva
+        que utiliza corrente elétrica de baixa intensidade
+        aplicada por meio de eletrodos posicionados no couro
+        cabeludo.
+      </p>
+
+      <p>
+        Sua utilização exige indicação adequada, definição
+        de protocolo e observância das normas e competências
+        profissionais aplicáveis.
+      </p>
+
+      <h3>
+        A decisão deve considerar:
+      </h3>
+
+      <ul>
+        <li>objetivo específico;</li>
+        <li>indicação profissional;</li>
+        <li>critérios de segurança;</li>
+        <li>contraindicações;</li>
+        <li>acompanhamento e registro do processo.</li>
+      </ul>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- DIFERENÇA -->
+
+<section class="diferenca">
+
+  <div class="subtitulo">
+    Uma distinção importante
+  </div>
+
+  <h2 class="titulo">
+    Mapear e intervir não são a mesma coisa.
+  </h2>
+
+  <p class="descricao">
+    Cada tecnologia possui uma finalidade própria.
+    Diferenciar essas funções ajuda a evitar interpretações
+    inadequadas sobre o papel de cada recurso.
+  </p>
+
+
+  <div class="comparacao">
+
+    <div class="comparacao-card">
+
+      <h3>
+        qEEG
+      </h3>
+
+      <p>
+        É apresentado como recurso de registro e análise
+        quantitativa da atividade elétrica cerebral.
+        As informações obtidas precisam ser interpretadas
+        no contexto adequado e não constituem, isoladamente,
+        diagnóstico.
+      </p>
+
+    </div>
+
+
+    <div class="comparacao-card">
+
+      <h3>
+        Neurofeedback, HEG e tDCS
+      </h3>
+
+      <p>
+        São recursos distintos entre si e podem integrar
+        processos de treinamento ou neuromodulação quando
+        houver indicação, objetivos definidos e acompanhamento
+        profissional adequado.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- INDICAÇÃO -->
+
+<section class="indicacao">
+
+  <div class="subtitulo">
+    Como pensamos a indicação
+  </div>
+
+  <h2 class="titulo">
+    Tecnologia não é um protocolo igual para todos.
+  </h2>
+
+  <p class="descricao">
+    A utilização de recursos deve fazer sentido dentro
+    do planejamento individual e ser acompanhada ao longo
+    do processo.
+  </p>
+
+
+  <div class="etapas">
+
+    <div class="etapa">
+
+      <div class="etapa-numero">
+        1
+      </div>
+
+      <h3>
+        Compreender
+      </h3>
+
+      <p>
+        Identificar a demanda e compreender
+        o contexto individual.
+      </p>
+
+    </div>
+
+
+    <div class="etapa">
+
+      <div class="etapa-numero">
+        2
+      </div>
+
+      <h3>
+        Avaliar
+      </h3>
+
+      <p>
+        Reunir as informações necessárias
+        para orientar decisões.
+      </p>
+
+    </div>
+
+
+    <div class="etapa">
+
+      <div class="etapa-numero">
+        3
+      </div>
+
+      <h3>
+        Definir objetivos
+      </h3>
+
+      <p>
+        Estabelecer o que se pretende acompanhar
+        ou desenvolver.
+      </p>
+
+    </div>
+
+
+    <div class="etapa">
+
+      <div class="etapa-numero">
+        4
+      </div>
+
+      <h3>
+        Acompanhar
+      </h3>
+
+      <p>
+        Observar respostas e registrar
+        a evolução durante o processo.
+      </p>
+
+    </div>
+
+
+    <div class="etapa">
+
+      <div class="etapa-numero">
+        5
+      </div>
+
+      <h3>
+        Reavaliar
+      </h3>
+
+      <p>
+        Rever objetivos, estratégias e continuidade
+        conforme a evolução observada.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- INTEGRAÇÃO -->
+
+<section class="integracao">
+
+  <div>
+
+    <div class="subtitulo">
+      Integração
+    </div>
+
+    <h2 class="titulo">
+      Tecnologia é parte do planejamento,
+      não o planejamento inteiro.
+    </h2>
+
+    <p class="descricao">
+      Dependendo das necessidades identificadas,
+      os recursos tecnológicos podem coexistir
+      com outras estratégias de acompanhamento.
+    </p>
+
+    <br>
+
+    <p class="descricao">
+      O objetivo é manter coerência entre a demanda
+      real da criança ou adolescente, as intervenções
+      realizadas e os resultados acompanhados.
+    </p>
+
+  </div>
+
+
+  <div class="integracao-box">
+
+    <div class="integracao-item">
+      Avaliação individualizada
+    </div>
+
+    <div class="integracao-item">
+      Objetivos definidos
+    </div>
+
+    <div class="integracao-item">
+      Planejamento interdisciplinar
+    </div>
+
+    <div class="integracao-item">
+      Intervenções clínicas e educacionais
+    </div>
+
+    <div class="integracao-item">
+      Acompanhamento da evolução
+    </div>
+
+    <div class="integracao-item">
+      Participação da família
+    </div>
+
+    <div class="integracao-item">
+      Integração com outros profissionais quando necessária
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PRINCÍPIOS -->
+
+<section class="principios">
+
+  <div class="subtitulo">
+    Princípios
+  </div>
+
+  <h2 class="titulo">
+    Tecnologia com responsabilidade.
+  </h2>
+
+
+  <div class="principios-grid">
+
+    <div class="principio">
+
+      <h3>
+        Indicação
+      </h3>
+
+      <p>
+        O recurso deve estar relacionado
+        a uma necessidade e a objetivos
+        claramente definidos.
+      </p>
+
+    </div>
+
+
+    <div class="principio">
+
+      <h3>
+        Individualização
+      </h3>
+
+      <p>
+        Protocolos e estratégias não devem
+        ser tratados como soluções universais.
+      </p>
+
+    </div>
+
+
+    <div class="principio">
+
+      <h3>
+        Monitoramento
+      </h3>
+
+      <p>
+        A evolução precisa ser acompanhada
+        e o planejamento revisto quando necessário.
+      </p>
+
+    </div>
+
+
+    <div class="principio">
+
+      <h3>
+        Integração
+      </h3>
+
+      <p>
+        Recursos tecnológicos não substituem
+        a compreensão integral do desenvolvimento.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- RESPONSABILIDADE -->
+
+<section class="responsabilidade">
+
+  <div class="responsabilidade-conteudo">
+
+    <div class="subtitulo">
+      Informação responsável
+    </div>
+
+    <h2 class="titulo">
+      Tecnologia não significa promessa de resultado.
+    </h2>
+
+    <p class="descricao">
+      A resposta a qualquer intervenção pode variar
+      entre indivíduos. A indicação e a utilização
+      de cada recurso devem considerar objetivos,
+      evidências disponíveis, características individuais,
+      segurança, acompanhamento profissional e limites
+      próprios de cada técnica.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta">
+
+  <div class="subtitulo">
+    Saiba mais
+  </div>
+
+  <h2 class="titulo">
+    Quer entender se algum desses recursos
+    faz sentido para o seu caso?
+  </h2>
+
+  <p class="descricao">
+    O primeiro passo é compreender a necessidade.
+    Nossa equipe pode orientar sobre avaliação,
+    indicação e possibilidades de acompanhamento.
+  </p>
+
+  <a
+    class="btn"
+    href="https://wa.me/5561993183351"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Falar com nossa equipe
+  </a>
+
+  <a
+    class="btn btn-claro"
+    href="index.html"
+  >
+    Voltar à página inicial
+  </a>
+
+</section>
+
+</main>
+
+
+<!-- RODAPÉ -->
+
+<footer>
+
+  <div class="footer-grid">
+
+    <div>
+
+      <h3>
+        ESPAÇO MONTESSORIANO
+      </h3>
+
+      <p>
+        Neurodesenvolvimento, aprendizagem,
+        Montessori e tecnologia.
+      </p>
+
+      <p>
+        Brasília — Distrito Federal
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h3>
+        Navegação
+      </h3>
+
+      <p>
+        <a href="index.html">
+          Início
+        </a>
+      </p>
+
+      <p>
+        <a href="o-espaco.html">
+          O Espaço
+        </a>
+      </p>
+
+      <p>
+        <a href="especialidades.html">
+          Especialidades
+        </a>
+      </p>
+
+      <p>
+        <a href="avaliacoes.html">
+          Avaliações
+        </a>
+      </p>
+
+      <p>
+        <a href="tecnologia.html">
+          Tecnologia
+        </a>
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h3>
+        Contato
+      </h3>
+
+      <p>
+        <a
+          href="https://wa.me/5561993183351"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://app.espacomontessoriano.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Aplicativo
+        </a>
+      </p>
+
+      <p>
+        Instagram: @espaco.montessoriano
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="copyright">
+    © 2026 Espaço Montessoriano.
+    Todos os direitos reservados.
+  </div>
+
+</footer>
+
+
+<!-- WHATSAPP FIXO -->
+
+<a
+  class="whatsapp"
+  href="https://wa.me/5561993183351"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Falar com o Espaço Montessoriano pelo WhatsApp"
+>
+  WhatsApp
+</a>
+
+</body>
+
+</html>
