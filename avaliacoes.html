@@ -9,11 +9,10 @@
 
   <meta
     name="description"
-    content="Avaliações no Espaço Montessoriano em Brasília: avaliação neuropsicológica, psicopedagógica, linguagem e aprendizagem, além de recursos complementares quando indicados."
+    content="Conheça as avaliações do Espaço Montessoriano em Brasília: avaliação neuropsicológica, psicopedagógica, de linguagem e aprendizagem, desenvolvimento e recursos complementares como qEEG quando indicados."
   >
 
   <style>
-
     :root {
       --verde-escuro: #075f59;
       --verde: #087b70;
@@ -45,6 +44,10 @@
       line-height: 1.7;
     }
 
+    body.menu-aberto {
+      overflow: hidden;
+    }
+
     a {
       text-decoration: none;
     }
@@ -55,17 +58,14 @@
       width: 100%;
       min-height: 92px;
       background: rgba(255,255,255,.98);
-      padding: 12px 6%;
-
+      padding: 12px 5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
-
+      gap: 25px;
       position: sticky;
       top: 0;
       z-index: 1000;
-
       box-shadow: 0 2px 18px rgba(0,0,0,.05);
     }
 
@@ -86,18 +86,28 @@
     .menu {
       display: flex;
       align-items: center;
-      gap: 20px;
+      justify-content: center;
+      gap: 15px;
+      flex: 1;
     }
 
     .menu a {
       color: var(--texto);
-      font-size: 14px;
+      font-size: 13px;
+      white-space: nowrap;
       transition: .2s;
     }
 
     .menu a:hover,
     .menu a.ativo {
       color: var(--turquesa);
+    }
+
+    .acoes-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
     }
 
     /* BOTÕES */
@@ -110,6 +120,8 @@
       color: white;
       font-weight: 700;
       transition: .25s;
+      border: 0;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -124,19 +136,44 @@
       margin-left: 8px;
     }
 
+    /* MENU MOBILE */
+
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid #dce6e2;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--verde-escuro);
+    }
+
+    .menu-mobile {
+      display: none;
+    }
+
     /* HERO */
 
     .hero {
-      min-height: 540px;
+      min-height: 520px;
       padding: 90px 8%;
-
       display: flex;
       align-items: center;
-
       background:
         radial-gradient(
-          circle at 82% 30%,
-          rgba(66,188,168,.20),
+          circle at 85% 30%,
+          rgba(66,188,168,.18),
           transparent 32%
         ),
         linear-gradient(
@@ -147,7 +184,7 @@
     }
 
     .hero-conteudo {
-      max-width: 950px;
+      max-width: 930px;
     }
 
     .tag {
@@ -203,14 +240,13 @@
     .descricao {
       color: var(--cinza);
       font-size: 18px;
-      max-width: 880px;
+      max-width: 900px;
     }
 
     /* INTRODUÇÃO */
 
     .introducao {
       background: white;
-
       display: grid;
       grid-template-columns: 1.05fr .95fr;
       gap: 70px;
@@ -220,28 +256,24 @@
     .intro-box {
       background: var(--verde-escuro);
       color: white;
-
       padding: 45px;
       border-radius: 30px;
-
-      box-shadow:
-        0 25px 60px rgba(7,95,89,.12);
     }
 
     .intro-box h3 {
-      font-family: Georgia, serif;
+      font-family: Georgia, "Times New Roman", serif;
       font-size: 30px;
       font-weight: 400;
       margin-bottom: 15px;
     }
 
     .intro-box p {
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.84);
     }
 
     /* TIPOS DE AVALIAÇÃO */
 
-    .tipos {
+    .avaliacoes {
       background: var(--creme);
     }
 
@@ -262,9 +294,7 @@
 
     .avaliacao-card:hover {
       transform: translateY(-5px);
-
-      box-shadow:
-        0 18px 45px rgba(7,95,89,.09);
+      box-shadow: 0 18px 45px rgba(7,95,89,.09);
     }
 
     .numero {
@@ -276,8 +306,8 @@
 
     .avaliacao-card h2 {
       color: var(--verde-escuro);
-      font-family: Georgia, serif;
-      font-size: 30px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 29px;
       font-weight: 400;
       margin-bottom: 15px;
     }
@@ -299,121 +329,47 @@
     }
 
     .avaliacao-card li {
-      margin-bottom: 6px;
+      margin-bottom: 7px;
     }
 
     /* PROCESSO */
 
     .processo {
-      background: var(--verde-escuro);
-      color: white;
+      background: var(--menta);
     }
 
-    .processo .descricao {
-      color: rgba(255,255,255,.82);
-    }
-
-    .etapas {
+    .processo-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
       margin-top: 45px;
     }
 
     .etapa {
-      background: rgba(255,255,255,.09);
-      border: 1px solid rgba(255,255,255,.14);
-
+      background: white;
       border-radius: 22px;
-      padding: 28px 20px;
-
-      text-align: center;
+      padding: 30px 26px;
     }
 
     .etapa-numero {
-      width: 40px;
-      height: 40px;
-
-      margin: 0 auto 16px;
-
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-
+      background: var(--dourado);
+      color: white;
       display: flex;
       align-items: center;
       justify-content: center;
-
-      background: var(--dourado);
-      color: white;
-
       font-weight: bold;
+      margin-bottom: 18px;
     }
 
     .etapa h3 {
+      color: var(--verde-escuro);
       margin-bottom: 8px;
     }
 
     .etapa p {
-      color: rgba(255,255,255,.75);
-      font-size: 14px;
-    }
-
-    /* OLHAR INTEGRADO */
-
-    .integracao {
-      background: var(--menta);
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 70px;
-      align-items: center;
-    }
-
-    .integracao-box {
-      background: white;
-      border-radius: 30px;
-      padding: 40px;
-
-      box-shadow:
-        0 18px 45px rgba(7,95,89,.07);
-    }
-
-    .integracao-item {
-      padding: 15px 0;
-      border-bottom: 1px solid #e4ece9;
-      color: var(--verde-escuro);
-      font-weight: 600;
-    }
-
-    .integracao-item:last-child {
-      border-bottom: 0;
-    }
-
-    /* DEVOLUTIVA */
-
-    .devolutiva {
-      background: white;
-    }
-
-    .devolutiva-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 45px;
-    }
-
-    .devolutiva-card {
-      padding: 32px;
-      border-radius: 24px;
-      background: var(--creme);
-      border: 1px solid #eeeae1;
-    }
-
-    .devolutiva-card h3 {
-      color: var(--verde-escuro);
-      margin-bottom: 10px;
-    }
-
-    .devolutiva-card p {
       color: var(--cinza);
       font-size: 15px;
     }
@@ -421,55 +377,73 @@
     /* QEEG */
 
     .qeeg {
-      background: var(--bege);
-
+      background: var(--verde-escuro);
+      color: white;
       display: grid;
-      grid-template-columns: .9fr 1.1fr;
+      grid-template-columns: .95fr 1.05fr;
       gap: 70px;
       align-items: center;
     }
 
+    .qeeg .titulo {
+      color: white;
+    }
+
+    .qeeg .descricao {
+      color: rgba(255,255,255,.82);
+    }
+
     .qeeg-box {
-      background: white;
-      padding: 42px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
       border-radius: 30px;
+      padding: 42px;
     }
 
     .qeeg-box h3 {
-      font-family: Georgia, serif;
-      color: var(--verde-escuro);
-      font-size: 29px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
       font-weight: 400;
       margin-bottom: 15px;
     }
 
     .qeeg-box p {
-      color: var(--cinza);
-    }
-
-    /* OBSERVAÇÃO TÉCNICA */
-
-    .nota {
-      background: var(--verde-escuro);
-      color: white;
-      text-align: center;
-    }
-
-    .nota-conteudo {
-      max-width: 950px;
-      margin: 0 auto;
-    }
-
-    .nota .descricao {
-      margin: 0 auto;
       color: rgba(255,255,255,.82);
+      margin-bottom: 12px;
+    }
+
+    /* INTEGRAÇÃO */
+
+    .integracao {
+      background: white;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .integracao-box {
+      background: var(--bege);
+      border-radius: 30px;
+      padding: 45px;
+    }
+
+    .integracao-box h3 {
+      color: var(--verde-escuro);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 29px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .integracao-box p {
+      color: var(--cinza);
     }
 
     /* CTA */
 
     .cta {
       text-align: center;
-
       background:
         linear-gradient(
           135deg,
@@ -482,7 +456,7 @@
       margin: 0 auto 30px;
     }
 
-    /* FOOTER */
+    /* RODAPÉ */
 
     footer {
       background: #073f3c;
@@ -492,8 +466,8 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 50px;
+      grid-template-columns: 1.7fr 1fr 1fr 1fr;
+      gap: 45px;
       margin-bottom: 40px;
     }
 
@@ -529,18 +503,12 @@
       right: 22px;
       bottom: 22px;
       z-index: 2000;
-
       background: #25d366;
       color: white;
-
       padding: 15px 20px;
       border-radius: 50px;
-
       font-weight: bold;
-
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.2);
-
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
       transition: .2s;
     }
 
@@ -550,42 +518,138 @@
 
     /* RESPONSIVO */
 
+    @media (max-width: 1250px) {
+      .menu {
+        gap: 10px;
+      }
+
+      .menu a {
+        font-size: 12px;
+      }
+    }
+
     @media (max-width: 1100px) {
+      nav {
+        padding: 10px 5%;
+      }
 
       .menu {
         display: none;
       }
 
+      .acoes-nav > .btn {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .menu-mobile {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(390px, 88vw);
+        height: 100vh;
+        background: white;
+        z-index: 3000;
+        padding: 28px;
+        transition: right .3s ease;
+        box-shadow: -20px 0 50px rgba(0,0,0,.12);
+        overflow-y: auto;
+      }
+
+      .menu-mobile.aberto {
+        display: block;
+        right: 0;
+      }
+
+      .menu-mobile-topo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+
+      .menu-mobile-topo img {
+        height: 48px;
+        max-width: 190px;
+        object-fit: contain;
+      }
+
+      .fechar-menu {
+        width: 42px;
+        height: 42px;
+        border: 0;
+        border-radius: 50%;
+        background: var(--menta);
+        color: var(--verde-escuro);
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .menu-mobile-links {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .menu-mobile-links a {
+        color: var(--texto);
+        padding: 14px 4px;
+        border-bottom: 1px solid #edf0ee;
+        font-size: 16px;
+      }
+
+      .menu-mobile-links a:hover,
+      .menu-mobile-links a.ativo {
+        color: var(--turquesa);
+      }
+
+      .menu-mobile .btn-mobile {
+        display: block;
+        margin-top: 25px;
+        text-align: center;
+        background: var(--verde-escuro);
+        color: white;
+        padding: 14px;
+        border-radius: 30px;
+        font-weight: bold;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(5,40,38,.45);
+        z-index: 2500;
+      }
+
+      .overlay.ativo {
+        display: block;
+      }
+
       .introducao,
-      .integracao,
-      .qeeg {
+      .qeeg,
+      .integracao {
         grid-template-columns: 1fr;
       }
 
-      .etapas {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      .devolutiva-grid {
-        grid-template-columns: 1fr;
-      }
-
-    }
-
-    @media (max-width: 750px) {
-
-      .avaliacoes-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .etapas {
+      .processo-grid {
         grid-template-columns: repeat(2, 1fr);
       }
 
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 750px) {
+      .avaliacoes-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 600px) {
-
       nav {
         min-height: 76px;
         padding: 10px 4%;
@@ -594,11 +658,6 @@
       .logo {
         height: 48px;
         max-width: 200px;
-      }
-
-      nav > .btn {
-        padding: 10px 13px;
-        font-size: 12px;
       }
 
       .hero {
@@ -618,20 +677,16 @@
         padding: 65px 6%;
       }
 
-      .etapas {
+      .processo-grid,
+      .footer-grid {
         grid-template-columns: 1fr;
       }
 
       .avaliacao-card,
       .intro-box,
-      .integracao-box,
-      .qeeg-box {
+      .qeeg-box,
+      .integracao-box {
         padding: 30px 25px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
       }
 
       .btn-claro {
@@ -646,12 +701,9 @@
         padding: 13px 17px;
         font-size: 14px;
       }
-
     }
-
   </style>
 </head>
-
 
 <body>
 
@@ -662,7 +714,7 @@
   <a
     class="marca"
     href="index.html"
-    aria-label="Espaço Montessoriano - Página inicial"
+    aria-label="Espaço Montessoriano - Início"
   >
     <img
       src="logo-espaco-montessoriano.jpg"
@@ -671,58 +723,102 @@
     >
   </a>
 
-
   <div class="menu">
+    <a href="index.html">Início</a>
+    <a href="o-espaco.html">O Espaço</a>
+    <a href="especialidades.html">Especialidades</a>
+    <a href="avaliacoes.html" class="ativo">Avaliações</a>
+    <a href="tecnologia.html">Tecnologia</a>
+    <a href="familia-escola.html">Família e Escola</a>
+    <a href="formacao-consultoria.html">Formação</a>
+    <a href="aplicativo.html">Aplicativo</a>
+    <a href="contato.html">Contato</a>
+  </div>
 
-    <a href="index.html">
-      Início
-    </a>
-
-    <a href="o-espaco.html">
-      O Espaço
-    </a>
-
-    <a href="especialidades.html">
-      Especialidades
-    </a>
+  <div class="acoes-nav">
 
     <a
-      href="avaliacoes.html"
-      class="ativo"
+      class="btn"
+      href="https://wa.me/5561993236099"
+      target="_blank"
+      rel="noopener noreferrer"
     >
-      Avaliações
+      Fale conosco
     </a>
 
-    <a href="index.html#jornada">
-      Como funciona
-    </a>
-
-    <a href="index.html#tecnologia">
-      Tecnologia
-    </a>
-
-    <a href="index.html#contato">
-      Contato
-    </a>
+    <button
+      class="menu-toggle"
+      id="abrirMenu"
+      type="button"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="menuMobile"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
   </div>
 
+</nav>
+
+<!-- MENU MOBILE -->
+
+<div class="overlay" id="overlay"></div>
+
+<div
+  class="menu-mobile"
+  id="menuMobile"
+  aria-hidden="true"
+>
+
+  <div class="menu-mobile-topo">
+
+    <img
+      src="logo-espaco-montessoriano.jpg"
+      alt="Espaço Montessoriano"
+    >
+
+    <button
+      class="fechar-menu"
+      id="fecharMenu"
+      type="button"
+      aria-label="Fechar menu"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <div class="menu-mobile-links">
+    <a href="index.html">Início</a>
+    <a href="o-espaco.html">O Espaço</a>
+    <a href="especialidades.html">Especialidades</a>
+    <a href="avaliacoes.html" class="ativo">Avaliações</a>
+    <a href="tecnologia.html">Neurodesenvolvimento e Tecnologia</a>
+    <a href="familia-escola.html">Família e Escola</a>
+    <a href="formacao-consultoria.html">Formação e Consultoria</a>
+    <a href="aplicativo.html">Aplicativo</a>
+    <a href="contato.html">Contato</a>
+    <a href="privacidade.html">Política de Privacidade</a>
+    <a href="termos.html">Termos de Uso</a>
+  </div>
 
   <a
-    class="btn"
-    href="https://wa.me/5561993183351"
+    class="btn-mobile"
+    href="https://wa.me/5561993236099"
     target="_blank"
     rel="noopener noreferrer"
   >
-    Agende uma conversa
+    Falar pelo WhatsApp
   </a>
 
-</nav>
-
+</div>
 
 <main>
 
-<!-- HERO -->
+<!-- ABERTURA -->
 
 <section class="hero">
 
@@ -735,20 +831,19 @@
     <h1>
       Avaliar não é apenas medir.
       <br>
-      É <span>compreender.</span>
+      <span>É compreender.</span>
     </h1>
 
     <p>
-      Um processo avaliativo bem conduzido ajuda a compreender
-      como a criança ou adolescente aprende, processa informações,
-      comunica-se, responde às demandas e utiliza seus recursos
-      em diferentes contextos.
+      Uma avaliação cuidadosa ajuda a compreender como
+      a criança ou o adolescente aprende, se comunica,
+      organiza informações, responde às demandas e utiliza
+      seus recursos em diferentes contextos.
     </p>
 
   </div>
 
 </section>
-
 
 <!-- INTRODUÇÃO -->
 
@@ -757,212 +852,171 @@
   <div>
 
     <div class="subtitulo">
-      Avaliar para orientar
+      Compreensão individual
     </div>
 
     <h2 class="titulo">
-      Um retrato amplo do funcionamento atual.
+      Antes de definir caminhos,
+      precisamos compreender o perfil.
     </h2>
 
     <p class="descricao">
-      A avaliação busca organizar informações relevantes
-      sobre habilidades, dificuldades, potencialidades e
-      necessidades para contribuir com decisões clínicas,
-      educacionais e familiares.
+      A avaliação não se resume à aplicação de instrumentos.
+      Ela integra história de desenvolvimento, informações
+      da família, contexto escolar, observação clínica,
+      desempenho nas tarefas e resultados obtidos por meio
+      dos procedimentos pertinentes a cada avaliação.
     </p>
 
     <br>
 
     <p class="descricao">
-      O processo é definido conforme a pergunta que precisa
-      ser respondida. Por isso, instrumentos, procedimentos,
-      número de encontros e profissionais envolvidos podem
-      variar de acordo com cada caso.
+      O objetivo é reunir informações relevantes para
+      compreender potencialidades, dificuldades e necessidades
+      e, a partir delas, orientar os próximos passos.
     </p>
 
   </div>
-
 
   <div class="intro-box">
 
     <h3>
-      Antes de escolher um instrumento, precisamos saber
-      o que queremos compreender.
+      Um retrato integrado, não apenas um resultado.
     </h3>
 
     <p>
-      A avaliação começa pela história, pela demanda e pela
-      formulação das questões que orientarão a investigação.
-      Os resultados precisam ser interpretados dentro desse
-      contexto.
+      Resultados precisam ser interpretados dentro do contexto
+      de cada criança ou adolescente. Por isso, diferentes
+      fontes de informação são consideradas ao longo do processo.
     </p>
 
   </div>
 
 </section>
 
-
 <!-- TIPOS DE AVALIAÇÃO -->
 
-<section class="tipos">
+<section class="avaliacoes">
 
   <div class="subtitulo">
-    Modalidades
+    Modalidades de avaliação
   </div>
 
   <h2 class="titulo">
-    Diferentes avaliações para diferentes perguntas.
+    Diferentes perguntas exigem diferentes olhares.
   </h2>
 
   <p class="descricao">
-    A modalidade é definida de acordo com a demanda e com
-    os aspectos que precisam ser investigados.
+    A modalidade de avaliação é definida de acordo com
+    a demanda apresentada e com os objetivos do processo.
   </p>
-
 
   <div class="avaliacoes-grid">
 
-    <!-- NEUROPSICOLÓGICA -->
-
     <article class="avaliacao-card">
 
-      <div class="numero">
-        01
-      </div>
+      <div class="numero">01</div>
 
-      <h2>
-        Avaliação Neuropsicológica
-      </h2>
+      <h2>Avaliação Neuropsicológica</h2>
 
       <p>
-        Investiga diferentes aspectos do funcionamento
-        cognitivo, comportamental e emocional, considerando
-        a história de desenvolvimento e as demandas atuais.
+        Investiga diferentes funções cognitivas e sua relação
+        com o comportamento, a aprendizagem e o funcionamento
+        cotidiano, considerando a idade e a demanda apresentada.
       </p>
 
-      <h3>
-        Conforme a pergunta clínica, podem ser investigados:
-      </h3>
+      <h3>Conforme o caso, pode investigar:</h3>
 
       <ul>
         <li>atenção;</li>
-        <li>memória e aprendizagem;</li>
+        <li>memória;</li>
         <li>funções executivas;</li>
         <li>linguagem;</li>
         <li>habilidades visuoespaciais;</li>
-        <li>raciocínio;</li>
-        <li>aspectos acadêmicos;</li>
-        <li>comportamento e funcionamento adaptativo.</li>
+        <li>raciocínio e resolução de problemas;</li>
+        <li>aprendizagem;</li>
+        <li>aspectos emocionais e comportamentais pertinentes à avaliação.</li>
       </ul>
 
     </article>
 
-
-    <!-- PSICOPEDAGÓGICA -->
-
     <article class="avaliacao-card">
 
-      <div class="numero">
-        02
-      </div>
+      <div class="numero">02</div>
 
-      <h2>
-        Avaliação Psicopedagógica
-      </h2>
+      <h2>Avaliação Psicopedagógica</h2>
 
       <p>
-        Busca compreender o processo de aprendizagem e
-        investigar fatores relacionados ao desempenho
-        acadêmico e às estratégias utilizadas pelo estudante.
+        Busca compreender o processo de aprendizagem,
+        identificando recursos já consolidados, dificuldades
+        acadêmicas e estratégias utilizadas diante das tarefas.
       </p>
 
-      <h3>
-        Pode incluir investigação de:
-      </h3>
+      <h3>O processo pode contemplar:</h3>
 
       <ul>
         <li>leitura;</li>
         <li>compreensão textual;</li>
-        <li>escrita;</li>
-        <li>ortografia;</li>
-        <li>matemática;</li>
+        <li>escrita e ortografia;</li>
+        <li>alfabetização;</li>
+        <li>raciocínio matemático;</li>
         <li>estratégias de aprendizagem;</li>
         <li>organização e autonomia acadêmica;</li>
-        <li>habilidades relacionadas às funções executivas.</li>
+        <li>funções executivas relacionadas ao estudo.</li>
       </ul>
 
     </article>
 
-
-    <!-- LINGUAGEM -->
-
     <article class="avaliacao-card">
 
-      <div class="numero">
-        03
-      </div>
+      <div class="numero">03</div>
 
-      <h2>
-        Linguagem e Aprendizagem
-      </h2>
+      <h2>Avaliação de Linguagem e Aprendizagem</h2>
 
       <p>
-        A investigação fonoaudiológica pode contribuir
-        para compreender aspectos da linguagem oral,
-        comunicação e habilidades linguísticas relacionadas
-        à leitura e à escrita.
+        Investiga habilidades relacionadas à linguagem
+        oral e escrita e sua participação nos processos
+        de comunicação e aprendizagem.
       </p>
 
-      <h3>
-        Conforme a necessidade, podem ser observados:
-      </h3>
+      <h3>Conforme a demanda, pode envolver:</h3>
 
       <ul>
-        <li>compreensão de linguagem;</li>
+        <li>compreensão da linguagem;</li>
         <li>expressão oral;</li>
         <li>vocabulário;</li>
-        <li>organização do discurso;</li>
+        <li>organização linguística;</li>
         <li>consciência fonológica;</li>
-        <li>habilidades de leitura;</li>
-        <li>habilidades de escrita;</li>
-        <li>comunicação funcional.</li>
+        <li>leitura;</li>
+        <li>escrita;</li>
+        <li>habilidades linguísticas relacionadas à aprendizagem.</li>
       </ul>
 
     </article>
 
-
-    <!-- DESENVOLVIMENTO -->
-
     <article class="avaliacao-card">
 
-      <div class="numero">
-        04
-      </div>
+      <div class="numero">04</div>
 
-      <h2>
-        Avaliação do Desenvolvimento
-      </h2>
+      <h2>Avaliação do Desenvolvimento</h2>
 
       <p>
-        Conforme a demanda, diferentes áreas do
-        desenvolvimento podem ser investigadas para
-        compreender habilidades atuais, necessidades
-        e repercussões na participação cotidiana.
+        Considera diferentes aspectos do desenvolvimento
+        da criança ou adolescente, de acordo com a idade,
+        a história e as questões que motivaram a procura.
       </p>
 
-      <h3>
-        A investigação pode considerar:
-      </h3>
+      <h3>A análise pode considerar:</h3>
 
       <ul>
-        <li>desenvolvimento global;</li>
         <li>comunicação;</li>
-        <li>aspectos motores;</li>
-        <li>autonomia;</li>
-        <li>participação social;</li>
-        <li>comportamento;</li>
         <li>aprendizagem;</li>
-        <li>informações da família e da escola.</li>
+        <li>autonomia;</li>
+        <li>interação e participação social;</li>
+        <li>aspectos motores;</li>
+        <li>comportamento;</li>
+        <li>rotina familiar e escolar;</li>
+        <li>habilidades funcionais relevantes para o caso.</li>
       </ul>
 
     </article>
@@ -970,283 +1024,84 @@
   </div>
 
 </section>
-
 
 <!-- PROCESSO -->
 
 <section class="processo">
 
   <div class="subtitulo">
-    Etapas do processo
+    Como acontece
   </div>
 
   <h2 class="titulo">
-    Da pergunta inicial às orientações.
+    Avaliação é um processo.
   </h2>
 
   <p class="descricao">
-    O percurso pode variar conforme a modalidade de avaliação,
-    mas geralmente envolve diferentes fontes de informação
-    e etapas de análise.
+    As etapas podem variar conforme a modalidade e a
+    necessidade de cada caso, mas o processo busca integrar
+    informações de diferentes fontes.
   </p>
 
-
-  <div class="etapas">
+  <div class="processo-grid">
 
     <div class="etapa">
-
-      <div class="etapa-numero">
-        1
-      </div>
-
-      <h3>
-        Entrevista
-      </h3>
-
+      <div class="etapa-numero">1</div>
+      <h3>Entrevista</h3>
       <p>
-        História, demanda e principais questões
-        apresentadas pela família.
+        Compreensão da demanda, história de desenvolvimento,
+        rotina, aprendizagem e principais preocupações.
       </p>
-
     </div>
 
-
     <div class="etapa">
-
-      <div class="etapa-numero">
-        2
-      </div>
-
-      <h3>
-        Planejamento
-      </h3>
-
+      <div class="etapa-numero">2</div>
+      <h3>Planejamento</h3>
       <p>
-        Definição das hipóteses e dos procedimentos
-        necessários para a investigação.
+        Definição dos procedimentos e instrumentos adequados
+        aos objetivos da avaliação.
       </p>
-
     </div>
 
-
     <div class="etapa">
-
-      <div class="etapa-numero">
-        3
-      </div>
-
-      <h3>
-        Avaliação
-      </h3>
-
+      <div class="etapa-numero">3</div>
+      <h3>Avaliação</h3>
       <p>
-        Aplicação dos procedimentos e instrumentos
-        pertinentes ao objetivo.
+        Realização das sessões, observações e procedimentos
+        pertinentes à modalidade escolhida.
       </p>
-
     </div>
 
-
     <div class="etapa">
-
-      <div class="etapa-numero">
-        4
-      </div>
-
-      <h3>
-        Integração
-      </h3>
-
+      <div class="etapa-numero">4</div>
+      <h3>Integração</h3>
       <p>
-        Análise conjunta das diferentes informações
-        obtidas ao longo do processo.
+        Análise conjunta das informações obtidas ao longo
+        de todo o processo.
       </p>
-
     </div>
 
-
     <div class="etapa">
-
-      <div class="etapa-numero">
-        5
-      </div>
-
-      <h3>
-        Devolutiva
-      </h3>
-
+      <div class="etapa-numero">5</div>
+      <h3>Devolutiva</h3>
       <p>
-        Apresentação e discussão dos principais
-        achados e implicações.
+        Apresentação dos principais achados de forma
+        compreensível e contextualizada.
       </p>
-
     </div>
 
-
     <div class="etapa">
-
-      <div class="etapa-numero">
-        6
-      </div>
-
-      <h3>
-        Orientações
-      </h3>
-
+      <div class="etapa-numero">6</div>
+      <h3>Orientações</h3>
       <p>
-        Recomendações e encaminhamentos construídos
-        a partir dos resultados.
+        Discussão dos próximos passos e das recomendações
+        pertinentes às necessidades identificadas.
       </p>
-
     </div>
 
   </div>
 
 </section>
-
-
-<!-- INTEGRAÇÃO DE INFORMAÇÕES -->
-
-<section class="integracao">
-
-  <div>
-
-    <div class="subtitulo">
-      Diferentes fontes de informação
-    </div>
-
-    <h2 class="titulo">
-      A criança não é apenas um resultado de teste.
-    </h2>
-
-    <p class="descricao">
-      Resultados de instrumentos precisam ser analisados
-      em conjunto com a história, observação clínica,
-      desenvolvimento, comportamento e informações
-      relevantes dos diferentes contextos.
-    </p>
-
-    <br>
-
-    <p class="descricao">
-      Quando pertinente e mediante os procedimentos
-      adequados, informações da escola e de outros
-      profissionais podem contribuir para uma compreensão
-      mais ampla.
-    </p>
-
-  </div>
-
-
-  <div class="integracao-box">
-
-    <div class="integracao-item">
-      História de desenvolvimento
-    </div>
-
-    <div class="integracao-item">
-      Entrevista com responsáveis
-    </div>
-
-    <div class="integracao-item">
-      Observação clínica
-    </div>
-
-    <div class="integracao-item">
-      Instrumentos padronizados
-    </div>
-
-    <div class="integracao-item">
-      Desempenho acadêmico
-    </div>
-
-    <div class="integracao-item">
-      Informações escolares
-    </div>
-
-    <div class="integracao-item">
-      Questionários e escalas
-    </div>
-
-    <div class="integracao-item">
-      Informações de outros profissionais, quando pertinentes
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DEVOLUTIVA -->
-
-<section class="devolutiva">
-
-  <div class="subtitulo">
-    Depois da avaliação
-  </div>
-
-  <h2 class="titulo">
-    O resultado precisa gerar compreensão.
-  </h2>
-
-  <p class="descricao">
-    A avaliação não termina na aplicação dos instrumentos.
-    A integração dos achados e sua tradução em orientações
-    compreensíveis são partes fundamentais do processo.
-  </p>
-
-
-  <div class="devolutiva-grid">
-
-    <div class="devolutiva-card">
-
-      <h3>
-        Devolutiva
-      </h3>
-
-      <p>
-        Momento destinado à apresentação dos resultados,
-        esclarecimento de dúvidas e discussão das principais
-        conclusões da avaliação.
-      </p>
-
-    </div>
-
-
-    <div class="devolutiva-card">
-
-      <h3>
-        Documento técnico
-      </h3>
-
-      <p>
-        Quando previsto para a modalidade realizada,
-        os resultados são organizados em documento técnico
-        elaborado de acordo com o processo avaliativo e
-        com as normas profissionais aplicáveis.
-      </p>
-
-    </div>
-
-
-    <div class="devolutiva-card">
-
-      <h3>
-        Recomendações
-      </h3>
-
-      <p>
-        Os achados podem subsidiar orientações para família,
-        escola, profissionais e planejamento de intervenções,
-        conforme as necessidades identificadas.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
 
 <!-- QEEG -->
 
@@ -1259,94 +1114,114 @@
     </div>
 
     <h2 class="titulo">
-      Mapeamento por qEEG
+      Mapeamento por qEEG.
     </h2>
 
     <p class="descricao">
-      O eletroencefalograma quantitativo, ou qEEG,
-      pode ser utilizado em contextos específicos como
-      recurso complementar de análise da atividade elétrica
-      cerebral, quando houver indicação apropriada.
+      Quando houver indicação, o qEEG pode ser utilizado
+      como recurso complementar para registrar e analisar
+      quantitativamente características da atividade elétrica
+      cerebral.
     </p>
 
     <br>
 
     <p class="descricao">
-      Sua utilização deve ser interpretada dentro de seu
-      objetivo específico e não substitui, isoladamente,
-      avaliação clínica, neuropsicológica ou diagnóstico
-      realizado pelos profissionais habilitados.
+      Essas informações precisam ser interpretadas dentro
+      do contexto clínico e em conjunto com outras fontes
+      de informação pertinentes ao caso.
     </p>
 
   </div>
-
 
   <div class="qeeg-box">
 
     <h3>
-      Informação complementar não significa
-      diagnóstico isolado.
+      Um recurso complementar, não um diagnóstico isolado.
     </h3>
 
     <p>
-      Diferentes métodos respondem a perguntas diferentes.
-      Por isso, os dados provenientes de recursos
-      complementares precisam ser contextualizados junto
-      às demais informações relevantes de cada caso.
+      O qEEG não deve ser interpretado de forma isolada
+      como confirmação de um transtorno ou condição.
+    </p>
+
+    <p>
+      Sua utilização depende da finalidade do procedimento,
+      da indicação e da integração dos dados com a avaliação
+      realizada pelos profissionais responsáveis.
     </p>
 
   </div>
 
 </section>
 
+<!-- INTEGRAÇÃO -->
 
-<!-- NOTA -->
+<section class="integracao">
 
-<section class="nota">
-
-  <div class="nota-conteudo">
+  <div>
 
     <div class="subtitulo">
-      Avaliação responsável
+      Depois da avaliação
     </div>
 
     <h2 class="titulo">
-      Cada conclusão precisa ser sustentada pelo conjunto das evidências.
+      Compreender para planejar.
     </h2>
 
     <p class="descricao">
-      Nenhum resultado deve ser interpretado de maneira isolada.
-      A escolha dos procedimentos, a análise dos dados e a elaboração
-      das conclusões dependem da natureza da avaliação e da atuação
-      dos profissionais habilitados envolvidos em cada processo.
+      A avaliação ganha sentido quando as informações
+      obtidas ajudam a orientar decisões e estratégias
+      compatíveis com as necessidades reais da criança
+      ou adolescente.
+    </p>
+
+    <br>
+
+    <p class="descricao">
+      Conforme o caso, as orientações podem dialogar
+      com família, escola e profissionais envolvidos
+      no acompanhamento.
+    </p>
+
+  </div>
+
+  <div class="integracao-box">
+
+    <h3>
+      O resultado não encerra o processo.
+    </h3>
+
+    <p>
+      A partir da compreensão do perfil, podem ser discutidos
+      objetivos, estratégias de intervenção, adaptações,
+      acompanhamento e encaminhamentos pertinentes.
     </p>
 
   </div>
 
 </section>
-
 
 <!-- CTA -->
 
 <section class="cta">
 
   <div class="subtitulo">
-    Primeiro contato
+    Avaliações
   </div>
 
   <h2 class="titulo">
-    Não sabe qual avaliação procurar?
+    Tem dúvidas sobre qual avaliação é indicada?
   </h2>
 
   <p class="descricao">
-    A família não precisa definir sozinha qual modalidade
-    é necessária. O primeiro contato pode ajudar a compreender
-    a demanda e orientar os próximos passos.
+    O primeiro contato permite compreender melhor
+    a demanda e orientar a família sobre os próximos passos.
   </p>
 
   <a
     class="btn"
-    href="https://wa.me/5561993183351"
+    href="https://wa.me/5561993236099?text=Olá%2C%20gostaria%20de%20receber%20informações%20sobre%20as%20avaliações%20do%20Espaço%20Montessoriano."
     target="_blank"
     rel="noopener noreferrer"
   >
@@ -1355,15 +1230,14 @@
 
   <a
     class="btn btn-claro"
-    href="index.html"
+    href="especialidades.html"
   >
-    Voltar à página inicial
+    Conhecer especialidades
   </a>
 
 </section>
 
 </main>
-
 
 <!-- RODAPÉ -->
 
@@ -1373,9 +1247,7 @@
 
     <div>
 
-      <h3>
-        ESPAÇO MONTESSORIANO
-      </h3>
+      <h3>ESPAÇO MONTESSORIANO</h3>
 
       <p>
         Neurodesenvolvimento, aprendizagem,
@@ -1386,55 +1258,82 @@
         Brasília — Distrito Federal
       </p>
 
-    </div>
-
-
-    <div>
-
-      <h3>
-        Navegação
-      </h3>
-
-      <p>
-        <a href="index.html">
-          Início
-        </a>
-      </p>
-
-      <p>
-        <a href="o-espaco.html">
-          O Espaço
-        </a>
-      </p>
-
-      <p>
-        <a href="especialidades.html">
-          Especialidades
-        </a>
-      </p>
-
-      <p>
-        <a href="avaliacoes.html">
-          Avaliações
-        </a>
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h3>
-        Contato
-      </h3>
-
       <p>
         <a
-          href="https://wa.me/5561993183351"
+          href="https://wa.me/5561993236099"
           target="_blank"
           rel="noopener noreferrer"
         >
-          WhatsApp
+          (61) 99323-6099
+        </a>
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>Conheça</h3>
+
+      <p><a href="o-espaco.html">O Espaço</a></p>
+      <p><a href="especialidades.html">Especialidades</a></p>
+      <p><a href="avaliacoes.html">Avaliações</a></p>
+      <p><a href="tecnologia.html">Tecnologia</a></p>
+
+    </div>
+
+    <div>
+
+      <h3>Integração</h3>
+
+      <p>
+        <a href="familia-escola.html">
+          Família e Escola
+        </a>
+      </p>
+
+      <p>
+        <a href="formacao-consultoria.html">
+          Formação e Consultoria
+        </a>
+      </p>
+
+      <p>
+        <a href="aplicativo.html">
+          Aplicativo
+        </a>
+      </p>
+
+      <p>
+        <a href="contato.html">
+          Contato
+        </a>
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>Institucional</h3>
+
+      <p>
+        <a href="privacidade.html">
+          Política de Privacidade
+        </a>
+      </p>
+
+      <p>
+        <a href="termos.html">
+          Termos de Uso
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://www.instagram.com/espaco.montessoriano/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
         </a>
       </p>
 
@@ -1444,18 +1343,13 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Aplicativo
+          Acessar aplicativo
         </a>
-      </p>
-
-      <p>
-        Instagram: @espaco.montessoriano
       </p>
 
     </div>
 
   </div>
-
 
   <div class="copyright">
     © 2026 Espaço Montessoriano.
@@ -1464,12 +1358,11 @@
 
 </footer>
 
-
 <!-- WHATSAPP FIXO -->
 
 <a
   class="whatsapp"
-  href="https://wa.me/5561993183351"
+  href="https://wa.me/5561993236099"
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Falar com o Espaço Montessoriano pelo WhatsApp"
@@ -1477,6 +1370,45 @@
   WhatsApp
 </a>
 
-</body>
+<script>
+  const abrirMenu = document.getElementById("abrirMenu");
+  const fecharMenu = document.getElementById("fecharMenu");
+  const menuMobile = document.getElementById("menuMobile");
+  const overlay = document.getElementById("overlay");
+  const linksMobile = document.querySelectorAll(".menu-mobile a");
 
+  function abrirNavegacao() {
+    menuMobile.classList.add("aberto");
+    overlay.classList.add("ativo");
+    document.body.classList.add("menu-aberto");
+
+    menuMobile.setAttribute("aria-hidden", "false");
+    abrirMenu.setAttribute("aria-expanded", "true");
+  }
+
+  function fecharNavegacao() {
+    menuMobile.classList.remove("aberto");
+    overlay.classList.remove("ativo");
+    document.body.classList.remove("menu-aberto");
+
+    menuMobile.setAttribute("aria-hidden", "true");
+    abrirMenu.setAttribute("aria-expanded", "false");
+  }
+
+  abrirMenu.addEventListener("click", abrirNavegacao);
+  fecharMenu.addEventListener("click", fecharNavegacao);
+  overlay.addEventListener("click", fecharNavegacao);
+
+  linksMobile.forEach(function(link) {
+    link.addEventListener("click", fecharNavegacao);
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+      fecharNavegacao();
+    }
+  });
+</script>
+
+</body>
 </html>
