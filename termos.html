@@ -9,11 +9,10 @@
 
   <meta
     name="description"
-    content="Termos de Uso do site do Espaço Montessoriano. Consulte as condições gerais de utilização dos conteúdos, informações e recursos disponibilizados."
+    content="Termos de Uso do site e dos ambientes digitais do Espaço Montessoriano."
   >
 
   <style>
-
     :root {
       --verde-escuro: #075f59;
       --verde: #087b70;
@@ -25,6 +24,7 @@
       --texto: #173b3a;
       --cinza: #60706e;
       --branco: #ffffff;
+      --sombra: 0 24px 70px rgba(7,95,89,.10);
     }
 
     * {
@@ -35,7 +35,7 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 100px;
+      scroll-padding-top: 110px;
     }
 
     body {
@@ -43,29 +43,31 @@
       background: var(--creme);
       color: var(--texto);
       line-height: 1.75;
+      overflow-x: hidden;
+    }
+
+    body.menu-aberto {
+      overflow: hidden;
     }
 
     a {
       text-decoration: none;
     }
 
-    /* CABEÇALHO */
-
     nav {
       width: 100%;
       min-height: 92px;
-      background: rgba(255,255,255,.98);
-      padding: 12px 6%;
-
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 12px 5%;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 30px;
-
+      gap: 25px;
       position: sticky;
       top: 0;
       z-index: 1000;
-
       box-shadow: 0 2px 18px rgba(0,0,0,.05);
     }
 
@@ -86,21 +88,50 @@
     .menu {
       display: flex;
       align-items: center;
-      gap: 18px;
+      justify-content: center;
+      gap: 15px;
+      flex: 1;
     }
 
     .menu a {
       color: var(--texto);
-      font-size: 14px;
-      transition: .2s;
+      font-size: 13px;
+      white-space: nowrap;
+      position: relative;
+      transition: .25s;
+    }
+
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: var(--turquesa);
+      transition: width .25s ease;
     }
 
     .menu a:hover {
       color: var(--turquesa);
     }
 
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    .acoes-nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
       padding: 14px 24px;
       border-radius: 30px;
       background: var(--verde-escuro);
@@ -110,26 +141,68 @@
     }
 
     .btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       background: var(--verde);
+      box-shadow: 0 12px 30px rgba(7,95,89,.18);
     }
 
-    /* HERO */
+    .menu-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border: 1px solid #dce6e2;
+      border-radius: 50%;
+      background: white;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .menu-toggle span {
+      width: 20px;
+      height: 2px;
+      background: var(--verde-escuro);
+    }
+
+    .menu-mobile {
+      display: none;
+    }
 
     .hero {
-      padding: 95px 8% 85px;
-
+      position: relative;
+      overflow: hidden;
+      padding: 95px 7% 85px;
       background:
         radial-gradient(
-          circle at 85% 25%,
-          rgba(66,188,168,.18),
-          transparent 30%
+          circle at 88% 15%,
+          rgba(66,188,168,.22),
+          transparent 28%
         ),
         linear-gradient(
           135deg,
-          var(--creme),
+          white,
+          var(--creme) 55%,
           var(--menta)
         );
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 380px;
+      height: 380px;
+      border-radius: 50%;
+      border: 1px solid rgba(7,95,89,.10);
+      right: -120px;
+      top: -150px;
+    }
+
+    .hero-conteudo {
+      max-width: 950px;
+      position: relative;
+      z-index: 2;
     }
 
     .tag {
@@ -143,10 +216,9 @@
 
     .hero h1 {
       font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(44px, 6vw, 70px);
-      line-height: 1.08;
+      font-size: clamp(46px, 6vw, 72px);
+      line-height: 1.05;
       font-weight: 400;
-      max-width: 900px;
       margin-bottom: 25px;
     }
 
@@ -155,93 +227,112 @@
     }
 
     .hero p {
-      max-width: 850px;
       color: var(--cinza);
-      font-size: 19px;
+      font-size: 18px;
+      max-width: 820px;
     }
 
-    .atualizacao {
+    .versao {
       display: inline-block;
-      margin-top: 25px;
-      padding: 9px 15px;
-      border-radius: 20px;
+      margin-top: 28px;
+      padding: 10px 16px;
+      border-radius: 30px;
       background: white;
       color: var(--verde-escuro);
+      border: 1px solid rgba(7,95,89,.10);
       font-size: 13px;
       font-weight: bold;
     }
 
-    /* DOCUMENTO */
+    .layout {
+      max-width: 1400px;
+      margin: auto;
+      padding: 80px 7% 100px;
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      gap: 65px;
+      align-items: start;
+    }
+
+    .sumario {
+      position: sticky;
+      top: 120px;
+      background: white;
+      border-radius: 24px;
+      padding: 27px;
+      box-shadow: var(--sombra);
+    }
+
+    .sumario h2 {
+      font-size: 15px;
+      color: var(--verde-escuro);
+      margin-bottom: 15px;
+    }
+
+    .sumario a {
+      display: block;
+      padding: 8px 0;
+      color: var(--cinza);
+      font-size: 13px;
+      border-bottom: 1px solid #edf1ef;
+      transition: .2s;
+    }
+
+    .sumario a:last-child {
+      border-bottom: 0;
+    }
+
+    .sumario a:hover {
+      color: var(--turquesa);
+      padding-left: 4px;
+    }
 
     .conteudo {
-      padding: 80px 7%;
-      background: white;
-    }
-
-    .documento {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .aviso {
-      background: var(--menta);
-      border-left: 4px solid var(--dourado);
-      padding: 30px;
-      border-radius: 0 22px 22px 0;
-      margin-bottom: 50px;
-    }
-
-    .aviso h2 {
-      font-family: Georgia, serif;
-      color: var(--verde-escuro);
-      font-weight: 400;
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
-
-    .aviso p {
-      color: var(--cinza);
+      min-width: 0;
     }
 
     .bloco {
-      padding: 35px 0;
-      border-bottom: 1px solid #e7e3da;
+      background: white;
+      border-radius: 28px;
+      padding: 42px;
+      margin-bottom: 22px;
+      border: 1px solid #eeece7;
+      transition: .3s;
     }
 
-    .bloco:last-child {
-      border-bottom: 0;
+    .bloco:hover {
+      box-shadow: var(--sombra);
+      transform: translateY(-3px);
     }
 
     .numero {
       color: var(--dourado);
-      font-family: Georgia, serif;
-      font-size: 20px;
-      margin-bottom: 5px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      margin-bottom: 8px;
     }
 
     .bloco h2 {
-      font-family: Georgia, "Times New Roman", serif;
       color: var(--verde-escuro);
-      font-size: 31px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 30px;
       font-weight: 400;
       line-height: 1.2;
-      margin-bottom: 17px;
-    }
-
-    .bloco h3 {
-      color: var(--verde-escuro);
-      margin: 24px 0 8px;
-      font-size: 18px;
+      margin-bottom: 18px;
     }
 
     .bloco p {
       color: var(--cinza);
-      margin-bottom: 14px;
+      margin-bottom: 15px;
+    }
+
+    .bloco p:last-child {
+      margin-bottom: 0;
     }
 
     .bloco ul {
+      padding-left: 22px;
       color: var(--cinza);
-      padding-left: 24px;
       margin: 15px 0;
     }
 
@@ -250,107 +341,70 @@
     }
 
     .destaque {
-      margin-top: 22px;
-      background: var(--creme);
-      border-radius: 20px;
-      padding: 25px;
-    }
-
-    .destaque strong {
-      color: var(--verde-escuro);
-    }
-
-    /* SAÚDE E EDUCAÇÃO */
-
-    .responsabilidade {
-      background: var(--verde-escuro);
-      color: white;
-      padding: 75px 7%;
-    }
-
-    .responsabilidade-conteudo {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    .subtitulo {
-      color: var(--dourado);
-      letter-spacing: 4px;
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    .titulo {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(34px, 4vw, 50px);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 25px;
-    }
-
-    .responsabilidade p {
-      color: rgba(255,255,255,.82);
-      margin-bottom: 15px;
-      font-size: 17px;
-    }
-
-    /* PRINCÍPIOS */
-
-    .principios {
-      padding: 80px 7%;
       background: var(--menta);
+      border-left: 4px solid var(--turquesa);
+      border-radius: 0 18px 18px 0;
+      padding: 22px 24px;
+      margin: 22px 0;
+      color: var(--texto);
     }
 
-    .principios-conteudo {
-      max-width: 1000px;
-      margin: 0 auto;
+    .atencao {
+      background: var(--verde-escuro);
+      border: 0;
+      color: white;
     }
 
-    .principios-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-top: 35px;
+    .atencao h2,
+    .atencao .numero {
+      color: white;
     }
 
-    .principio {
-      background: white;
-      padding: 28px;
-      border-radius: 22px;
+    .atencao p,
+    .atencao li {
+      color: rgba(255,255,255,.82);
     }
 
-    .principio h3 {
-      color: var(--verde-escuro);
-      margin-bottom: 8px;
+    .atencao .destaque {
+      background: rgba(255,255,255,.09);
+      border-left-color: var(--turquesa);
+      color: white;
     }
 
-    .principio p {
-      color: var(--cinza);
-      font-size: 15px;
-    }
-
-    /* CONTATO */
-
-    .contato {
+    .contato-final {
       background: var(--bege);
-      padding: 80px 7%;
+      border-radius: 30px;
+      padding: 48px;
+      margin-top: 30px;
       text-align: center;
     }
 
-    .contato-conteudo {
-      max-width: 850px;
-      margin: 0 auto;
+    .contato-final h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--verde-escuro);
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 14px;
     }
 
-    .contato p {
+    .contato-final p {
       color: var(--cinza);
-      font-size: 18px;
-      margin-bottom: 28px;
+      max-width: 720px;
+      margin: 0 auto 25px;
     }
 
-    /* FOOTER */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition:
+        opacity .7s ease,
+        transform .7s ease;
+    }
+
+    .reveal.visivel {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     footer {
       background: #073f3c;
@@ -360,8 +414,8 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 50px;
+      grid-template-columns: 1.7fr 1fr 1fr 1fr;
+      gap: 45px;
       margin-bottom: 40px;
     }
 
@@ -390,52 +444,144 @@
       font-size: 13px;
     }
 
-    /* WHATSAPP */
-
     .whatsapp {
       position: fixed;
       right: 22px;
       bottom: 22px;
       z-index: 2000;
-
       background: #25d366;
       color: white;
-
       padding: 15px 20px;
       border-radius: 50px;
-
       font-weight: bold;
-
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.2);
-
-      transition: .2s;
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      transition: .25s;
     }
 
     .whatsapp:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
     }
 
-    /* RESPONSIVO */
+    @media (max-width: 1250px) {
+      .menu {
+        gap: 10px;
+      }
 
-    @media (max-width: 1050px) {
+      .menu a {
+        font-size: 12px;
+      }
+    }
 
+    @media (max-width: 1100px) {
       .menu {
         display: none;
       }
 
-    }
+      .acoes-nav > .btn {
+        display: none;
+      }
 
-    @media (max-width: 750px) {
+      .menu-toggle {
+        display: flex;
+      }
 
-      .principios-grid {
+      .menu-mobile {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: min(390px, 88vw);
+        height: 100vh;
+        background: white;
+        z-index: 3000;
+        padding: 28px;
+        transition: right .3s ease;
+        box-shadow: -20px 0 50px rgba(0,0,0,.12);
+        overflow-y: auto;
+      }
+
+      .menu-mobile.aberto {
+        display: block;
+        right: 0;
+      }
+
+      .menu-mobile-topo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+
+      .menu-mobile-topo img {
+        height: 48px;
+        max-width: 190px;
+        object-fit: contain;
+      }
+
+      .fechar-menu {
+        width: 42px;
+        height: 42px;
+        border: 0;
+        border-radius: 50%;
+        background: var(--menta);
+        color: var(--verde-escuro);
+        font-size: 24px;
+        cursor: pointer;
+      }
+
+      .menu-mobile-links {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .menu-mobile-links a {
+        color: var(--texto);
+        padding: 14px 4px;
+        border-bottom: 1px solid #edf0ee;
+        font-size: 16px;
+      }
+
+      .menu-mobile-links a:hover {
+        color: var(--turquesa);
+      }
+
+      .menu-mobile .btn-mobile {
+        display: block;
+        margin-top: 25px;
+        text-align: center;
+        background: var(--verde-escuro);
+        color: white;
+        padding: 14px;
+        border-radius: 30px;
+        font-weight: bold;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(5,40,38,.45);
+        z-index: 2500;
+      }
+
+      .overlay.ativo {
+        display: block;
+      }
+
+      .layout {
         grid-template-columns: 1fr;
       }
 
+      .sumario {
+        position: relative;
+        top: 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 600px) {
-
       nav {
         min-height: 76px;
         padding: 10px 4%;
@@ -446,11 +592,6 @@
         max-width: 200px;
       }
 
-      nav > .btn {
-        padding: 10px 13px;
-        font-size: 12px;
-      }
-
       .hero {
         padding: 65px 6%;
       }
@@ -459,16 +600,26 @@
         font-size: 42px;
       }
 
-      .conteudo,
-      .responsabilidade,
-      .principios,
-      .contato {
-        padding: 65px 6%;
+      .layout {
+        padding: 55px 5% 75px;
+        gap: 30px;
+      }
+
+      .bloco {
+        padding: 28px 22px;
+        border-radius: 22px;
+      }
+
+      .bloco h2 {
+        font-size: 27px;
+      }
+
+      .contato-final {
+        padding: 35px 23px;
       }
 
       .footer-grid {
         grid-template-columns: 1fr;
-        gap: 30px;
       }
 
       .whatsapp {
@@ -477,23 +628,37 @@
         padding: 13px 17px;
         font-size: 14px;
       }
-
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 
-
 <body>
-
-<!-- CABEÇALHO -->
 
 <nav>
 
   <a
     class="marca"
     href="index.html"
-    aria-label="Espaço Montessoriano - Página inicial"
+    aria-label="Espaço Montessoriano - Início"
   >
     <img
       src="logo-espaco-montessoriano.jpg"
@@ -502,815 +667,634 @@
     >
   </a>
 
-
   <div class="menu">
-
-    <a href="index.html">
-      Início
-    </a>
-
-    <a href="o-espaco.html">
-      O Espaço
-    </a>
-
-    <a href="especialidades.html">
-      Especialidades
-    </a>
-
-    <a href="avaliacoes.html">
-      Avaliações
-    </a>
-
-    <a href="tecnologia.html">
-      Tecnologia
-    </a>
-
-    <a href="familia-escola.html">
-      Família e Escola
-    </a>
-
-    <a href="contato.html">
-      Contato
-    </a>
-
+    <a href="index.html">Início</a>
+    <a href="o-espaco.html">O Espaço</a>
+    <a href="especialidades.html">Especialidades</a>
+    <a href="avaliacoes.html">Avaliações</a>
+    <a href="tecnologia.html">Tecnologia</a>
+    <a href="familia-escola.html">Família e Escola</a>
+    <a href="formacao-consultoria.html">Formação</a>
+    <a href="aplicativo.html">Aplicativo</a>
+    <a href="contato.html">Contato</a>
   </div>
 
+  <div class="acoes-nav">
 
-  <a
-    class="btn"
-    href="contato.html"
-  >
-    Fale conosco
-  </a>
+    <a
+      class="btn"
+      href="https://wa.me/5561993236099"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Fale conosco
+    </a>
+
+    <button
+      class="menu-toggle"
+      id="abrirMenu"
+      type="button"
+      aria-label="Abrir menu"
+      aria-expanded="false"
+      aria-controls="menuMobile"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  </div>
 
 </nav>
 
+<div class="overlay" id="overlay"></div>
+
+<div
+  class="menu-mobile"
+  id="menuMobile"
+  aria-hidden="true"
+>
+
+  <div class="menu-mobile-topo">
+
+    <img
+      src="logo-espaco-montessoriano.jpg"
+      alt="Espaço Montessoriano"
+    >
+
+    <button
+      class="fechar-menu"
+      id="fecharMenu"
+      type="button"
+      aria-label="Fechar menu"
+    >
+      ×
+    </button>
+
+  </div>
+
+  <div class="menu-mobile-links">
+    <a href="index.html">Início</a>
+    <a href="o-espaco.html">O Espaço</a>
+    <a href="especialidades.html">Especialidades</a>
+    <a href="avaliacoes.html">Avaliações</a>
+    <a href="tecnologia.html">Neurodesenvolvimento e Tecnologia</a>
+    <a href="familia-escola.html">Família e Escola</a>
+    <a href="formacao-consultoria.html">Formação e Consultoria</a>
+    <a href="aplicativo.html">Aplicativo</a>
+    <a href="contato.html">Contato</a>
+    <a href="privacidade.html">Política de Privacidade</a>
+    <a href="termos.html">Termos de Uso</a>
+  </div>
+
+  <a
+    class="btn-mobile"
+    href="https://wa.me/5561993236099"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Falar pelo WhatsApp
+  </a>
+
+</div>
 
 <main>
 
-<!-- HERO -->
-
 <section class="hero">
 
-  <div class="tag">
-    Institucional
-  </div>
+  <div class="hero-conteudo">
 
-  <h1>
-    Termos de
-    <span>Uso.</span>
-  </h1>
+    <div class="tag">
+      Uso responsável dos nossos ambientes digitais
+    </div>
 
-  <p>
-    Estes Termos de Uso apresentam as condições gerais
-    para acesso e utilização do site institucional
-    do Espaço Montessoriano e de seus conteúdos.
-  </p>
+    <h1>
+      Termos de
+      <span>Uso</span>
+    </h1>
 
-  <div class="atualizacao">
-    Versão publicada em setembro de 2026
+    <p>
+      Estes Termos apresentam as condições gerais para
+      utilização do site, dos conteúdos institucionais
+      e dos recursos digitais disponibilizados pelo
+      Espaço Montessoriano.
+    </p>
+
+    <div class="versao">
+      Versão publicada em setembro de 2026
+    </div>
+
   </div>
 
 </section>
 
+<div class="layout">
 
-<!-- CONTEÚDO -->
+  <aside class="sumario">
 
-<section class="conteudo">
+    <h2>Nestes Termos</h2>
 
-  <div class="documento">
+    <a href="#aceitacao">1. Aceitação</a>
+    <a href="#finalidade">2. Finalidade do site</a>
+    <a href="#informacoes">3. Conteúdo informativo</a>
+    <a href="#saude">4. Informações sobre saúde</a>
+    <a href="#avaliacoes">5. Avaliações e intervenções</a>
+    <a href="#resultados">6. Resultados individuais</a>
+    <a href="#uso">7. Uso adequado</a>
+    <a href="#propriedade">8. Propriedade intelectual</a>
+    <a href="#externos">9. Links externos</a>
+    <a href="#aplicativo">10. Aplicativo</a>
+    <a href="#comunicacao">11. WhatsApp e comunicação</a>
+    <a href="#servicos">12. Serviços contratados</a>
+    <a href="#menores">13. Crianças e adolescentes</a>
+    <a href="#privacidade">14. Privacidade</a>
+    <a href="#disponibilidade">15. Disponibilidade</a>
+    <a href="#alteracoes">16. Alterações</a>
+    <a href="#contato">17. Contato</a>
 
+  </aside>
 
-    <div class="aviso">
+  <div class="conteudo">
 
-      <h2>
-        Antes de utilizar este site
-      </h2>
+    <section class="bloco reveal" id="aceitacao">
 
-      <p>
-        Ao navegar pelo site do Espaço Montessoriano,
-        o usuário deve utilizar as informações de maneira
-        responsável e considerar que os conteúdos disponíveis
-        possuem finalidade predominantemente institucional
-        e informativa.
-      </p>
+      <div class="numero">01</div>
 
-    </div>
-
-
-    <!-- 01 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        01
-      </div>
-
-      <h2>
-        Finalidade do site
-      </h2>
+      <h2>Aceitação dos Termos</h2>
 
       <p>
-        Este site apresenta informações sobre o Espaço
-        Montessoriano, suas áreas de atuação, serviços,
-        avaliações, recursos, atividades de formação,
-        consultoria e canais de contato.
+        Ao acessar e utilizar este site, o usuário declara
+        estar ciente destes Termos de Uso e das condições
+        aplicáveis à utilização dos conteúdos e recursos
+        disponibilizados.
       </p>
 
       <p>
-        O conteúdo busca facilitar o conhecimento
-        institucional e a compreensão geral sobre
-        os serviços apresentados.
+        Caso não concorde com alguma disposição,
+        o usuário poderá interromper a utilização
+        do site.
+      </p>
+
+    </section>
+
+    <section class="bloco reveal" id="finalidade">
+
+      <div class="numero">02</div>
+
+      <h2>Finalidade do site</h2>
+
+      <p>
+        O site do Espaço Montessoriano possui finalidade
+        institucional e informativa.
+      </p>
+
+      <p>
+        Seu objetivo é apresentar informações sobre
+        o Espaço, áreas de atuação, especialidades,
+        avaliações, tecnologia, integração entre
+        família e escola, formação, consultoria,
+        aplicativo e canais de contato.
+      </p>
+
+    </section>
+
+    <section class="bloco reveal" id="informacoes">
+
+      <div class="numero">03</div>
+
+      <h2>Conteúdo informativo</h2>
+
+      <p>
+        Os conteúdos disponibilizados no site têm caráter
+        geral e não devem ser interpretados isoladamente
+        como avaliação individual, diagnóstico,
+        prescrição ou orientação profissional
+        personalizada.
       </p>
 
       <div class="destaque">
-
-        <strong>
-          Importante:
-        </strong>
-
-        o acesso ao site, por si só, não estabelece
-        relação terapêutica, clínica, educacional,
-        contratual ou profissional entre o usuário
-        e o Espaço Montessoriano.
-
+        Informações apresentadas em páginas institucionais
+        não substituem a análise individualizada realizada
+        por profissional habilitado quando ela for necessária.
       </div>
 
-    </div>
+    </section>
 
+    <section class="bloco atencao reveal" id="saude">
 
-    <!-- 02 -->
+      <div class="numero">04</div>
 
-    <div class="bloco">
+      <h2>Informações relacionadas à saúde e ao desenvolvimento</h2>
 
-      <div class="numero">
-        02
+      <p>
+        O site pode apresentar informações relacionadas
+        ao desenvolvimento, aprendizagem, comportamento,
+        linguagem, neurodesenvolvimento e áreas correlatas.
+      </p>
+
+      <p>
+        Esses conteúdos são apresentados para fins
+        institucionais e educativos e não devem ser
+        utilizados como substitutos de avaliação,
+        diagnóstico, tratamento ou acompanhamento
+        individualizado.
+      </p>
+
+      <div class="destaque">
+        Decisões relacionadas à saúde, desenvolvimento
+        ou intervenção devem considerar a situação
+        individual e a atuação dos profissionais
+        habilitados envolvidos.
       </div>
 
-      <h2>
-        Conteúdo informativo
-      </h2>
+    </section>
+
+    <section class="bloco reveal" id="avaliacoes">
+
+      <div class="numero">05</div>
+
+      <h2>Avaliações e intervenções</h2>
 
       <p>
-        Os textos, explicações e demais conteúdos
-        disponíveis neste site têm caráter geral
-        e informativo.
+        A indicação de avaliações, intervenções,
+        recursos ou estratégias depende da análise
+        individual de cada caso.
       </p>
 
       <p>
-        Eles não devem ser interpretados isoladamente
-        como avaliação individual, diagnóstico,
-        prognóstico, prescrição, indicação terapêutica
-        ou orientação profissional específica para
-        determinada pessoa.
+        A descrição de um serviço neste site não significa
+        que ele seja automaticamente indicado para toda
+        criança ou adolescente que apresente determinada
+        dificuldade, condição ou diagnóstico.
       </p>
 
       <p>
-        Necessidades individuais devem ser analisadas
-        no contexto adequado por profissionais habilitados,
-        conforme a natureza da demanda.
+        Quando aplicável, a definição do processo de
+        acompanhamento considera necessidades individuais,
+        objetivos, informações disponíveis e critérios
+        profissionais pertinentes.
       </p>
 
-    </div>
+    </section>
 
+    <section class="bloco reveal" id="resultados">
 
-    <!-- 03 -->
+      <div class="numero">06</div>
 
-    <div class="bloco">
-
-      <div class="numero">
-        03
-      </div>
-
-      <h2>
-        Informações sobre saúde, desenvolvimento e aprendizagem
-      </h2>
+      <h2>Resultados são individuais</h2>
 
       <p>
-        O site pode apresentar conteúdos relacionados
-        ao desenvolvimento infantil e adolescente,
-        aprendizagem, linguagem, comportamento,
-        educação, neurodesenvolvimento e áreas correlatas.
+        O desenvolvimento humano é influenciado por
+        múltiplos fatores e pode ocorrer de maneiras
+        diferentes entre indivíduos.
       </p>
 
       <p>
-        Essas informações não substituem consulta,
-        avaliação ou acompanhamento realizado
-        por profissional habilitado.
+        A apresentação de métodos, recursos, tecnologias
+        ou modalidades de acompanhamento não representa
+        promessa ou garantia de resultado específico.
+      </p>
+
+    </section>
+
+    <section class="bloco reveal" id="uso">
+
+      <div class="numero">07</div>
+
+      <h2>Uso adequado do site</h2>
+
+      <p>
+        O usuário compromete-se a utilizar o site e
+        seus recursos de forma lícita e compatível
+        com suas finalidades.
+      </p>
+
+      <p>Não é permitido, entre outras condutas:</p>
+
+      <ul>
+        <li>
+          utilizar o site para práticas ilícitas ou
+          que violem direitos de terceiros;
+        </li>
+
+        <li>
+          tentar interferir indevidamente no funcionamento
+          dos recursos digitais;
+        </li>
+
+        <li>
+          utilizar conteúdos de forma que viole direitos
+          autorais ou outros direitos aplicáveis;
+        </li>
+
+        <li>
+          apresentar conteúdo institucional do Espaço
+          Montessoriano como se fosse de autoria própria.
+        </li>
+      </ul>
+
+    </section>
+
+    <section class="bloco reveal" id="propriedade">
+
+      <div class="numero">08</div>
+
+      <h2>Propriedade intelectual</h2>
+
+      <p>
+        A identidade visual, marca, textos, materiais,
+        organização de conteúdo e demais elementos
+        disponibilizados pelo Espaço Montessoriano
+        podem estar protegidos pela legislação aplicável.
       </p>
 
       <p>
-        Sintomas, dificuldades ou características
-        semelhantes podem possuir causas e significados
-        diferentes em cada pessoa. Por isso, conteúdos
-        gerais não devem ser utilizados para estabelecer
-        conclusões diagnósticas individuais.
-      </p>
-
-    </div>
-
-
-    <!-- 04 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        04
-      </div>
-
-      <h2>
-        Avaliações e intervenções
-      </h2>
-
-      <p>
-        As informações apresentadas sobre avaliações,
-        intervenções, tecnologias ou recursos descrevem
-        possibilidades de atuação de maneira geral.
+        O acesso público ao site não implica transferência
+        de direitos de propriedade intelectual nem
+        autorização automática para reprodução,
+        modificação ou exploração comercial de seus
+        conteúdos.
       </p>
 
       <p>
-        A indicação de determinado procedimento depende
-        da análise do caso, dos objetivos, das necessidades
-        identificadas, das condições de aplicação
-        e das atribuições profissionais correspondentes.
+        Eventuais usos permitidos por lei permanecem
+        sujeitos aos limites da legislação aplicável.
+      </p>
+
+    </section>
+
+    <section class="bloco reveal" id="externos">
+
+      <div class="numero">09</div>
+
+      <h2>Links e serviços externos</h2>
+
+      <p>
+        O site pode conter links que direcionam para
+        plataformas ou serviços externos, como WhatsApp,
+        Instagram e outros ambientes digitais.
       </p>
 
       <p>
-        A presença de um serviço neste site não significa
-        que ele seja indicado para todas as pessoas
-        ou para todas as condições.
+        Ao acessar esses serviços, o usuário também
+        poderá estar sujeito aos respectivos termos,
+        políticas e práticas da plataforma externa.
       </p>
 
-    </div>
+    </section>
 
+    <section class="bloco reveal" id="aplicativo">
 
-    <!-- 05 -->
+      <div class="numero">10</div>
 
-    <div class="bloco">
-
-      <div class="numero">
-        05
-      </div>
-
-      <h2>
-        Resultados individuais
-      </h2>
+      <h2>Aplicativo do Espaço Montessoriano</h2>
 
       <p>
-        Processos de desenvolvimento, aprendizagem,
-        avaliação e intervenção são individuais
-        e podem ser influenciados por diferentes fatores.
+        O Espaço Montessoriano disponibiliza um ambiente
+        digital destinado a apoiar a organização e a
+        continuidade do acompanhamento.
       </p>
 
       <p>
-        Dessa forma, as informações disponibilizadas
-        neste site não representam promessa ou garantia
-        de resultados específicos.
-      </p>
-
-      <p>
-        Objetivos, estratégias e formas de acompanhamento
-        devem ser definidos conforme cada situação.
-      </p>
-
-    </div>
-
-
-    <!-- 06 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        06
-      </div>
-
-      <h2>
-        Uso adequado do site
-      </h2>
-
-      <p>
-        O usuário deve utilizar este site e seus conteúdos
-        de forma lícita e compatível com sua finalidade.
-      </p>
-
-      <p>
-        Não é permitido utilizar o site para:
+        Conforme os recursos disponíveis e o perfil
+        de acesso, o aplicativo pode contemplar
+        funcionalidades relacionadas a:
       </p>
 
       <ul>
-        <li>práticas ilícitas;</li>
-        <li>tentativas de acesso não autorizado;</li>
-        <li>interferência indevida no funcionamento do site;</li>
-        <li>distribuição de conteúdo malicioso;</li>
-        <li>uso indevido da identidade institucional;</li>
-        <li>reprodução não autorizada de conteúdo protegido;</li>
-        <li>ações que possam prejudicar terceiros ou o próprio Espaço.</li>
+        <li>agenda;</li>
+        <li>confirmação e desmarcação de atendimentos;</li>
+        <li>registros de atendimentos;</li>
+        <li>acompanhamento da evolução;</li>
+        <li>relatórios;</li>
+        <li>comunicação entre clínica, família e escola;</li>
+        <li>cadastro e informações iniciais ou anamnese;</li>
+        <li>avaliação.</li>
       </ul>
 
-    </div>
+      <p>
+        O aplicativo pode ser acessado em
+        <strong>app.espacomontessoriano.com</strong>.
+      </p>
 
-
-    <!-- 07 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        07
+      <div class="destaque">
+        O acesso ao ambiente digital deve ser realizado
+        de forma responsável. Dados de acesso não devem
+        ser compartilhados indevidamente com terceiros.
       </div>
 
-      <h2>
-        Propriedade intelectual
-      </h2>
+    </section>
+
+    <section class="bloco reveal" id="comunicacao">
+
+      <div class="numero">11</div>
+
+      <h2>WhatsApp e outros canais de comunicação</h2>
 
       <p>
-        A identidade visual, marca, logotipo, textos,
-        materiais institucionais e demais conteúdos
-        próprios disponibilizados neste site podem
-        estar protegidos pela legislação aplicável
-        de propriedade intelectual.
+        O WhatsApp e outros canais disponibilizados
+        pelo Espaço Montessoriano podem ser utilizados
+        para comunicação, solicitação de informações
+        e direcionamentos relacionados aos serviços.
       </p>
 
       <p>
-        O acesso ao site não concede autorização
-        automática para reprodução, alteração,
-        distribuição, comercialização ou utilização
-        da identidade do Espaço Montessoriano
-        fora das hipóteses legalmente permitidas.
+        O envio de uma mensagem não significa,
+        por si só, contratação de serviço, confirmação
+        de atendimento ou estabelecimento automático
+        de relação profissional.
       </p>
 
       <p>
-        Conteúdos pertencentes a terceiros permanecem
-        sujeitos aos direitos de seus respectivos titulares.
+        Informações sensíveis devem ser compartilhadas
+        apenas quando pertinentes e pelos meios adequados
+        ao contexto.
       </p>
 
-    </div>
+    </section>
 
+    <section class="bloco reveal" id="servicos">
 
-    <!-- 08 -->
+      <div class="numero">12</div>
 
-    <div class="bloco">
+      <h2>Serviços contratados</h2>
 
-      <div class="numero">
-        08
+      <p>
+        A contratação efetiva de atendimentos,
+        avaliações, programas, formações, consultorias
+        ou outros serviços poderá estar sujeita a
+        condições específicas apresentadas no momento
+        da contratação.
+      </p>
+
+      <p>
+        Essas condições podem contemplar, conforme
+        o serviço, aspectos como agenda, frequência,
+        valores, pagamentos, cancelamentos, reposições,
+        responsabilidades e outras regras operacionais.
+      </p>
+
+      <div class="destaque">
+        Em caso de diferença entre uma informação geral
+        do site e as condições específicas formalizadas
+        para determinado serviço, devem ser consideradas
+        as condições aplicáveis à contratação realizada,
+        observada a legislação pertinente.
       </div>
 
-      <h2>
-        Links e serviços externos
-      </h2>
+    </section>
+
+    <section class="bloco atencao reveal" id="menores">
+
+      <div class="numero">13</div>
+
+      <h2>Crianças e adolescentes</h2>
 
       <p>
-        Este site pode conter links para plataformas
-        e serviços externos, incluindo WhatsApp,
-        Instagram e o aplicativo utilizado pelo
-        Espaço Montessoriano.
+        O Espaço Montessoriano desenvolve atividades
+        voltadas também a crianças e adolescentes.
       </p>
 
       <p>
-        Ao acessar serviços externos, o usuário passa
-        a utilizar ambientes que podem possuir termos,
-        políticas, funcionalidades e práticas próprias.
+        A participação dos pais ou responsáveis legais
+        pode ser necessária em diferentes etapas,
+        especialmente em cadastros, autorizações,
+        contratação de serviços, fornecimento de
+        informações e acompanhamento.
       </p>
 
-      <p>
-        Recomendamos a leitura dos documentos
-        disponibilizados pelos respectivos serviços.
-      </p>
-
-    </div>
-
-
-    <!-- 09 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        09
+      <div class="destaque">
+        O melhor interesse da criança e do adolescente
+        deve orientar os procedimentos relacionados
+        aos serviços e ao tratamento de seus dados
+        pessoais.
       </div>
 
-      <h2>
-        Aplicativo do Espaço Montessoriano
-      </h2>
+    </section>
 
-      <p>
-        O aplicativo constitui um recurso digital
-        de apoio à organização, comunicação
-        e acompanhamento.
-      </p>
+    <section class="bloco reveal" id="privacidade">
 
-      <p>
-        Seu uso não substitui avaliação profissional,
-        atendimento, orientação individualizada
-        ou contato direto com a equipe quando necessário.
-      </p>
+      <div class="numero">14</div>
 
-      <p>
-        Funcionalidades, condições de acesso
-        e demais características da plataforma
-        podem ser apresentadas no próprio ambiente
-        do aplicativo.
-      </p>
-
-    </div>
-
-
-    <!-- 10 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        10
-      </div>
-
-      <h2>
-        Contato pelo WhatsApp e outros canais
-      </h2>
-
-      <p>
-        O site disponibiliza links para facilitar
-        o contato com o Espaço Montessoriano.
-      </p>
-
-      <p>
-        O envio de uma mensagem não significa
-        confirmação automática de atendimento,
-        contratação de serviço, agendamento
-        ou estabelecimento de vínculo profissional.
-      </p>
-
-      <p>
-        Condições específicas de atendimento,
-        valores, disponibilidade, documentação
-        e demais informações pertinentes poderão
-        ser apresentadas durante o contato
-        e conforme o serviço solicitado.
-      </p>
-
-    </div>
-
-
-    <!-- 11 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        11
-      </div>
-
-      <h2>
-        Serviços contratados
-      </h2>
-
-      <p>
-        Quando houver contratação de serviços,
-        a relação poderá ser disciplinada também
-        por contratos, termos, autorizações,
-        políticas internas, orientações profissionais
-        ou outros documentos específicos.
-      </p>
-
-      <p>
-        Em caso de diferença entre uma informação
-        geral apresentada neste site e as condições
-        formalmente estabelecidas para determinado
-        serviço, deverão ser consideradas as condições
-        específicas aplicáveis à relação contratada,
-        observada a legislação vigente.
-      </p>
-
-    </div>
-
-
-    <!-- 12 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        12
-      </div>
-
-      <h2>
-        Crianças e adolescentes
-      </h2>
-
-      <p>
-        Como parte dos serviços apresentados é direcionada
-        a crianças e adolescentes, o uso de informações
-        relacionadas a esse público deve ocorrer
-        de forma responsável.
-      </p>
-
-      <p>
-        Pais e responsáveis devem observar os cuidados
-        necessários ao fornecer dados, documentos
-        e informações sobre crianças e adolescentes
-        pelos canais disponíveis.
-      </p>
-
-      <p>
-        Informações gerais deste site não devem ser
-        utilizadas para rotular, diagnosticar ou definir
-        isoladamente necessidades de uma criança
-        ou adolescente.
-      </p>
-
-    </div>
-
-
-    <!-- 13 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        13
-      </div>
-
-      <h2>
-        Privacidade e proteção de dados
-      </h2>
+      <h2>Privacidade e proteção de dados</h2>
 
       <p>
         O tratamento de dados pessoais relacionado
-        aos canais institucionais e digitais
-        é abordado na Política de Privacidade
-        do Espaço Montessoriano.
+        ao site, aos serviços e aos ambientes digitais
+        deve observar a legislação aplicável.
       </p>
 
       <p>
-        Recomendamos a leitura desse documento
-        para compreender as informações gerais
-        relacionadas à privacidade e proteção de dados.
+        Para compreender melhor as diretrizes gerais
+        relacionadas ao tratamento de dados pessoais,
+        consulte nossa
+        <a
+          href="privacidade.html"
+          style="color:#087b70;font-weight:bold;"
+        >
+          Política de Privacidade
+        </a>.
+      </p>
+
+    </section>
+
+    <section class="bloco reveal" id="disponibilidade">
+
+      <div class="numero">15</div>
+
+      <h2>Disponibilidade dos ambientes digitais</h2>
+
+      <p>
+        O site e outros recursos digitais podem passar
+        por atualizações, manutenções ou alterações
+        técnicas.
+      </p>
+
+      <p>
+        Por esse motivo, determinados recursos podem
+        sofrer interrupções ou indisponibilidades
+        temporárias.
+      </p>
+
+      <p>
+        O Espaço Montessoriano poderá realizar ajustes
+        necessários ao funcionamento, organização e
+        evolução de seus ambientes digitais.
+      </p>
+
+    </section>
+
+    <section class="bloco reveal" id="alteracoes">
+
+      <div class="numero">16</div>
+
+      <h2>Alterações destes Termos</h2>
+
+      <p>
+        Estes Termos de Uso poderão ser atualizados
+        para refletir alterações nos serviços,
+        conteúdos, recursos digitais, processos
+        ou requisitos aplicáveis.
+      </p>
+
+      <p>
+        A versão disponibilizada nesta página representa
+        a versão pública vigente no site.
+      </p>
+
+    </section>
+
+    <section class="bloco reveal" id="contato">
+
+      <div class="numero">17</div>
+
+      <h2>Contato</h2>
+
+      <p>
+        Para dúvidas sobre estes Termos de Uso ou
+        para obter informações sobre o
+        Espaço Montessoriano, utilize os canais
+        oficiais disponibilizados no site.
+      </p>
+
+      <p>
+        WhatsApp:
+        <strong>(61) 99323-6099</strong>.
+      </p>
+
+      <p>
+        Brasília — Distrito Federal.
+      </p>
+
+    </section>
+
+    <div class="contato-final reveal">
+
+      <h2>
+        Ficou com alguma dúvida?
+      </h2>
+
+      <p>
+        Entre em contato com o Espaço Montessoriano
+        pelos nossos canais oficiais.
       </p>
 
       <a
         class="btn"
-        href="privacidade.html"
+        href="https://wa.me/5561993236099?text=Olá%2C%20gostaria%20de%20esclarecer%20uma%20dúvida%20sobre%20o%20site%20do%20Espaço%20Montessoriano."
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        Ler Política de Privacidade
+        Falar pelo WhatsApp
       </a>
 
     </div>
 
-
-    <!-- 14 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        14
-      </div>
-
-      <h2>
-        Disponibilidade do site
-      </h2>
-
-      <p>
-        O Espaço Montessoriano poderá realizar
-        ajustes, manutenções e atualizações
-        em seu site.
-      </p>
-
-      <p>
-        O acesso poderá eventualmente sofrer
-        interrupções relacionadas a manutenção,
-        infraestrutura tecnológica, serviços
-        de terceiros ou outras circunstâncias.
-      </p>
-
-    </div>
-
-
-    <!-- 15 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        15
-      </div>
-
-      <h2>
-        Atualização das informações
-      </h2>
-
-      <p>
-        Conteúdos, serviços, recursos e informações
-        apresentados neste site podem ser atualizados
-        ao longo do tempo.
-      </p>
-
-      <p>
-        Sempre que uma informação específica
-        for essencial para uma decisão relacionada
-        a um serviço, recomendamos sua confirmação
-        diretamente com a equipe.
-      </p>
-
-    </div>
-
-
-    <!-- 16 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        16
-      </div>
-
-      <h2>
-        Alterações destes Termos
-      </h2>
-
-      <p>
-        Estes Termos de Uso poderão ser atualizados
-        para acompanhar mudanças no site, nos serviços,
-        nas tecnologias utilizadas ou na legislação aplicável.
-      </p>
-
-      <p>
-        A versão vigente será aquela disponibilizada
-        nesta página.
-      </p>
-
-    </div>
-
-
-    <!-- 17 -->
-
-    <div class="bloco">
-
-      <div class="numero">
-        17
-      </div>
-
-      <h2>
-        Dúvidas e contato
-      </h2>
-
-      <p>
-        Em caso de dúvida sobre as informações
-        apresentadas neste site ou sobre estes
-        Termos de Uso, entre em contato com
-        o Espaço Montessoriano pelos canais
-        institucionais disponíveis.
-      </p>
-
-    </div>
-
   </div>
 
-</section>
-
-
-<!-- RESPONSABILIDADE -->
-
-<section class="responsabilidade">
-
-  <div class="responsabilidade-conteudo">
-
-    <div class="subtitulo">
-      Informação responsável
-    </div>
-
-    <h2 class="titulo">
-      Informação orienta. Avaliação individualiza.
-    </h2>
-
-    <p>
-      Ler sobre desenvolvimento, aprendizagem,
-      comportamento ou saúde pode ajudar famílias
-      e profissionais a compreender determinados temas.
-    </p>
-
-    <p>
-      Entretanto, nenhuma página deste site consegue
-      representar isoladamente a complexidade
-      de uma pessoa.
-    </p>
-
-    <p>
-      Quando houver uma necessidade individual,
-      a análise deve considerar história, contexto,
-      desenvolvimento, observação e outras informações
-      pertinentes ao caso.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- PRINCÍPIOS -->
-
-<section class="principios">
-
-  <div class="principios-conteudo">
-
-    <div class="subtitulo">
-      Uso consciente
-    </div>
-
-    <h2 class="titulo">
-      Quatro princípios para utilizar nossas informações.
-    </h2>
-
-
-    <div class="principios-grid">
-
-      <article class="principio">
-
-        <h3>
-          Contexto
-        </h3>
-
-        <p>
-          Informações gerais precisam ser interpretadas
-          considerando o contexto de cada pessoa.
-        </p>
-
-      </article>
-
-
-      <article class="principio">
-
-        <h3>
-          Individualidade
-        </h3>
-
-        <p>
-          Crianças e adolescentes não devem ser
-          reduzidos a listas de sinais ou diagnósticos.
-        </p>
-
-      </article>
-
-
-      <article class="principio">
-
-        <h3>
-          Responsabilidade
-        </h3>
-
-        <p>
-          Decisões relacionadas à saúde e ao desenvolvimento
-          exigem análise profissional quando pertinente.
-        </p>
-
-      </article>
-
-
-      <article class="principio">
-
-        <h3>
-          Atualização
-        </h3>
-
-        <p>
-          Informações institucionais podem ser modificadas
-          à medida que serviços e processos evoluem.
-        </p>
-
-      </article>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CONTATO -->
-
-<section class="contato">
-
-  <div class="contato-conteudo">
-
-    <div class="subtitulo">
-      Espaço Montessoriano
-    </div>
-
-    <h2 class="titulo">
-      Precisa de uma informação específica?
-    </h2>
-
-    <p>
-      Entre em contato com nossa equipe para esclarecer
-      dúvidas sobre os serviços apresentados neste site.
-    </p>
-
-    <a
-      class="btn"
-      href="contato.html"
-    >
-      Ir para Contato
-    </a>
-
-  </div>
-
-</section>
+</div>
 
 </main>
-
-
-<!-- RODAPÉ -->
 
 <footer>
 
@@ -1318,9 +1302,7 @@
 
     <div>
 
-      <h3>
-        ESPAÇO MONTESSORIANO
-      </h3>
+      <h3>ESPAÇO MONTESSORIANO</h3>
 
       <p>
         Neurodesenvolvimento, aprendizagem,
@@ -1331,61 +1313,43 @@
         Brasília — Distrito Federal
       </p>
 
-    </div>
-
-
-    <div>
-
-      <h3>
-        Navegação
-      </h3>
-
       <p>
-        <a href="index.html">Início</a>
-      </p>
-
-      <p>
-        <a href="o-espaco.html">O Espaço</a>
-      </p>
-
-      <p>
-        <a href="especialidades.html">Especialidades</a>
-      </p>
-
-      <p>
-        <a href="avaliacoes.html">Avaliações</a>
-      </p>
-
-      <p>
-        <a href="tecnologia.html">Tecnologia</a>
-      </p>
-
-      <p>
-        <a href="familia-escola.html">Família e Escola</a>
-      </p>
-
-      <p>
-        <a href="formacao-consultoria.html">
-          Formação e Consultoria
+        <a
+          href="https://wa.me/5561993236099"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          (61) 99323-6099
         </a>
       </p>
 
-      <p>
-        <a href="aplicativo.html">Aplicativo</a>
-      </p>
-
-      <p>
-        <a href="contato.html">Contato</a>
-      </p>
-
     </div>
-
 
     <div>
 
-      <h3>
-        Institucional
-      </h3>
+      <h3>Conheça</h3>
+
+      <p><a href="o-espaco.html">O Espaço</a></p>
+      <p><a href="especialidades.html">Especialidades</a></p>
+      <p><a href="avaliacoes.html">Avaliações</a></p>
+      <p><a href="tecnologia.html">Tecnologia</a></p>
+
+    </div>
+
+    <div>
+
+      <h3>Integração</h3>
+
+      <p><a href="familia-escola.html">Família e Escola</a></p>
+      <p><a href="formacao-consultoria.html">Formação e Consultoria</a></p>
+      <p><a href="aplicativo.html">Aplicativo</a></p>
+      <p><a href="contato.html">Contato</a></p>
+
+    </div>
+
+    <div>
+
+      <h3>Institucional</h3>
 
       <p>
         <a href="privacidade.html">
@@ -1401,11 +1365,11 @@
 
       <p>
         <a
-          href="https://wa.me/5561993183351"
+          href="https://www.instagram.com/espaco.montessoriano/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          WhatsApp
+          Instagram
         </a>
       </p>
 
@@ -1415,14 +1379,13 @@
           target="_blank"
           rel="noopener noreferrer"
         >
-          Aplicativo
+          Acessar aplicativo
         </a>
       </p>
 
     </div>
 
   </div>
-
 
   <div class="copyright">
     © 2026 Espaço Montessoriano.
@@ -1431,12 +1394,9 @@
 
 </footer>
 
-
-<!-- WHATSAPP FIXO -->
-
 <a
   class="whatsapp"
-  href="https://wa.me/5561993183351"
+  href="https://wa.me/5561993236099"
   target="_blank"
   rel="noopener noreferrer"
   aria-label="Falar com o Espaço Montessoriano pelo WhatsApp"
@@ -1444,6 +1404,79 @@
   WhatsApp
 </a>
 
-</body>
+<script>
+  const abrirMenu = document.getElementById("abrirMenu");
+  const fecharMenu = document.getElementById("fecharMenu");
+  const menuMobile = document.getElementById("menuMobile");
+  const overlay = document.getElementById("overlay");
+  const linksMobile = document.querySelectorAll(".menu-mobile a");
 
+  function abrirNavegacao() {
+    menuMobile.classList.add("aberto");
+    overlay.classList.add("ativo");
+    document.body.classList.add("menu-aberto");
+
+    menuMobile.setAttribute("aria-hidden", "false");
+    abrirMenu.setAttribute("aria-expanded", "true");
+  }
+
+  function fecharNavegacao() {
+    menuMobile.classList.remove("aberto");
+    overlay.classList.remove("ativo");
+    document.body.classList.remove("menu-aberto");
+
+    menuMobile.setAttribute("aria-hidden", "true");
+    abrirMenu.setAttribute("aria-expanded", "false");
+  }
+
+  abrirMenu.addEventListener("click", abrirNavegacao);
+  fecharMenu.addEventListener("click", fecharNavegacao);
+  overlay.addEventListener("click", fecharNavegacao);
+
+  linksMobile.forEach(function(link) {
+    link.addEventListener("click", fecharNavegacao);
+  });
+
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+      fecharNavegacao();
+    }
+  });
+
+  const elementosReveal = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+
+    const observador = new IntersectionObserver(
+      function(entradas) {
+
+        entradas.forEach(function(entrada) {
+
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("visivel");
+            observador.unobserve(entrada.target);
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.08
+      }
+    );
+
+    elementosReveal.forEach(function(elemento) {
+      observador.observe(elemento);
+    });
+
+  } else {
+
+    elementosReveal.forEach(function(elemento) {
+      elemento.classList.add("visivel");
+    });
+
+  }
+</script>
+
+</body>
 </html>
