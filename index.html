@@ -9,11 +9,10 @@
 
   <meta
     name="description"
-    content="Espaço Montessoriano em Brasília. Atendimento interdisciplinar em neurodesenvolvimento, aprendizagem, Fonoaudiologia, Psicopedagogia, Psicologia, Psicomotricidade, avaliações e acompanhamento integrado."
+    content="Espaço Montessoriano em Brasília. Neurodesenvolvimento, aprendizagem, avaliações, intervenções, Método Montessori, tecnologia e integração entre família, escola e clínica."
   >
 
   <style>
-
     :root {
       --verde-escuro: #075f59;
       --verde: #087b70;
@@ -25,6 +24,9 @@
       --texto: #173b3a;
       --cinza: #60706e;
       --branco: #ffffff;
+      --linha: rgba(7,95,89,.10);
+      --sombra: 0 24px 70px rgba(7,95,89,.10);
+      --sombra-forte: 0 30px 90px rgba(7,95,89,.16);
     }
 
     * {
@@ -35,14 +37,15 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 100px;
+      scroll-padding-top: 110px;
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
       background: var(--creme);
       color: var(--texto);
-      line-height: 1.7;
+      line-height: 1.65;
+      overflow-x: hidden;
     }
 
     body.menu-aberto {
@@ -53,24 +56,35 @@
       text-decoration: none;
     }
 
-    /* CABEÇALHO */
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    /* =========================
+       NAVEGAÇÃO
+    ========================== */
 
     nav {
       width: 100%;
       min-height: 92px;
-      background: rgba(255,255,255,.98);
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       padding: 12px 5%;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 25px;
-
       position: sticky;
       top: 0;
       z-index: 1000;
-
-      box-shadow: 0 2px 18px rgba(0,0,0,.05);
+      box-shadow: 0 2px 18px rgba(0,0,0,.045);
+      border-bottom: 1px solid rgba(7,95,89,.04);
     }
 
     .marca {
@@ -99,12 +113,29 @@
       color: var(--texto);
       font-size: 13px;
       white-space: nowrap;
-      transition: .2s;
+      position: relative;
+      transition: color .25s ease;
+    }
+
+    .menu a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -7px;
+      width: 0;
+      height: 2px;
+      background: var(--turquesa);
+      transition: width .25s ease;
     }
 
     .menu a:hover,
     .menu a.ativo {
-      color: var(--turquesa);
+      color: var(--verde);
+    }
+
+    .menu a:hover::after,
+    .menu a.ativo::after {
+      width: 100%;
     }
 
     .acoes-nav {
@@ -114,33 +145,39 @@
       flex-shrink: 0;
     }
 
-    /* BOTÕES */
-
     .btn {
-      display: inline-block;
-      padding: 14px 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 50px;
+      padding: 14px 25px;
       border-radius: 30px;
       background: var(--verde-escuro);
       color: white;
       font-weight: 700;
-      transition: .25s;
-      border: 0;
-      cursor: pointer;
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       background: var(--verde);
+      box-shadow: 0 14px 32px rgba(7,95,89,.20);
     }
 
     .btn-claro {
-      background: transparent;
-      border: 1px solid var(--verde-escuro);
+      background: white;
       color: var(--verde-escuro);
-      margin-left: 8px;
+      border: 1px solid rgba(7,95,89,.12);
     }
 
-    /* MENU MOBILE */
+    .btn-claro:hover {
+      background: var(--menta);
+      color: var(--verde-escuro);
+    }
 
     .menu-toggle {
       display: none;
@@ -157,479 +194,1195 @@
     }
 
     .menu-toggle span {
-      display: block;
       width: 20px;
       height: 2px;
       background: var(--verde-escuro);
-      transition: .25s;
     }
 
     .menu-mobile {
       display: none;
     }
 
-    /* HERO */
+    /* =========================
+       HERO
+    ========================== */
 
     .hero {
-      min-height: 650px;
-
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-
+      min-height: calc(100vh - 92px);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 75px 7% 90px;
       background:
+        radial-gradient(
+          circle at 80% 25%,
+          rgba(66,188,168,.20),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 10% 85%,
+          rgba(199,155,75,.10),
+          transparent 28%
+        ),
         linear-gradient(
-          90deg,
-          rgba(250,248,243,1) 0%,
-          rgba(250,248,243,.98) 48%,
-          rgba(234,245,241,.75) 100%
+          135deg,
+          #ffffff 0%,
+          #faf8f3 52%,
+          #eaf5f1 100%
         );
     }
 
-    .hero-texto {
-      padding: 95px 8%;
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border: 1px solid rgba(7,95,89,.08);
+      border-radius: 50%;
+      right: -180px;
+      top: -210px;
+      animation: respirar 7s ease-in-out infinite;
+    }
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      border: 1px solid rgba(199,155,75,.13);
+      border-radius: 50%;
+      left: -150px;
+      bottom: -160px;
+      animation: respirar 8s ease-in-out infinite reverse;
+    }
+
+    .hero-grid {
+      width: 100%;
+      max-width: 1450px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 75px;
+      position: relative;
+      z-index: 2;
     }
 
     .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       color: var(--dourado);
       text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 12px;
-      font-weight: bold;
-      margin-bottom: 18px;
+      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 22px;
+    }
+
+    .tag::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--dourado);
     }
 
     .hero h1 {
       font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(52px, 6.5vw, 88px);
+      line-height: .98;
       font-weight: 400;
-      font-size: clamp(45px, 6vw, 76px);
-      line-height: 1.05;
-      margin-bottom: 25px;
+      max-width: 850px;
+      letter-spacing: -2px;
     }
 
     .hero h1 span {
+      display: block;
       color: var(--turquesa);
+      font-style: italic;
     }
 
-    .hero p {
-      max-width: 660px;
-      font-size: 19px;
+    .hero-texto {
+      max-width: 700px;
       color: var(--cinza);
-      margin-bottom: 34px;
+      font-size: 18px;
+      margin-top: 28px;
     }
 
-    .hero-botoes {
+    .hero-acoes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .hero-nota {
+      margin-top: 28px;
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
+      gap: 12px;
+      color: var(--cinza);
+      font-size: 13px;
     }
 
-    .hero-visual {
-      min-height: 650px;
+    .hero-nota-ponto {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--turquesa);
+      box-shadow: 0 0 0 6px rgba(66,188,168,.12);
+    }
 
+    /* VISUAL ABSTRATO DO HERO */
+
+    .hero-visual {
+      position: relative;
+      min-height: 570px;
       display: flex;
       align-items: center;
       justify-content: center;
+    }
 
-      padding: 60px;
+    .orbita-grande {
+      width: 450px;
+      height: 450px;
+      border-radius: 50%;
+      border: 1px solid rgba(7,95,89,.14);
+      position: absolute;
+      animation: girar 30s linear infinite;
+    }
 
+    .orbita-grande::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--dourado);
+      position: absolute;
+      top: 45px;
+      right: 75px;
+      box-shadow: 0 0 0 10px rgba(199,155,75,.10);
+    }
+
+    .orbita-media {
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      border: 1px dashed rgba(66,188,168,.30);
+      position: absolute;
+      animation: girarReverso 24s linear infinite;
+    }
+
+    .nucleo {
+      width: 235px;
+      height: 235px;
+      border-radius: 50%;
       background:
         radial-gradient(
-          circle at 50% 45%,
-          #ffffff 0%,
-          #eaf5f1 42%,
-          #d9ece6 100%
+          circle at 35% 30%,
+          #ffffff,
+          #eaf5f1 55%,
+          #d5eee8
         );
-    }
-
-    .hero-card {
-      background: rgba(255,255,255,.88);
-      padding: 50px;
-      border-radius: 35px;
-      max-width: 480px;
-
       box-shadow:
-        0 30px 70px rgba(7,95,89,.12);
-    }
-
-    .hero-card h2 {
-      font-family: Georgia, serif;
-      font-size: 36px;
-      font-weight: 400;
-      line-height: 1.25;
-      margin-bottom: 18px;
-    }
-
-    .hero-card p {
-      font-size: 17px;
-      margin: 0;
-    }
-
-    /* DIFERENCIAIS */
-
-    .diferenciais {
-      background: white;
-      padding: 28px 6%;
-
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 10px;
-
+        0 30px 80px rgba(7,95,89,.16),
+        inset 0 0 0 1px rgba(255,255,255,.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
+      position: relative;
+      z-index: 3;
+      animation: flutuar 5s ease-in-out infinite;
     }
 
-    .diferencial {
-      padding: 22px 15px;
-      border-right: 1px solid #e2e8e5;
-      font-size: 15px;
+    .nucleo::before,
+    .nucleo::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(66,188,168,.20);
     }
 
-    .diferencial:last-child {
-      border-right: 0;
+    .nucleo::before {
+      width: 195px;
+      height: 195px;
     }
 
-    .icone {
-      font-size: 28px;
-      margin-bottom: 8px;
+    .nucleo::after {
+      width: 150px;
+      height: 150px;
     }
 
-    /* SEÇÕES */
-
-    section {
-      padding: 90px 7%;
+    .nucleo-conteudo {
+      position: relative;
+      z-index: 2;
     }
 
-    .subtitulo {
-      color: var(--dourado);
-      letter-spacing: 4px;
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: bold;
-      margin-bottom: 12px;
+    .nucleo-simbolo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 48px;
+      color: var(--verde-escuro);
+      line-height: 1;
     }
 
-    .titulo {
-      font-family: Georgia, serif;
-      font-size: clamp(34px, 4vw, 52px);
-      font-weight: 400;
-      line-height: 1.15;
-      margin-bottom: 25px;
+    .nucleo-texto {
+      margin-top: 10px;
+      color: var(--verde);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
-    .descricao {
-      max-width: 850px;
+    .selo {
+      position: absolute;
+      z-index: 5;
+      background: rgba(255,255,255,.94);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(7,95,89,.08);
+      box-shadow: 0 18px 45px rgba(7,95,89,.12);
+      border-radius: 18px;
+      padding: 15px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--verde-escuro);
+      animation: flutuar 5s ease-in-out infinite;
+    }
+
+    .selo small {
+      display: block;
       color: var(--cinza);
-      font-size: 18px;
+      font-size: 10px;
+      font-weight: 400;
+      margin-top: 2px;
     }
 
-    /* SOBRE */
+    .selo-1 {
+      top: 85px;
+      left: 0;
+      animation-delay: -.8s;
+    }
 
-    .sobre {
-      background: var(--verde-escuro);
-      color: white;
+    .selo-2 {
+      top: 130px;
+      right: -5px;
+      animation-delay: -2s;
+    }
 
+    .selo-3 {
+      bottom: 105px;
+      left: 10px;
+      animation-delay: -3.2s;
+    }
+
+    .selo-4 {
+      bottom: 70px;
+      right: 10px;
+      animation-delay: -1.4s;
+    }
+
+    /* =========================
+       BASE DE SEÇÕES
+    ========================== */
+
+    .secao {
+      padding: 105px 7%;
+    }
+
+    .secao-branca {
+      background: white;
+    }
+
+    .secao-menta {
+      background: var(--menta);
+    }
+
+    .secao-bege {
+      background: var(--bege);
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: auto;
+    }
+
+    .cabecalho-secao {
+      max-width: 850px;
+      margin-bottom: 55px;
+    }
+
+    .cabecalho-secao.central {
+      text-align: center;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .eyebrow {
+      color: var(--dourado);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .titulo-secao {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.08;
+      font-weight: 400;
+      color: var(--verde-escuro);
+      margin-bottom: 20px;
+    }
+
+    .titulo-secao span {
+      color: var(--turquesa);
+    }
+
+    .texto-secao {
+      color: var(--cinza);
+      font-size: 17px;
+      max-width: 780px;
+    }
+
+    .central .texto-secao {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* =========================
+       POSICIONAMENTO
+    ========================== */
+
+    .manifesto-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: .9fr 1.1fr;
       gap: 70px;
       align-items: center;
     }
 
-    .sobre .descricao {
-      color: rgba(255,255,255,.84);
+    .manifesto-frase {
+      position: relative;
+      background: var(--verde-escuro);
+      color: white;
+      border-radius: 34px;
+      padding: 55px 48px;
+      overflow: hidden;
+      min-height: 410px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: var(--sombra);
     }
 
-    .sobre-box {
-      background: rgba(255,255,255,.08);
-      padding: 45px;
-      border-radius: 30px;
-      border: 1px solid rgba(255,255,255,.15);
+    .manifesto-frase::after {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.13);
+      right: -90px;
+      bottom: -100px;
     }
 
-    .sobre-box blockquote {
-      font-family: Georgia, serif;
-      font-style: italic;
-      font-size: 31px;
-      line-height: 1.35;
+    .manifesto-frase .aspas {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--turquesa);
+      font-size: 76px;
+      line-height: .7;
+      margin-bottom: 25px;
     }
 
-    .sobre-box p {
-      margin-top: 20px;
-      color: #d9c18d;
+    .manifesto-frase h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.08;
+      position: relative;
+      z-index: 2;
     }
 
-    /* ESPECIALIDADES */
+    .manifesto-frase p {
+      margin-top: 25px;
+      color: rgba(255,255,255,.72);
+      position: relative;
+      z-index: 2;
+    }
 
-    .servicos {
+    .pilares {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .pilar {
       background: white;
+      border: 1px solid #eceeea;
+      border-radius: 24px;
+      padding: 30px;
+      min-height: 190px;
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
     }
 
-    .grid {
+    .pilar:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--sombra);
+      border-color: rgba(66,188,168,.35);
+    }
+
+    .pilar-numero {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--dourado);
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .pilar h3 {
+      color: var(--verde-escuro);
+      font-size: 19px;
+      margin-bottom: 9px;
+    }
+
+    .pilar p {
+      color: var(--cinza);
+      font-size: 14px;
+    }
+
+    /* =========================
+       ESPECIALIDADES
+    ========================== */
+
+    .cards {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-      margin-top: 45px;
+      gap: 20px;
     }
 
     .card {
-      padding: 30px 24px;
-      background: var(--creme);
-      border-radius: 20px;
-      min-height: 245px;
-      transition: .25s;
-      border: 1px solid #eeeae1;
+      position: relative;
+      background: white;
+      border: 1px solid #eceeea;
+      border-radius: 26px;
+      padding: 32px 28px;
+      min-height: 250px;
+      overflow: hidden;
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease,
+        border-color .3s ease;
+    }
 
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+    .card::after {
+      content: "";
+      position: absolute;
+      width: 95px;
+      height: 95px;
+      border-radius: 50%;
+      background: rgba(66,188,168,.08);
+      right: -35px;
+      bottom: -35px;
+      transition: transform .35s ease;
     }
 
     .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 15px 35px rgba(0,0,0,.08);
+      transform: translateY(-8px);
+      box-shadow: var(--sombra);
+      border-color: rgba(66,188,168,.28);
+    }
+
+    .card:hover::after {
+      transform: scale(1.4);
+    }
+
+    .card-indice {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--menta);
+      color: var(--verde);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
     }
 
     .card h3 {
       color: var(--verde-escuro);
-      margin: 15px 0 10px;
       font-size: 19px;
+      margin-bottom: 11px;
+      position: relative;
+      z-index: 2;
     }
 
     .card p {
-      font-size: 15px;
       color: var(--cinza);
-      flex-grow: 1;
+      font-size: 14px;
+      position: relative;
+      z-index: 2;
     }
 
-    .link-card {
-      display: inline-block;
-      margin-top: 18px;
+    .mais {
+      margin-top: 36px;
+    }
+
+    .link-seta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--verde-escuro);
+      font-weight: 700;
+      transition: gap .25s ease;
+    }
+
+    .link-seta:hover {
+      gap: 15px;
       color: var(--verde);
-      font-weight: bold;
+    }
+
+    /* =========================
+       AVALIAÇÕES
+    ========================== */
+
+    .avaliacao-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .avaliacao-principal {
+      grid-row: span 2;
+      min-height: 480px;
+      background:
+        linear-gradient(
+          145deg,
+          var(--verde-escuro),
+          #08756c
+        );
+      color: white;
+      border-radius: 32px;
+      padding: 48px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      box-shadow: var(--sombra);
+    }
+
+    .avaliacao-principal::before {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.13);
+      top: -90px;
+      right: -70px;
+    }
+
+    .avaliacao-principal::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.10);
+      top: -20px;
+      right: 20px;
+    }
+
+    .avaliacao-principal h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 38px;
+      font-weight: 400;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .avaliacao-principal p {
+      color: rgba(255,255,255,.78);
+      position: relative;
+      z-index: 2;
+    }
+
+    .avaliacao-mini {
+      background: white;
+      border-radius: 28px;
+      padding: 35px;
+      border: 1px solid #eceeea;
+      transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .avaliacao-mini:hover {
+      transform: translateX(6px);
+      box-shadow: var(--sombra);
+    }
+
+    .avaliacao-mini h3 {
+      color: var(--verde-escuro);
+      font-size: 21px;
+      margin-bottom: 10px;
+    }
+
+    .avaliacao-mini p {
+      color: var(--cinza);
       font-size: 14px;
     }
 
-    .link-card:hover {
-      color: var(--turquesa);
-    }
-
-    .ver-todas {
-      margin-top: 35px;
-    }
-
-    /* AVALIAÇÕES */
-
-    .avaliacoes {
-      background: var(--menta);
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .avaliacao-box {
-      background: white;
-      border-radius: 30px;
-      padding: 40px;
-
-      box-shadow:
-        0 20px 50px rgba(7,95,89,.08);
-    }
-
-    .avaliacao-item {
-      padding: 15px 0;
-      border-bottom: 1px solid #e7eeeb;
-      color: var(--verde-escuro);
-      font-weight: 600;
-    }
-
-    .avaliacao-item:last-child {
-      border-bottom: 0;
-    }
-
-    /* JORNADA */
+    /* =========================
+       JORNADA
+    ========================== */
 
     .jornada {
-      background: var(--bege);
-    }
-
-    .etapas {
+      position: relative;
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 12px;
-      margin-top: 45px;
+      gap: 10px;
+      margin-top: 70px;
     }
 
-    .etapa {
-      background: rgba(255,255,255,.68);
-      padding: 25px 15px;
-      border-radius: 20px;
+    .jornada::before {
+      content: "";
+      position: absolute;
+      top: 30px;
+      left: 7%;
+      right: 7%;
+      height: 1px;
+      background: rgba(7,95,89,.18);
+    }
+
+    .passo {
+      position: relative;
+      z-index: 2;
       text-align: center;
     }
 
-    .numero {
-      width: 38px;
-      height: 38px;
-      background: var(--dourado);
-      color: white;
-
+    .passo-numero {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: white;
+      border: 1px solid rgba(7,95,89,.14);
+      color: var(--verde-escuro);
       display: flex;
       align-items: center;
       justify-content: center;
-
-      border-radius: 50%;
-      margin: 0 auto 15px;
-      font-weight: bold;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 17px;
+      box-shadow: 0 8px 25px rgba(7,95,89,.08);
+      transition:
+        transform .3s ease,
+        background .3s ease,
+        color .3s ease;
     }
 
-    .etapa h3 {
-      margin-bottom: 8px;
+    .passo:hover .passo-numero {
+      transform: scale(1.12);
+      background: var(--verde-escuro);
+      color: white;
+    }
+
+    .passo h3 {
       color: var(--verde-escuro);
+      font-size: 15px;
     }
 
-    .etapa p {
-      font-size: 14px;
+    /* =========================
+       FAMÍLIA ESCOLA CLÍNICA
+    ========================== */
+
+    .integracao-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .integracao-visual {
+      min-height: 500px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circulo-centro {
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: var(--verde-escuro);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 25px;
+      position: relative;
+      z-index: 4;
+      box-shadow: 0 25px 60px rgba(7,95,89,.20);
+    }
+
+    .circulo-orbita {
+      position: absolute;
+      width: 410px;
+      height: 410px;
+      border: 1px solid rgba(7,95,89,.14);
+      border-radius: 50%;
+      animation: girar 35s linear infinite;
+    }
+
+    .contexto {
+      position: absolute;
+      background: white;
+      padding: 16px 22px;
+      border-radius: 18px;
+      box-shadow: var(--sombra);
+      color: var(--verde-escuro);
+      font-weight: 700;
+      z-index: 5;
+      min-width: 125px;
+      text-align: center;
+    }
+
+    .contexto.familia {
+      top: 45px;
+      left: 30px;
+    }
+
+    .contexto.escola {
+      top: 95px;
+      right: 0;
+    }
+
+    .contexto.clinica {
+      bottom: 50px;
+      left: 90px;
+    }
+
+    .lista-integracao {
+      margin-top: 30px;
+      display: grid;
+      gap: 13px;
+    }
+
+    .item-integracao {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
       color: var(--cinza);
     }
 
-    /* INTEGRAÇÃO */
-
-    .integracao {
-      background: var(--verde-escuro);
-      color: white;
-      text-align: center;
-    }
-
-    .integracao .descricao {
-      color: rgba(255,255,255,.82);
-      margin: 0 auto;
-    }
-
-    .integracao-itens {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 35px;
-    }
-
-    .integracao-itens span {
-      background: rgba(255,255,255,.1);
-      border: 1px solid rgba(255,255,255,.14);
-      padding: 12px 18px;
-      border-radius: 30px;
-    }
-
-    .integracao .btn {
-      margin-top: 35px;
-      background: white;
-      color: var(--verde-escuro);
-    }
-
-    .integracao .btn:hover {
+    .check {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
       background: var(--menta);
+      color: var(--verde);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
     }
 
-    /* TECNOLOGIA */
+    /* =========================
+       TECNOLOGIA
+    ========================== */
 
     .tecnologia {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-      background: white;
+      background:
+        radial-gradient(
+          circle at 85% 15%,
+          rgba(66,188,168,.15),
+          transparent 30%
+        ),
+        var(--verde-escuro);
+      color: white;
+      overflow: hidden;
+      position: relative;
     }
 
-    .tecnologia-botoes {
+    .tecnologia .eyebrow {
+      color: #e0bf7a;
+    }
+
+    .tecnologia .titulo-secao {
+      color: white;
+    }
+
+    .tecnologia .texto-secao {
+      color: rgba(255,255,255,.72);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 50px;
+    }
+
+    .tech-card {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 25px;
+      padding: 30px;
+      min-height: 230px;
+      backdrop-filter: blur(10px);
+      transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease;
+    }
+
+    .tech-card:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,.11);
+      border-color: rgba(66,188,168,.50);
+    }
+
+    .tech-card span {
+      display: block;
+      color: var(--turquesa);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .tech-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .tech-card p {
+      color: rgba(255,255,255,.68);
+      font-size: 14px;
+    }
+
+    .tech-link {
+      margin-top: 38px;
+    }
+
+    .tech-link .link-seta {
+      color: white;
+    }
+
+    /* =========================
+       APLICATIVO
+    ========================== */
+
+    .app-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 75px;
+      align-items: center;
+    }
+
+    .telefone-area {
+      min-height: 570px;
+      position: relative;
       display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .tecnologia-botoes .btn-claro {
-      margin: 0;
-    }
-
-    .app-box {
-      background: var(--menta);
-      border-radius: 35px;
-      padding: 55px;
-      text-align: center;
-    }
-
-    .app-box .phone {
-      font-size: 80px;
-      margin-bottom: 15px;
-    }
-
-    .app-box h2 {
-      margin-bottom: 10px;
-      color: var(--verde-escuro);
-    }
-
-    /* FORMAÇÃO */
-
-    .formacao {
-      background: var(--creme);
-
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
       align-items: center;
+      justify-content: center;
     }
+
+    .telefone-area::before {
+      content: "";
+      width: 430px;
+      height: 430px;
+      position: absolute;
+      border-radius: 50%;
+      background: var(--menta);
+    }
+
+    .telefone {
+      width: 260px;
+      height: 520px;
+      border: 8px solid #173b3a;
+      background: white;
+      border-radius: 40px;
+      position: relative;
+      z-index: 3;
+      box-shadow: 0 35px 80px rgba(7,95,89,.20);
+      padding: 34px 18px 20px;
+      animation: flutuar 5s ease-in-out infinite;
+    }
+
+    .telefone::before {
+      content: "";
+      width: 85px;
+      height: 20px;
+      border-radius: 20px;
+      background: #173b3a;
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .app-topo {
+      color: var(--verde-escuro);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .app-boas-vindas {
+      background: var(--menta);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 13px;
+    }
+
+    .app-boas-vindas strong {
+      display: block;
+      color: var(--verde-escuro);
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .app-boas-vindas small {
+      color: var(--cinza);
+      font-size: 10px;
+    }
+
+    .app-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 12px 5px;
+      border-bottom: 1px solid #edf0ee;
+      color: var(--texto);
+      font-size: 11px;
+    }
+
+    .app-icone {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--menta);
+      color: var(--verde);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    .app-selo {
+      position: absolute;
+      z-index: 5;
+      background: white;
+      box-shadow: var(--sombra);
+      border-radius: 18px;
+      padding: 15px 18px;
+      color: var(--verde-escuro);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .app-selo.a {
+      top: 90px;
+      left: 0;
+    }
+
+    .app-selo.b {
+      top: 200px;
+      right: 0;
+    }
+
+    .app-selo.c {
+      bottom: 100px;
+      left: 15px;
+    }
+
+    .app-recursos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .app-recurso {
+      background: white;
+      border: 1px solid #eceeea;
+      border-radius: 17px;
+      padding: 16px;
+      color: var(--verde-escuro);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    /* =========================
+       FORMAÇÃO
+    ========================== */
 
     .formacao-box {
-      background: white;
-      padding: 42px;
-      border-radius: 30px;
-      border: 1px solid #ece8df;
-    }
-
-    .formacao-item {
-      padding: 14px 0;
-      border-bottom: 1px solid #ece8df;
-      color: var(--verde-escuro);
-      font-weight: 600;
-    }
-
-    .formacao-item:last-child {
-      border-bottom: 0;
-    }
-
-    /* CTA */
-
-    .cta {
-      text-align: center;
-
       background:
         linear-gradient(
           135deg,
-          var(--creme),
-          var(--menta)
+          #f2eadc,
+          #faf8f3
         );
+      border-radius: 38px;
+      padding: 65px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 70px;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
     }
 
-    .cta .descricao {
-      margin: 0 auto 30px;
+    .formacao-box::after {
+      content: "";
+      position: absolute;
+      width: 330px;
+      height: 330px;
+      border-radius: 50%;
+      border: 1px solid rgba(199,155,75,.20);
+      right: -100px;
+      top: -150px;
     }
 
-    /* FOOTER */
+    .formacao-opcoes {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .formacao-item {
+      background: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.9);
+      padding: 24px;
+      border-radius: 20px;
+      color: var(--verde-escuro);
+      font-weight: 700;
+      transition: transform .25s ease;
+    }
+
+    .formacao-item:hover {
+      transform: translateY(-5px);
+    }
+
+    /* =========================
+       CTA FINAL
+    ========================== */
+
+    .cta {
+      padding: 110px 7%;
+      background: white;
+    }
+
+    .cta-box {
+      max-width: 1400px;
+      margin: auto;
+      border-radius: 40px;
+      padding: 80px 7%;
+      text-align: center;
+      color: white;
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(66,188,168,.25),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          #075f59,
+          #064a46
+        );
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--sombra-forte);
+    }
+
+    .cta-box::before,
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,.10);
+    }
+
+    .cta-box::before {
+      width: 360px;
+      height: 360px;
+      top: -180px;
+      right: -90px;
+    }
+
+    .cta-box::after {
+      width: 240px;
+      height: 240px;
+      bottom: -130px;
+      left: -60px;
+    }
+
+    .cta-box h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(40px, 5vw, 62px);
+      line-height: 1.08;
+      font-weight: 400;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-box p {
+      color: rgba(255,255,255,.74);
+      max-width: 720px;
+      margin: 22px auto 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-box .btn {
+      background: white;
+      color: var(--verde-escuro);
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-box .btn:hover {
+      background: var(--menta);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
 
     footer {
       background: #073f3c;
       color: white;
-      padding: 55px 7% 30px;
+      padding: 60px 7% 30px;
     }
 
     .footer-grid {
+      max-width: 1400px;
+      margin: auto;
       display: grid;
       grid-template-columns: 1.7fr 1fr 1fr 1fr;
       gap: 45px;
-      margin-bottom: 40px;
+      margin-bottom: 42px;
     }
 
     footer h3 {
@@ -639,10 +1392,12 @@
 
     footer p {
       margin-bottom: 8px;
+      color: rgba(255,255,255,.72);
     }
 
     footer a {
       color: rgba(255,255,255,.82);
+      transition: color .2s ease;
     }
 
     footer a:hover {
@@ -650,42 +1405,118 @@
     }
 
     .copyright {
+      max-width: 1400px;
+      margin: auto;
       border-top: 1px solid rgba(255,255,255,.15);
       padding-top: 25px;
       text-align: center;
-      color: rgba(255,255,255,.6);
+      color: rgba(255,255,255,.55);
       font-size: 13px;
     }
 
-    /* WHATSAPP */
+    /* =========================
+       WHATSAPP
+    ========================== */
 
     .whatsapp {
       position: fixed;
       right: 22px;
       bottom: 22px;
       z-index: 2000;
-
       background: #25d366;
       color: white;
-
       padding: 15px 20px;
       border-radius: 50px;
       font-weight: bold;
-
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.2);
-
-      transition: .2s;
+      box-shadow: 0 10px 30px rgba(0,0,0,.20);
+      transition:
+        transform .25s ease,
+        box-shadow .25s ease;
     }
 
     .whatsapp:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 35px rgba(0,0,0,.24);
     }
 
-    /* RESPONSIVO */
+    /* =========================
+       REVEAL
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition:
+        opacity .75s ease,
+        transform .75s ease;
+    }
+
+    .reveal.visivel {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: .08s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: .16s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: .24s;
+    }
+
+    /* =========================
+       ANIMAÇÕES
+    ========================== */
+
+    @keyframes flutuar {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes girar {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes girarReverso {
+      from {
+        transform: rotate(360deg);
+      }
+
+      to {
+        transform: rotate(0deg);
+      }
+    }
+
+    @keyframes respirar {
+      0%, 100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* =========================
+       RESPONSIVO
+    ========================== */
 
     @media (max-width: 1250px) {
-
       .menu {
         gap: 10px;
       }
@@ -694,14 +1525,16 @@
         font-size: 12px;
       }
 
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 1100px) {
-
-      nav {
-        padding: 10px 5%;
-      }
-
       .menu {
         display: none;
       }
@@ -797,44 +1630,173 @@
       }
 
       .hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-visual {
         min-height: auto;
       }
 
-      .diferenciais {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .diferencial {
-        border-right: 0;
-      }
-
-      .sobre,
-      .avaliacoes,
-      .tecnologia,
-      .formacao {
+      .hero-grid,
+      .manifesto-grid,
+      .integracao-grid,
+      .app-grid,
+      .formacao-box {
         grid-template-columns: 1fr;
       }
 
-      .grid {
-        grid-template-columns: repeat(2, 1fr);
+      .hero-grid {
+        gap: 40px;
       }
 
-      .etapas {
-        grid-template-columns: repeat(2, 1fr);
+      .hero-visual {
+        min-height: 500px;
+      }
+
+      .manifesto-grid,
+      .integracao-grid,
+      .app-grid {
+        gap: 45px;
+      }
+
+      .formacao-box {
+        gap: 35px;
+      }
+
+      .jornada {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px 12px;
+      }
+
+      .jornada::before {
+        display: none;
       }
 
       .footer-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+    }
 
+    @media (max-width: 760px) {
+      .secao {
+        padding: 75px 6%;
+      }
+
+      .hero {
+        padding: 60px 6% 70px;
+      }
+
+      .hero h1 {
+        font-size: 50px;
+        letter-spacing: -1px;
+      }
+
+      .hero-texto {
+        font-size: 16px;
+      }
+
+      .hero-visual {
+        min-height: 430px;
+      }
+
+      .orbita-grande {
+        width: 350px;
+        height: 350px;
+      }
+
+      .orbita-media {
+        width: 270px;
+        height: 270px;
+      }
+
+      .nucleo {
+        width: 190px;
+        height: 190px;
+      }
+
+      .nucleo::before {
+        width: 160px;
+        height: 160px;
+      }
+
+      .nucleo::after {
+        width: 125px;
+        height: 125px;
+      }
+
+      .selo {
+        padding: 12px 14px;
+        font-size: 11px;
+      }
+
+      .selo-1 {
+        top: 50px;
+        left: 0;
+      }
+
+      .selo-2 {
+        top: 100px;
+        right: 0;
+      }
+
+      .selo-3 {
+        bottom: 80px;
+        left: 0;
+      }
+
+      .selo-4 {
+        bottom: 40px;
+        right: 0;
+      }
+
+      .cards,
+      .tech-grid,
+      .avaliacao-grid,
+      .app-recursos,
+      .formacao-opcoes {
+        grid-template-columns: 1fr;
+      }
+
+      .avaliacao-principal {
+        grid-row: auto;
+        min-height: 400px;
+      }
+
+      .jornada {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .integracao-visual {
+        min-height: 430px;
+      }
+
+      .circulo-orbita {
+        width: 340px;
+        height: 340px;
+      }
+
+      .circulo-centro {
+        width: 165px;
+        height: 165px;
+        font-size: 22px;
+      }
+
+      .telefone-area {
+        min-height: 550px;
+      }
+
+      .formacao-box {
+        padding: 42px 28px;
+        border-radius: 28px;
+      }
+
+      .cta {
+        padding: 75px 5%;
+      }
+
+      .cta-box {
+        padding: 60px 8%;
+        border-radius: 30px;
+      }
     }
 
     @media (max-width: 600px) {
-
       nav {
         min-height: 76px;
         padding: 10px 4%;
@@ -845,49 +1807,142 @@
         max-width: 200px;
       }
 
-      .hero-texto {
-        padding: 65px 6%;
-      }
-
       .hero h1 {
-        font-size: 43px;
+        font-size: 44px;
       }
 
-      .hero p {
-        font-size: 17px;
+      .hero-acoes {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-acoes .btn {
+        width: 100%;
       }
 
       .hero-visual {
-        padding: 35px 6%;
+        min-height: 390px;
       }
 
-      .hero-card {
-        padding: 32px 25px;
+      .orbita-grande {
+        width: 310px;
+        height: 310px;
       }
 
-      .hero-card h2 {
-        font-size: 30px;
+      .orbita-media {
+        width: 235px;
+        height: 235px;
       }
 
-      section {
-        padding: 65px 6%;
+      .nucleo {
+        width: 170px;
+        height: 170px;
       }
 
-      .grid,
-      .etapas,
-      .diferenciais,
-      .footer-grid {
+      .nucleo::before,
+      .nucleo::after {
+        display: none;
+      }
+
+      .nucleo-simbolo {
+        font-size: 38px;
+      }
+
+      .selo small {
+        display: none;
+      }
+
+      .selo-1 {
+        top: 35px;
+      }
+
+      .selo-2 {
+        top: 90px;
+      }
+
+      .selo-3 {
+        bottom: 70px;
+      }
+
+      .selo-4 {
+        bottom: 25px;
+      }
+
+      .manifesto-frase {
+        padding: 42px 28px;
+        min-height: 360px;
+      }
+
+      .pilares {
         grid-template-columns: 1fr;
       }
 
-      .btn-claro {
-        display: block;
-        margin: 12px 0 0;
-        width: max-content;
+      .titulo-secao {
+        font-size: 39px;
       }
 
-      .tecnologia-botoes .btn-claro {
-        margin: 0;
+      .avaliacao-principal {
+        padding: 35px 27px;
+      }
+
+      .avaliacao-principal h3 {
+        font-size: 31px;
+      }
+
+      .integracao-visual {
+        min-height: 390px;
+      }
+
+      .circulo-orbita {
+        width: 300px;
+        height: 300px;
+      }
+
+      .contexto {
+        padding: 12px 15px;
+        font-size: 12px;
+        min-width: 100px;
+      }
+
+      .contexto.familia {
+        top: 35px;
+        left: 0;
+      }
+
+      .contexto.escola {
+        top: 85px;
+        right: 0;
+      }
+
+      .contexto.clinica {
+        bottom: 35px;
+        left: 55px;
+      }
+
+      .telefone-area::before {
+        width: 330px;
+        height: 330px;
+      }
+
+      .app-selo {
+        padding: 11px 13px;
+        font-size: 11px;
+      }
+
+      .app-selo.a {
+        left: -5px;
+      }
+
+      .app-selo.b {
+        right: -5px;
+      }
+
+      .app-selo.c {
+        left: 0;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
       }
 
       .whatsapp {
@@ -896,16 +1951,58 @@
         padding: 13px 17px;
         font-size: 14px;
       }
-
     }
 
+    @media (max-width: 390px) {
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .hero-visual {
+        transform: scale(.92);
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+
+      .jornada {
+        grid-template-columns: 1fr;
+      }
+
+      .passo {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        text-align: left;
+      }
+
+      .passo-numero {
+        margin: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
   </style>
 </head>
 
-
 <body>
-
-<!-- CABEÇALHO -->
 
 <nav>
 
@@ -921,9 +2018,7 @@
     >
   </a>
 
-
   <div class="menu">
-
     <a href="index.html" class="ativo">Início</a>
     <a href="o-espaco.html">O Espaço</a>
     <a href="especialidades.html">Especialidades</a>
@@ -933,9 +2028,7 @@
     <a href="formacao-consultoria.html">Formação</a>
     <a href="aplicativo.html">Aplicativo</a>
     <a href="contato.html">Contato</a>
-
   </div>
-
 
   <div class="acoes-nav">
 
@@ -951,6 +2044,7 @@
     <button
       class="menu-toggle"
       id="abrirMenu"
+      type="button"
       aria-label="Abrir menu"
       aria-expanded="false"
       aria-controls="menuMobile"
@@ -964,13 +2058,7 @@
 
 </nav>
 
-
-<!-- MENU MOBILE -->
-
-<div
-  class="overlay"
-  id="overlay"
-></div>
+<div class="overlay" id="overlay"></div>
 
 <div
   class="menu-mobile"
@@ -988,6 +2076,7 @@
     <button
       class="fechar-menu"
       id="fecharMenu"
+      type="button"
       aria-label="Fechar menu"
     >
       ×
@@ -995,53 +2084,19 @@
 
   </div>
 
-
   <div class="menu-mobile-links">
-
     <a href="index.html">Início</a>
-
-    <a href="o-espaco.html">
-      O Espaço
-    </a>
-
-    <a href="especialidades.html">
-      Especialidades
-    </a>
-
-    <a href="avaliacoes.html">
-      Avaliações
-    </a>
-
-    <a href="tecnologia.html">
-      Neurodesenvolvimento e Tecnologia
-    </a>
-
-    <a href="familia-escola.html">
-      Família e Escola
-    </a>
-
-    <a href="formacao-consultoria.html">
-      Formação e Consultoria
-    </a>
-
-    <a href="aplicativo.html">
-      Aplicativo
-    </a>
-
-    <a href="contato.html">
-      Contato
-    </a>
-
-    <a href="privacidade.html">
-      Política de Privacidade
-    </a>
-
-    <a href="termos.html">
-      Termos de Uso
-    </a>
-
+    <a href="o-espaco.html">O Espaço</a>
+    <a href="especialidades.html">Especialidades</a>
+    <a href="avaliacoes.html">Avaliações</a>
+    <a href="tecnologia.html">Neurodesenvolvimento e Tecnologia</a>
+    <a href="familia-escola.html">Família e Escola</a>
+    <a href="formacao-consultoria.html">Formação e Consultoria</a>
+    <a href="aplicativo.html">Aplicativo</a>
+    <a href="contato.html">Contato</a>
+    <a href="privacidade.html">Política de Privacidade</a>
+    <a href="termos.html">Termos de Uso</a>
   </div>
-
 
   <a
     class="btn-mobile"
@@ -1054,749 +2109,865 @@
 
 </div>
 
-
 <main>
 
-<!-- HERO -->
+  <!-- HERO -->
 
-<section
-  class="hero"
-  id="inicio"
->
+  <section class="hero">
 
-  <div class="hero-texto">
+    <div class="hero-grid">
 
-    <div class="tag">
-      Desenvolvimento com sentido
-    </div>
+      <div class="hero-conteudo">
 
-    <h1>
-      Cada criança é única.
-      <br>
+        <div class="tag">
+          Neurodesenvolvimento • Aprendizagem • Montessori
+        </div>
 
-      <span>
-        O cuidado também precisa ser.
-      </span>
-    </h1>
+        <h1>
+          Cada criança é única.
+          <span>O cuidado também precisa ser.</span>
+        </h1>
 
-    <p>
-      Neurodesenvolvimento, aprendizagem e
-      desenvolvimento integral conectando
-      ciência, educação, família e escola.
-    </p>
+        <p class="hero-texto">
+          Neurodesenvolvimento, aprendizagem e desenvolvimento
+          integral conectando ciência, educação, família e escola.
+          Um olhar individualizado para compreender necessidades,
+          potencialidades e caminhos possíveis.
+        </p>
 
+        <div class="hero-acoes">
 
-    <div class="hero-botoes">
+          <a
+            class="btn"
+            href="contato.html"
+          >
+            Quero conhecer o Espaço
+          </a>
 
-      <a
-        class="btn"
-        href="https://wa.me/5561993236099?text=Olá%2C%20gostaria%20de%20receber%20informações%20sobre%20o%20Espaço%20Montessoriano."
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Agende uma conversa
-      </a>
+          <a
+            class="btn btn-claro"
+            href="o-espaco.html"
+          >
+            Conheça nossa abordagem
+          </a>
 
-      <a
-        class="btn btn-claro"
-        href="o-espaco.html"
-      >
-        Conheça o Espaço
-      </a>
+        </div>
 
-    </div>
+        <div class="hero-nota">
+          <span class="hero-nota-ponto"></span>
+          Atendimento em Brasília — Distrito Federal
+        </div>
 
-  </div>
-
-
-  <div class="hero-visual">
-
-    <div class="hero-card">
-
-      <div class="tag">
-        Espaço Montessoriano
       </div>
 
+      <div class="hero-visual" aria-hidden="true">
+
+        <div class="orbita-grande"></div>
+        <div class="orbita-media"></div>
+
+        <div class="nucleo">
+          <div class="nucleo-conteudo">
+            <div class="nucleo-simbolo">∞</div>
+            <div class="nucleo-texto">
+              DESENVOLVIMENTO
+            </div>
+          </div>
+        </div>
+
+        <div class="selo selo-1">
+          Ciência
+          <small>com propósito</small>
+        </div>
+
+        <div class="selo selo-2">
+          Montessori
+          <small>autonomia e desenvolvimento</small>
+        </div>
+
+        <div class="selo selo-3">
+          Família + Escola
+          <small>contextos conectados</small>
+        </div>
+
+        <div class="selo selo-4">
+          Tecnologia
+          <small>a serviço do cuidado</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- POSICIONAMENTO -->
+
+  <section class="secao secao-branca">
+
+    <div class="container manifesto-grid">
+
+      <div class="manifesto-frase reveal">
+
+        <div class="aspas">“</div>
+
+        <h2>
+          Desenvolvimento não acontece em partes isoladas.
+        </h2>
+
+        <p>
+          Por isso, nosso olhar considera a criança,
+          seus contextos, sua aprendizagem, suas relações
+          e sua singularidade.
+        </p>
+
+      </div>
+
+      <div>
+
+        <div class="cabecalho-secao reveal">
+
+          <div class="eyebrow">
+            Nosso olhar
+          </div>
+
+          <h2 class="titulo-secao">
+            Compreender antes de
+            <span>intervir.</span>
+          </h2>
+
+          <p class="texto-secao">
+            No Espaço Montessoriano, o acompanhamento parte
+            da compreensão de cada criança ou adolescente.
+            Integramos diferentes áreas para construir
+            objetivos individualizados e estratégias
+            coerentes com suas necessidades.
+          </p>
+
+        </div>
+
+        <div class="pilares">
+
+          <article class="pilar reveal reveal-delay-1">
+            <div class="pilar-numero">01</div>
+            <h3>Olhar individualizado</h3>
+            <p>
+              O planejamento considera o perfil,
+              as necessidades e as potencialidades
+              de cada pessoa.
+            </p>
+          </article>
+
+          <article class="pilar reveal reveal-delay-2">
+            <div class="pilar-numero">02</div>
+            <h3>Interdisciplinaridade</h3>
+            <p>
+              Diferentes áreas podem dialogar para
+              ampliar a compreensão e a continuidade
+              do acompanhamento.
+            </p>
+          </article>
+
+          <article class="pilar reveal reveal-delay-1">
+            <div class="pilar-numero">03</div>
+            <h3>Princípios Montessori</h3>
+            <p>
+              Autonomia, ambiente preparado, observação
+              e respeito ao desenvolvimento fazem parte
+              da nossa identidade.
+            </p>
+          </article>
+
+          <article class="pilar reveal reveal-delay-2">
+            <div class="pilar-numero">04</div>
+            <h3>Contextos conectados</h3>
+            <p>
+              Família, escola e clínica podem construir
+              caminhos mais coerentes quando existe
+              comunicação e alinhamento.
+            </p>
+          </article>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ESPECIALIDADES -->
+
+  <section class="secao">
+
+    <div class="container">
+
+      <div class="cabecalho-secao reveal">
+
+        <div class="eyebrow">
+          Cuidado interdisciplinar
+        </div>
+
+        <h2 class="titulo-secao">
+          Diferentes especialidades.
+          <span>Um mesmo propósito.</span>
+        </h2>
+
+        <p class="texto-secao">
+          As áreas de atendimento podem atuar de forma
+          individual ou integrada, conforme as necessidades
+          identificadas em cada acompanhamento.
+        </p>
+
+      </div>
+
+      <div class="cards">
+
+        <article class="card reveal">
+          <div class="card-indice">01</div>
+          <h3>Psicopedagogia</h3>
+          <p>
+            Aprendizagem, estratégias de estudo,
+            processos acadêmicos e desenvolvimento
+            de recursos para aprender.
+          </p>
+        </article>
+
+        <article class="card reveal reveal-delay-1">
+          <div class="card-indice">02</div>
+          <h3>Fonoaudiologia</h3>
+          <p>
+            Linguagem, comunicação, fala, leitura,
+            escrita e habilidades relacionadas
+            ao desenvolvimento comunicativo.
+          </p>
+        </article>
+
+        <article class="card reveal reveal-delay-2">
+          <div class="card-indice">03</div>
+          <h3>Psicologia</h3>
+          <p>
+            Desenvolvimento emocional, comportamental
+            e relacional, considerando as necessidades
+            individuais e familiares.
+          </p>
+        </article>
+
+        <article class="card reveal reveal-delay-3">
+          <div class="card-indice">04</div>
+          <h3>Psicomotricidade</h3>
+          <p>
+            Corpo, movimento, organização motora,
+            percepção e experiências relacionadas
+            ao desenvolvimento global.
+          </p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-indice">05</div>
+          <h3>Intervenções baseadas em ABA</h3>
+          <p>
+            Estratégias individualizadas voltadas
+            a habilidades funcionais, comunicação,
+            autonomia e participação.
+          </p>
+        </article>
+
+        <article class="card reveal reveal-delay-1">
+          <div class="card-indice">06</div>
+          <h3>Acompanhamento Pedagógico</h3>
+          <p>
+            Apoio acadêmico estruturado, desenvolvimento
+            de estratégias e acompanhamento das
+            demandas escolares.
+          </p>
+        </article>
+
+        <article class="card reveal reveal-delay-2">
+          <div class="card-indice">07</div>
+          <h3>Musicoterapia</h3>
+          <p>
+            Uso terapêutico da música e de experiências
+            musicais por profissional qualificado,
+            conforme objetivos individualizados.
+          </p>
+        </article>
+
+        <article class="card reveal reveal-delay-3">
+          <div class="card-indice">08</div>
+          <h3>Nutrição</h3>
+          <p>
+            Acompanhamento nutricional considerando
+            rotina, alimentação, desenvolvimento
+            e necessidades individuais.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="mais reveal">
+        <a class="link-seta" href="especialidades.html">
+          Conheça todas as especialidades →
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- AVALIAÇÕES -->
+
+  <section class="secao secao-menta">
+
+    <div class="container">
+
+      <div class="cabecalho-secao reveal">
+
+        <div class="eyebrow">
+          Avaliação
+        </div>
+
+        <h2 class="titulo-secao">
+          Avaliar não é apenas medir.
+          <span>É compreender.</span>
+        </h2>
+
+        <p class="texto-secao">
+          A avaliação ajuda a organizar informações,
+          compreender o funcionamento individual e
+          orientar decisões de acompanhamento de forma
+          mais consistente.
+        </p>
+
+      </div>
+
+      <div class="avaliacao-grid">
+
+        <article class="avaliacao-principal reveal">
+
+          <h3>
+            Avaliação Neuropsicológica
+          </h3>
+
+          <p>
+            Investigação integrada de diferentes aspectos
+            do funcionamento cognitivo e comportamental,
+            considerando história, contexto e dados
+            obtidos ao longo do processo.
+          </p>
+
+        </article>
+
+        <article class="avaliacao-mini reveal reveal-delay-1">
+          <h3>Avaliação Psicopedagógica</h3>
+          <p>
+            Compreensão dos processos de aprendizagem,
+            desempenho acadêmico, estratégias e
+            dificuldades relacionadas ao aprender.
+          </p>
+        </article>
+
+        <article class="avaliacao-mini reveal reveal-delay-2">
+          <h3>Linguagem e Aprendizagem</h3>
+          <p>
+            Investigação de habilidades relacionadas
+            à linguagem, comunicação, leitura,
+            escrita e aprendizagem.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="mais reveal">
+        <a class="link-seta" href="avaliacoes.html">
+          Entenda como funcionam nossas avaliações →
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- JORNADA -->
+
+  <section class="secao secao-branca">
+
+    <div class="container">
+
+      <div class="cabecalho-secao central reveal">
+
+        <div class="eyebrow">
+          Jornada de acompanhamento
+        </div>
+
+        <h2 class="titulo-secao">
+          Um processo construído
+          <span>passo a passo.</span>
+        </h2>
+
+        <p class="texto-secao">
+          Da primeira escuta ao acompanhamento contínuo,
+          buscamos organizar cada etapa com clareza,
+          intencionalidade e conexão.
+        </p>
+
+      </div>
+
+      <div class="jornada">
+
+        <div class="passo reveal">
+          <div class="passo-numero">01</div>
+          <h3>Acolher</h3>
+        </div>
+
+        <div class="passo reveal reveal-delay-1">
+          <div class="passo-numero">02</div>
+          <h3>Conhecer</h3>
+        </div>
+
+        <div class="passo reveal reveal-delay-2">
+          <div class="passo-numero">03</div>
+          <h3>Avaliar</h3>
+        </div>
+
+        <div class="passo reveal reveal-delay-3">
+          <div class="passo-numero">04</div>
+          <h3>Planejar</h3>
+        </div>
+
+        <div class="passo reveal">
+          <div class="passo-numero">05</div>
+          <h3>Intervir</h3>
+        </div>
+
+        <div class="passo reveal reveal-delay-1">
+          <div class="passo-numero">06</div>
+          <h3>Acompanhar</h3>
+        </div>
+
+        <div class="passo reveal reveal-delay-2">
+          <div class="passo-numero">07</div>
+          <h3>Conectar</h3>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FAMÍLIA + ESCOLA + CLÍNICA -->
+
+  <section class="secao secao-bege">
+
+    <div class="container integracao-grid">
+
+      <div class="integracao-visual reveal" aria-hidden="true">
+
+        <div class="circulo-orbita"></div>
+
+        <div class="circulo-centro">
+          Criança<br>
+          no centro
+        </div>
+
+        <div class="contexto familia">
+          Família
+        </div>
+
+        <div class="contexto escola">
+          Escola
+        </div>
+
+        <div class="contexto clinica">
+          Clínica
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="cabecalho-secao reveal">
+
+          <div class="eyebrow">
+            Integração
+          </div>
+
+          <h2 class="titulo-secao">
+            A criança não existe em
+            <span>um único contexto.</span>
+          </h2>
+
+          <p class="texto-secao">
+            Quando pertinente, aproximamos informações
+            da família, da escola e do acompanhamento
+            profissional para favorecer maior coerência
+            entre os diferentes ambientes.
+          </p>
+
+        </div>
+
+        <div class="lista-integracao">
+
+          <div class="item-integracao reveal">
+            <div class="check">✓</div>
+            <div>
+              Orientações às famílias de acordo
+              com as necessidades do acompanhamento.
+            </div>
+          </div>
+
+          <div class="item-integracao reveal reveal-delay-1">
+            <div class="check">✓</div>
+            <div>
+              Comunicação e reuniões com a escola
+              quando pertinentes ao caso.
+            </div>
+          </div>
+
+          <div class="item-integracao reveal reveal-delay-2">
+            <div class="check">✓</div>
+            <div>
+              Visitas escolares, relatórios e discussão
+              de estratégias quando indicados.
+            </div>
+          </div>
+
+          <div class="item-integracao reveal reveal-delay-3">
+            <div class="check">✓</div>
+            <div>
+              Apoio à construção de estratégias
+              individualizadas e à discussão do PEI
+              no contexto educacional.
+            </div>
+          </div>
+
+        </div>
+
+        <div class="mais reveal">
+          <a class="link-seta" href="familia-escola.html">
+            Conheça nossa proposta de integração →
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TECNOLOGIA -->
+
+  <section class="secao tecnologia">
+
+    <div class="container">
+
+      <div class="cabecalho-secao reveal">
+
+        <div class="eyebrow">
+          Neurodesenvolvimento e tecnologia
+        </div>
+
+        <h2 class="titulo-secao">
+          Tecnologia com
+          <span>propósito.</span>
+        </h2>
+
+        <p class="texto-secao">
+          Recursos tecnológicos podem complementar
+          processos de avaliação, treinamento e
+          intervenção quando existe indicação e
+          objetivo claramente definido. A tecnologia
+          não substitui o olhar profissional.
+        </p>
+
+      </div>
+
+      <div class="tech-grid">
+
+        <article class="tech-card reveal">
+          <span>01</span>
+          <h3>qEEG</h3>
+          <p>
+            Análise quantitativa da atividade elétrica
+            cerebral utilizada como recurso complementar
+            quando pertinente ao processo.
+          </p>
+        </article>
+
+        <article class="tech-card reveal reveal-delay-1">
+          <span>02</span>
+          <h3>Neurofeedback</h3>
+          <p>
+            Treinamento que utiliza feedback de sinais
+            relacionados à atividade cerebral dentro
+            de protocolos definidos.
+          </p>
+        </article>
+
+        <article class="tech-card reveal reveal-delay-2">
+          <span>03</span>
+          <h3>HEG</h3>
+          <p>
+            Recurso de treinamento baseado em feedback
+            relacionado a sinais hemodinâmicos,
+            conforme objetivos estabelecidos.
+          </p>
+        </article>
+
+        <article class="tech-card reveal reveal-delay-3">
+          <span>04</span>
+          <h3>tDCS</h3>
+          <p>
+            Técnica de neuromodulação não invasiva
+            que utiliza corrente contínua de baixa
+            intensidade, quando indicada.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="tech-link reveal">
+        <a class="link-seta" href="tecnologia.html">
+          Saiba mais sobre tecnologia e neurodesenvolvimento →
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- APLICATIVO -->
+
+  <section class="secao secao-branca">
+
+    <div class="container app-grid">
+
+      <div class="telefone-area reveal" aria-hidden="true">
+
+        <div class="telefone">
+
+          <div class="app-topo">
+            Espaço Montessoriano
+          </div>
+
+          <div class="app-boas-vindas">
+            <strong>Acompanhamento conectado</strong>
+            <small>
+              Informações organizadas em um só ambiente.
+            </small>
+          </div>
+
+          <div class="app-item">
+            <div class="app-icone">A</div>
+            Agenda
+          </div>
+
+          <div class="app-item">
+            <div class="app-icone">R</div>
+            Registros
+          </div>
+
+          <div class="app-item">
+            <div class="app-icone">E</div>
+            Evolução
+          </div>
+
+          <div class="app-item">
+            <div class="app-icone">C</div>
+            Comunicação
+          </div>
+
+          <div class="app-item">
+            <div class="app-icone">L</div>
+            Relatórios
+          </div>
+
+        </div>
+
+        <div class="app-selo a">
+          Agenda
+        </div>
+
+        <div class="app-selo b">
+          Comunicação
+        </div>
+
+        <div class="app-selo c">
+          Relatórios
+        </div>
+
+      </div>
+
+      <div>
+
+        <div class="cabecalho-secao reveal">
+
+          <div class="eyebrow">
+            Aplicativo
+          </div>
+
+          <h2 class="titulo-secao">
+            O acompanhamento continua
+            <span>além da sessão.</span>
+          </h2>
+
+          <p class="texto-secao">
+            Nosso aplicativo apoia a organização e
+            a comunicação entre os diferentes envolvidos
+            no processo, favorecendo continuidade
+            e acesso às informações do acompanhamento.
+          </p>
+
+        </div>
+
+        <div class="app-recursos">
+
+          <div class="app-recurso reveal">
+            Agenda
+          </div>
+
+          <div class="app-recurso reveal reveal-delay-1">
+            Confirmações
+          </div>
+
+          <div class="app-recurso reveal">
+            Registros
+          </div>
+
+          <div class="app-recurso reveal reveal-delay-1">
+            Evolução
+          </div>
+
+          <div class="app-recurso reveal">
+            Relatórios
+          </div>
+
+          <div class="app-recurso reveal reveal-delay-1">
+            Família • Escola • Clínica
+          </div>
+
+        </div>
+
+        <div class="hero-acoes reveal">
+
+          <a
+            class="btn"
+            href="aplicativo.html"
+          >
+            Conhecer o aplicativo
+          </a>
+
+          <a
+            class="btn btn-claro"
+            href="https://app.espacomontessoriano.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Acessar aplicativo
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FORMAÇÃO -->
+
+  <section class="secao">
+
+    <div class="container">
+
+      <div class="formacao-box reveal">
+
+        <div>
+
+          <div class="eyebrow">
+            Formação e consultoria
+          </div>
+
+          <h2 class="titulo-secao">
+            Conhecimento que se transforma em
+            <span>prática.</span>
+          </h2>
+
+          <p class="texto-secao">
+            Também atuamos junto a profissionais,
+            equipes e instituições com formação,
+            consultoria, supervisão e mentoria.
+          </p>
+
+          <div class="mais">
+            <a
+              class="link-seta"
+              href="formacao-consultoria.html"
+            >
+              Conheça as possibilidades →
+            </a>
+          </div>
+
+        </div>
+
+        <div class="formacao-opcoes">
+
+          <div class="formacao-item">
+            Montessori
+          </div>
+
+          <div class="formacao-item">
+            Inclusão e PEI
+          </div>
+
+          <div class="formacao-item">
+            Consultoria Educacional
+          </div>
+
+          <div class="formacao-item">
+            Supervisão e Mentoria
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+
+  <section class="cta">
+
+    <div class="cta-box reveal">
+
       <h2>
-        Um olhar integral para o desenvolvimento.
+        O primeiro passo é compreender
+        o que você precisa.
       </h2>
 
       <p>
-        Cada criança e adolescente é acolhido em sua
-        singularidade. Avaliamos, planejamos e
-        acompanhamos seu desenvolvimento respeitando
-        necessidades, potencialidades e ritmo individual.
+        Entre em contato com o Espaço Montessoriano
+        para conhecer nossas possibilidades de
+        atendimento, avaliação, acompanhamento,
+        formação ou consultoria.
       </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- DIFERENCIAIS -->
-
-<div class="diferenciais">
-
-  <div class="diferencial">
-    <div class="icone">♡</div>
-    Atendimento individualizado
-  </div>
-
-  <div class="diferencial">
-    <div class="icone">◎</div>
-    Olhar interdisciplinar
-  </div>
-
-  <div class="diferencial">
-    <div class="icone">❧</div>
-    Método Montessori
-  </div>
-
-  <div class="diferencial">
-    <div class="icone">⌂</div>
-    Família, escola e clínica
-  </div>
-
-  <div class="diferencial">
-    <div class="icone">◫</div>
-    Tecnologia a serviço do cuidado
-  </div>
-
-</div>
-
-
-<!-- APRESENTAÇÃO -->
-
-<section class="sobre">
-
-  <div>
-
-    <div class="subtitulo">
-      O Espaço Montessoriano
-    </div>
-
-    <h2 class="titulo">
-      Mais do que atender uma dificuldade,
-      compreender uma história.
-    </h2>
-
-    <p class="descricao">
-      Aprendizagem, linguagem, comportamento,
-      emoções, funções executivas, autonomia,
-      desenvolvimento motor e relações sociais
-      fazem parte de um mesmo percurso.
-    </p>
-
-    <br>
-
-    <a
-      class="btn"
-      href="o-espaco.html"
-    >
-      Conheça nossa história
-    </a>
-
-  </div>
-
-
-  <div class="sobre-box">
-
-    <blockquote>
-      “Ajude-me a fazer por mim mesmo.”
-    </blockquote>
-
-    <p>
-      — Maria Montessori
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- ESPECIALIDADES -->
-
-<section
-  class="servicos"
-  id="especialidades"
->
-
-  <div class="subtitulo">
-    Áreas de atuação
-  </div>
-
-  <h2 class="titulo">
-    Diferentes especialidades.
-    <br>
-    Um mesmo propósito.
-  </h2>
-
-  <p class="descricao">
-    Cuidado interdisciplinar e individualizado
-    para crianças e adolescentes.
-  </p>
-
-
-  <div class="grid">
-
-    <article class="card">
-
-      <div class="icone">📖</div>
-
-      <h3>Psicopedagogia</h3>
-
-      <p>
-        Aprendizagem, alfabetização, leitura,
-        escrita, matemática e funções executivas.
-      </p>
-
-      <a
-        class="link-card"
-        href="especialidades.html"
-      >
-        Conheça a especialidade →
-      </a>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="icone">💬</div>
-
-      <h3>Fonoaudiologia</h3>
-
-      <p>
-        Linguagem, fala, comunicação,
-        leitura, escrita e habilidades
-        relacionadas à aprendizagem.
-      </p>
-
-      <a
-        class="link-card"
-        href="especialidades.html"
-      >
-        Conheça a especialidade →
-      </a>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="icone">♡</div>
-
-      <h3>Psicologia</h3>
-
-      <p>
-        Desenvolvimento emocional,
-        comportamental e habilidades
-        necessárias à participação cotidiana.
-      </p>
-
-      <a
-        class="link-card"
-        href="especialidades.html"
-      >
-        Conheça a especialidade →
-      </a>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="icone">◯</div>
-
-      <h3>Psicomotricidade</h3>
-
-      <p>
-        Desenvolvimento corporal, motor,
-        perceptivo, espacial e organização
-        da ação.
-      </p>
-
-      <a
-        class="link-card"
-        href="especialidades.html"
-      >
-        Conheça a especialidade →
-      </a>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="icone">◇</div>
-
-      <h3>Intervenções baseadas em ABA</h3>
-
-      <p>
-        Estratégias fundamentadas nos princípios
-        da Análise do Comportamento Aplicada,
-        conforme necessidades individuais.
-      </p>
-
-      <a
-        class="link-card"
-        href="especialidades.html"
-      >
-        Conheça a especialidade →
-      </a>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="icone">✎</div>
-
-      <h3>Acompanhamento Pedagógico</h3>
-
-      <p>
-        Apoio acadêmico individualizado,
-        estratégias de aprendizagem e
-        organização dos estudos.
-      </p>
-
-      <a
-        class="link-card"
-        href="especialidades.html"
-      >
-        Conheça a especialidade →
-      </a>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="icone">♫</div>
-
-      <h3>Musicoterapia</h3>
-
-      <p>
-        Utilização terapêutica da música
-        e de seus elementos dentro de
-        objetivos individualizados.
-      </p>
-
-      <a
-        class="link-card"
-        href="especialidades.html"
-      >
-        Conheça a especialidade →
-      </a>
-
-    </article>
-
-
-    <article class="card">
-
-      <div class="icone">◉</div>
-
-      <h3>Nutrição</h3>
-
-      <p>
-        Acompanhamento nutricional considerando
-        desenvolvimento, alimentação,
-        rotina e necessidades individuais.
-      </p>
-
-      <a
-        class="link-card"
-        href="especialidades.html"
-      >
-        Conheça a especialidade →
-      </a>
-
-    </article>
-
-  </div>
-
-
-  <div class="ver-todas">
-
-    <a
-      class="btn"
-      href="especialidades.html"
-    >
-      Ver todas as especialidades
-    </a>
-
-  </div>
-
-</section>
-
-
-<!-- AVALIAÇÕES -->
-
-<section
-  class="avaliacoes"
-  id="avaliacoes"
->
-
-  <div>
-
-    <div class="subtitulo">
-      Avaliar para compreender
-    </div>
-
-    <h2 class="titulo">
-      Compreender antes de intervir.
-    </h2>
-
-    <p class="descricao">
-      O processo avaliativo busca identificar
-      dificuldades, habilidades preservadas,
-      potencialidades e fatores que podem
-      interferir no desenvolvimento e na
-      aprendizagem.
-    </p>
-
-    <br>
-
-    <p class="descricao">
-      Os resultados contribuem para orientações,
-      encaminhamentos e construção de um
-      planejamento individualizado.
-    </p>
-
-    <br>
-
-    <a
-      class="btn"
-      href="avaliacoes.html"
-    >
-      Conheça nossas avaliações
-    </a>
-
-  </div>
-
-
-  <div class="avaliacao-box">
-
-    <div class="avaliacao-item">
-      Avaliação Neuropsicológica
-    </div>
-
-    <div class="avaliacao-item">
-      Avaliação Psicopedagógica
-    </div>
-
-    <div class="avaliacao-item">
-      Linguagem e Aprendizagem
-    </div>
-
-    <div class="avaliacao-item">
-      Avaliação do Desenvolvimento
-    </div>
-
-    <div class="avaliacao-item">
-      qEEG como recurso complementar, quando indicado
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- JORNADA -->
-
-<section
-  class="jornada"
-  id="jornada"
->
-
-  <div class="subtitulo">
-    Nossa forma de cuidar
-  </div>
-
-  <h2 class="titulo">
-    Uma jornada construída para cada criança.
-  </h2>
-
-
-  <div class="etapas">
-
-    <div class="etapa">
-      <div class="numero">1</div>
-      <h3>Acolher</h3>
-      <p>
-        Escutamos a família e compreendemos
-        a demanda inicial.
-      </p>
-    </div>
-
-    <div class="etapa">
-      <div class="numero">2</div>
-      <h3>Conhecer</h3>
-      <p>
-        Investigamos história, desenvolvimento
-        e contexto.
-      </p>
-    </div>
-
-    <div class="etapa">
-      <div class="numero">3</div>
-      <h3>Avaliar</h3>
-      <p>
-        Utilizamos procedimentos específicos
-        quando necessários.
-      </p>
-    </div>
-
-    <div class="etapa">
-      <div class="numero">4</div>
-      <h3>Planejar</h3>
-      <p>
-        Definimos objetivos e construímos
-        um plano individualizado.
-      </p>
-    </div>
-
-    <div class="etapa">
-      <div class="numero">5</div>
-      <h3>Intervir</h3>
-      <p>
-        Realizamos sessões orientadas
-        pelos objetivos definidos.
-      </p>
-    </div>
-
-    <div class="etapa">
-      <div class="numero">6</div>
-      <h3>Acompanhar</h3>
-      <p>
-        Monitoramos evolução e ajustamos
-        as estratégias.
-      </p>
-    </div>
-
-    <div class="etapa">
-      <div class="numero">7</div>
-      <h3>Conectar</h3>
-      <p>
-        Família, escola e profissionais
-        trabalhando de forma integrada.
-      </p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- FAMÍLIA + ESCOLA -->
-
-<section class="integracao">
-
-  <div class="subtitulo">
-    Cuidado integrado
-  </div>
-
-  <h2 class="titulo">
-    Família, escola e clínica conectadas.
-  </h2>
-
-  <p class="descricao">
-    O desenvolvimento não acontece apenas
-    durante uma sessão. Quando indicado,
-    aproximamos os diferentes contextos da
-    criança para alinhar objetivos e estratégias.
-  </p>
-
-
-  <div class="integracao-itens">
-
-    <span>Orientação familiar</span>
-    <span>Contato com a escola</span>
-    <span>Visitas escolares</span>
-    <span>PEI</span>
-    <span>Reuniões interdisciplinares</span>
-    <span>Relatórios</span>
-    <span>Acompanhamento da evolução</span>
-
-  </div>
-
-
-  <a
-    class="btn"
-    href="familia-escola.html"
-  >
-    Conheça nossa integração
-  </a>
-
-</section>
-
-
-<!-- TECNOLOGIA -->
-
-<section
-  class="tecnologia"
-  id="tecnologia"
->
-
-  <div>
-
-    <div class="subtitulo">
-      Neurodesenvolvimento e tecnologia
-    </div>
-
-    <h2 class="titulo">
-      Tecnologia com propósito.
-    </h2>
-
-    <p class="descricao">
-      Recursos tecnológicos podem complementar
-      processos de avaliação, treinamento e
-      acompanhamento quando houver indicação
-      adequada e objetivos individualizados.
-    </p>
-
-
-    <div class="tecnologia-botoes">
 
       <a
         class="btn"
-        href="tecnologia.html"
+        href="https://wa.me/5561993236099?text=Olá%2C%20gostaria%20de%20conhecer%20melhor%20o%20Espaço%20Montessoriano."
+        target="_blank"
+        rel="noopener noreferrer"
       >
-        Conheça os recursos
-      </a>
-
-      <a
-        class="btn btn-claro"
-        href="aplicativo.html"
-      >
-        Conheça o aplicativo
+        Falar com o Espaço Montessoriano
       </a>
 
     </div>
 
-  </div>
-
-
-  <div class="app-box">
-
-    <div class="phone">
-      ◉
-    </div>
-
-    <h2>
-      Ciência, acompanhamento e conexão.
-    </h2>
-
-    <p>
-      qEEG • Neurofeedback • HEG • tDCS
-      • Plataforma de acompanhamento
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- FORMAÇÃO -->
-
-<section class="formacao">
-
-  <div>
-
-    <div class="subtitulo">
-      Formação e consultoria
-    </div>
-
-    <h2 class="titulo">
-      Conhecimento que se transforma em prática.
-    </h2>
-
-    <p class="descricao">
-      Formação, consultoria, supervisão e mentoria
-      para escolas, equipes e profissionais,
-      conectando fundamentos, observação,
-      planejamento e aplicação prática.
-    </p>
-
-    <br>
-
-    <a
-      class="btn"
-      href="formacao-consultoria.html"
-    >
-      Conheça nossas propostas
-    </a>
-
-  </div>
-
-
-  <div class="formacao-box">
-
-    <div class="formacao-item">
-      Formação Montessori
-    </div>
-
-    <div class="formacao-item">
-      Formação para escolas
-    </div>
-
-    <div class="formacao-item">
-      Consultoria educacional
-    </div>
-
-    <div class="formacao-item">
-      PEI e inclusão
-    </div>
-
-    <div class="formacao-item">
-      Supervisão profissional
-    </div>
-
-    <div class="formacao-item">
-      Mentoria
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CONTATO -->
-
-<section
-  class="cta"
-  id="contato"
->
-
-  <div class="subtitulo">
-    Vamos conversar?
-  </div>
-
-  <h2 class="titulo">
-    Cada desenvolvimento tem uma história.
-  </h2>
-
-  <p class="descricao">
-    O primeiro passo pode ser compreender
-    a necessidade. Nossa equipe pode orientar
-    sua família sobre o caminho inicial.
-  </p>
-
-  <a
-    class="btn"
-    href="contato.html"
-  >
-    Entre em contato
-  </a>
-
-</section>
+  </section>
 
 </main>
-
-
-<!-- RODAPÉ -->
 
 <footer>
 
@@ -1804,9 +2975,7 @@
 
     <div>
 
-      <h3>
-        ESPAÇO MONTESSORIANO
-      </h3>
+      <h3>ESPAÇO MONTESSORIANO</h3>
 
       <p>
         Neurodesenvolvimento, aprendizagem,
@@ -1829,28 +2998,43 @@
 
     </div>
 
-
     <div>
 
-      <h3>
-        Conheça
-      </h3>
+      <h3>Conheça</h3>
 
-      <p><a href="o-espaco.html">O Espaço</a></p>
-      <p><a href="especialidades.html">Especialidades</a></p>
-      <p><a href="avaliacoes.html">Avaliações</a></p>
-      <p><a href="tecnologia.html">Tecnologia</a></p>
+      <p>
+        <a href="o-espaco.html">O Espaço</a>
+      </p>
+
+      <p>
+        <a href="especialidades.html">
+          Especialidades
+        </a>
+      </p>
+
+      <p>
+        <a href="avaliacoes.html">
+          Avaliações
+        </a>
+      </p>
+
+      <p>
+        <a href="tecnologia.html">
+          Tecnologia
+        </a>
+      </p>
 
     </div>
 
-
     <div>
 
-      <h3>
-        Integração
-      </h3>
+      <h3>Integração</h3>
 
-      <p><a href="familia-escola.html">Família e Escola</a></p>
+      <p>
+        <a href="familia-escola.html">
+          Família e Escola
+        </a>
+      </p>
 
       <p>
         <a href="formacao-consultoria.html">
@@ -1858,17 +3042,23 @@
         </a>
       </p>
 
-      <p><a href="aplicativo.html">Aplicativo</a></p>
-      <p><a href="contato.html">Contato</a></p>
+      <p>
+        <a href="aplicativo.html">
+          Aplicativo
+        </a>
+      </p>
+
+      <p>
+        <a href="contato.html">
+          Contato
+        </a>
+      </p>
 
     </div>
 
-
     <div>
 
-      <h3>
-        Institucional
-      </h3>
+      <h3>Institucional</h3>
 
       <p>
         <a href="privacidade.html">
@@ -1906,16 +3096,12 @@
 
   </div>
 
-
   <div class="copyright">
     © 2026 Espaço Montessoriano.
     Todos os direitos reservados.
   </div>
 
 </footer>
-
-
-<!-- WHATSAPP FIXO -->
 
 <a
   class="whatsapp"
@@ -1927,9 +3113,7 @@
   WhatsApp
 </a>
 
-
 <script>
-
   const abrirMenu = document.getElementById("abrirMenu");
   const fecharMenu = document.getElementById("fecharMenu");
   const menuMobile = document.getElementById("menuMobile");
@@ -1968,6 +3152,39 @@
     }
   });
 
+  const elementosReveal = document.querySelectorAll(".reveal");
+
+  if ("IntersectionObserver" in window) {
+
+    const observador = new IntersectionObserver(
+      function(entradas) {
+
+        entradas.forEach(function(entrada) {
+
+          if (entrada.isIntersecting) {
+            entrada.target.classList.add("visivel");
+            observador.unobserve(entrada.target);
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.08
+      }
+    );
+
+    elementosReveal.forEach(function(elemento) {
+      observador.observe(elemento);
+    });
+
+  } else {
+
+    elementosReveal.forEach(function(elemento) {
+      elemento.classList.add("visivel");
+    });
+
+  }
 </script>
 
 </body>
