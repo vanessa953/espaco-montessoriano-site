@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Política de Privacidade | Espaço Montessoriano</title>
+
+  <meta
+    name="description"
+    content="Política de Privacidade e Proteção de Dados do Espaço Montessoriano. Saiba como informações pessoais podem ser tratadas nos canais digitais e institucionais."
+  >
+
+  <style>
+
+    :root {
+      --verde-escuro: #075f59;
+      --verde: #087b70;
+      --turquesa: #42bca8;
+      --menta: #eaf5f1;
+      --creme: #faf8f3;
+      --bege: #f2eadc;
+      --dourado: #c79b4b;
+      --texto: #173b3a;
+      --cinza: #60706e;
+      --branco: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 100px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--creme);
+      color: var(--texto);
+      line-height: 1.75;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    /* CABEÇALHO */
+
+    nav {
+      width: 100%;
+      min-height: 92px;
+      background: rgba(255,255,255,.98);
+      padding: 12px 6%;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+
+      box-shadow: 0 2px 18px rgba(0,0,0,.05);
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .logo {
+      display: block;
+      height: 64px;
+      width: auto;
+      max-width: 270px;
+      object-fit: contain;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .menu a {
+      color: var(--texto);
+      font-size: 14px;
+      transition: .2s;
+    }
+
+    .menu a:hover {
+      color: var(--turquesa);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 30px;
+      background: var(--verde-escuro);
+      color: white;
+      font-weight: 700;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--verde);
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 95px 8% 85px;
+
+      background:
+        radial-gradient(
+          circle at 85% 25%,
+          rgba(199,155,75,.14),
+          transparent 30%
+        ),
+        linear-gradient(
+          135deg,
+          var(--creme),
+          var(--menta)
+        );
+    }
+
+    .tag {
+      color: var(--dourado);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(44px, 6vw, 70px);
+      line-height: 1.08;
+      font-weight: 400;
+      max-width: 900px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 span {
+      color: var(--turquesa);
+    }
+
+    .hero p {
+      max-width: 850px;
+      color: var(--cinza);
+      font-size: 19px;
+    }
+
+    .atualizacao {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 9px 15px;
+      border-radius: 20px;
+      background: white;
+      color: var(--verde-escuro);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    /* CONTEÚDO */
+
+    .conteudo {
+      padding: 80px 7%;
+      background: white;
+    }
+
+    .documento {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .aviso-inicial {
+      background: var(--menta);
+      border-left: 4px solid var(--dourado);
+      padding: 30px;
+      border-radius: 0 22px 22px 0;
+      margin-bottom: 50px;
+    }
+
+    .aviso-inicial h2 {
+      font-family: Georgia, serif;
+      color: var(--verde-escuro);
+      font-weight: 400;
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .aviso-inicial p {
+      color: var(--cinza);
+    }
+
+    .bloco {
+      padding: 35px 0;
+      border-bottom: 1px solid #e7e3da;
+    }
+
+    .bloco:last-child {
+      border-bottom: 0;
+    }
+
+    .numero {
+      color: var(--dourado);
+      font-family: Georgia, serif;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .bloco h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--verde-escuro);
+      font-size: 31px;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 17px;
+    }
+
+    .bloco h3 {
+      color: var(--verde-escuro);
+      margin: 24px 0 8px;
+      font-size: 18px;
+    }
+
+    .bloco p {
+      color: var(--cinza);
+      margin-bottom: 14px;
+    }
+
+    .bloco ul {
+      color: var(--cinza);
+      padding-left: 24px;
+      margin: 15px 0;
+    }
+
+    .bloco li {
+      margin-bottom: 8px;
+    }
+
+    .destaque {
+      margin-top: 22px;
+      background: var(--creme);
+      border-radius: 20px;
+      padding: 25px;
+    }
+
+    .destaque strong {
+      color: var(--verde-escuro);
+    }
+
+    /* CRIANÇAS */
+
+    .criancas {
+      background: var(--verde-escuro);
+      color: white;
+      padding: 75px 7%;
+    }
+
+    .criancas-conteudo {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .subtitulo {
+      color: var(--dourado);
+      letter-spacing: 4px;
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .titulo {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(34px, 4vw, 50px);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 25px;
+    }
+
+    .criancas p {
+      color: rgba(255,255,255,.82);
+      margin-bottom: 15px;
+      font-size: 17px;
+    }
+
+    /* DIREITOS */
+
+    .direitos {
+      background: var(--menta);
+      padding: 80px 7%;
+    }
+
+    .direitos-conteudo {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .direitos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 35px;
+    }
+
+    .direito {
+      background: white;
+      border-radius: 20px;
+      padding: 27px;
+    }
+
+    .direito h3 {
+      color: var(--verde-escuro);
+      margin-bottom: 8px;
+    }
+
+    .direito p {
+      color: var(--cinza);
+      font-size: 15px;
+    }
+
+    /* CONTATO PRIVACIDADE */
+
+    .contato-privacidade {
+      padding: 80px 7%;
+      background: var(--bege);
+      text-align: center;
+    }
+
+    .contato-privacidade .conteudo-central {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+
+    .contato-privacidade p {
+      color: var(--cinza);
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #073f3c;
+      color: white;
+      padding: 55px 7% 30px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 40px;
+    }
+
+    footer h3 {
+      color: var(--turquesa);
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      margin-bottom: 8px;
+    }
+
+    footer a {
+      color: rgba(255,255,255,.82);
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .copyright {
+      border-top: 1px solid rgba(255,255,255,.15);
+      padding-top: 25px;
+      text-align: center;
+      color: rgba(255,255,255,.6);
+      font-size: 13px;
+    }
+
+    /* WHATSAPP */
+
+    .whatsapp {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2000;
+
+      background: #25d366;
+      color: white;
+
+      padding: 15px 20px;
+      border-radius: 50px;
+
+      font-weight: bold;
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,.2);
+
+      transition: .2s;
+    }
+
+    .whatsapp:hover {
+      transform: translateY(-3px);
+    }
+
+    /* RESPONSIVO */
+
+    @media (max-width: 1050px) {
+
+      .menu {
+        display: none;
+      }
+
+    }
+
+    @media (max-width: 750px) {
+
+      .direitos-grid {
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+    @media (max-width: 600px) {
+
+      nav {
+        min-height: 76px;
+        padding: 10px 4%;
+      }
+
+      .logo {
+        height: 48px;
+        max-width: 200px;
+      }
+
+      nav > .btn {
+        padding: 10px 13px;
+        font-size: 12px;
+      }
+
+      .hero {
+        padding: 65px 6%;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .conteudo,
+      .criancas,
+      .direitos,
+      .contato-privacidade {
+        padding: 65px 6%;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .whatsapp {
+        right: 15px;
+        bottom: 15px;
+        padding: 13px 17px;
+        font-size: 14px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<!-- CABEÇALHO -->
+
+<nav>
+
+  <a
+    class="marca"
+    href="index.html"
+    aria-label="Espaço Montessoriano - Página inicial"
+  >
+    <img
+      src="logo-espaco-montessoriano.jpg"
+      alt="Espaço Montessoriano"
+      class="logo"
+    >
+  </a>
+
+
+  <div class="menu">
+
+    <a href="index.html">
+      Início
+    </a>
+
+    <a href="o-espaco.html">
+      O Espaço
+    </a>
+
+    <a href="especialidades.html">
+      Especialidades
+    </a>
+
+    <a href="avaliacoes.html">
+      Avaliações
+    </a>
+
+    <a href="tecnologia.html">
+      Tecnologia
+    </a>
+
+    <a href="familia-escola.html">
+      Família e Escola
+    </a>
+
+    <a href="contato.html">
+      Contato
+    </a>
+
+  </div>
+
+
+  <a
+    class="btn"
+    href="contato.html"
+  >
+    Fale conosco
+  </a>
+
+</nav>
+
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="tag">
+    Institucional • Privacidade
+  </div>
+
+  <h1>
+    Política de Privacidade e
+    <span>Proteção de Dados.</span>
+  </h1>
+
+  <p>
+    O Espaço Montessoriano reconhece a importância
+    da privacidade e da proteção das informações
+    relacionadas às pessoas que entram em contato
+    com seus serviços e canais digitais.
+  </p>
+
+  <div class="atualizacao">
+    Versão publicada em setembro de 2026
+  </div>
+
+</section>
+
+
+<!-- CONTEÚDO -->
+
+<section class="conteudo">
+
+  <div class="documento">
+
+
+    <div class="aviso-inicial">
+
+      <h2>
+        Sobre esta política
+      </h2>
+
+      <p>
+        Esta Política de Privacidade apresenta informações
+        gerais sobre o tratamento de dados pessoais no contexto
+        dos canais institucionais e digitais do Espaço Montessoriano.
+        O tratamento de informações também poderá estar sujeito
+        a documentos, autorizações, contratos, termos específicos
+        e deveres profissionais aplicáveis a cada serviço.
+      </p>
+
+    </div>
+
+
+    <!-- 1 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        01
+      </div>
+
+      <h2>
+        Objetivo
+      </h2>
+
+      <p>
+        Esta política tem como objetivo informar, de maneira
+        clara e acessível, como dados pessoais podem ser
+        coletados, utilizados, compartilhados, armazenados
+        ou de outra forma tratados no relacionamento
+        com o Espaço Montessoriano.
+      </p>
+
+      <p>
+        O tratamento de dados deve observar a legislação
+        aplicável, incluindo a Lei Geral de Proteção de Dados
+        Pessoais — LGPD, quando pertinente.
+      </p>
+
+    </div>
+
+
+    <!-- 2 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        02
+      </div>
+
+      <h2>
+        Quais informações podem ser tratadas
+      </h2>
+
+      <p>
+        Dependendo da forma de interação com o Espaço
+        Montessoriano e do serviço solicitado, poderão
+        ser tratadas diferentes categorias de informações.
+      </p>
+
+      <p>
+        Entre elas, podem estar:
+      </p>
+
+      <ul>
+        <li>nome e informações de identificação;</li>
+        <li>dados de contato;</li>
+        <li>informações fornecidas em mensagens e solicitações;</li>
+        <li>dados necessários ao cadastro e organização do atendimento;</li>
+        <li>informações relacionadas ao contexto familiar e escolar;</li>
+        <li>documentos e registros pertinentes aos serviços contratados;</li>
+        <li>informações necessárias ao acompanhamento profissional;</li>
+        <li>dados inseridos nos canais e plataformas utilizados pelo Espaço.</li>
+      </ul>
+
+      <div class="destaque">
+
+        <strong>
+          Importante:
+        </strong>
+
+        a natureza das informações tratadas depende
+        do serviço efetivamente utilizado e da relação
+        estabelecida com o Espaço Montessoriano.
+
+      </div>
+
+    </div>
+
+
+    <!-- 3 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        03
+      </div>
+
+      <h2>
+        Como as informações podem ser obtidas
+      </h2>
+
+      <p>
+        Os dados podem ser fornecidos diretamente
+        pela pessoa interessada, pelos pais ou responsáveis,
+        por representantes autorizados ou por outros meios
+        pertinentes ao acompanhamento, conforme a situação.
+      </p>
+
+      <p>
+        Isso pode ocorrer, por exemplo, durante:
+      </p>
+
+      <ul>
+        <li>contato pelo WhatsApp;</li>
+        <li>uso do aplicativo;</li>
+        <li>cadastros;</li>
+        <li>entrevistas e anamneses;</li>
+        <li>avaliações;</li>
+        <li>atendimentos;</li>
+        <li>comunicação com a equipe;</li>
+        <li>envio de documentos;</li>
+        <li>interações relacionadas à escola, quando aplicável.</li>
+      </ul>
+
+    </div>
+
+
+    <!-- 4 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        04
+      </div>
+
+      <h2>
+        Para que os dados podem ser utilizados
+      </h2>
+
+      <p>
+        Conforme o contexto e a relação estabelecida,
+        informações pessoais podem ser utilizadas para
+        finalidades relacionadas aos serviços oferecidos.
+      </p>
+
+      <p>
+        Essas finalidades podem incluir:
+      </p>
+
+      <ul>
+        <li>responder solicitações de contato;</li>
+        <li>realizar cadastro;</li>
+        <li>organizar atendimentos e agenda;</li>
+        <li>compreender demandas apresentadas;</li>
+        <li>planejar e acompanhar serviços;</li>
+        <li>produzir registros profissionais pertinentes;</li>
+        <li>elaborar documentos relacionados aos serviços;</li>
+        <li>manter comunicação com responsáveis;</li>
+        <li>cumprir obrigações legais, regulatórias, contratuais ou profissionais aplicáveis;</li>
+        <li>proteger direitos e atender solicitações legítimas de autoridades, quando cabível.</li>
+      </ul>
+
+    </div>
+
+
+    <!-- 5 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        05
+      </div>
+
+      <h2>
+        Dados relacionados à saúde e ao desenvolvimento
+      </h2>
+
+      <p>
+        Alguns serviços podem envolver informações
+        relacionadas ao desenvolvimento, aprendizagem,
+        comportamento, comunicação, saúde ou outras
+        características relevantes ao acompanhamento.
+      </p>
+
+      <p>
+        Informações dessa natureza exigem atenção especial
+        e devem ser tratadas de acordo com a finalidade
+        profissional pertinente, as bases legais aplicáveis
+        e os deveres éticos e profissionais correspondentes.
+      </p>
+
+    </div>
+
+
+    <!-- 6 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        06
+      </div>
+
+      <h2>
+        Compartilhamento de informações
+      </h2>
+
+      <p>
+        Informações pessoais não devem ser compartilhadas
+        indiscriminadamente.
+      </p>
+
+      <p>
+        Dependendo do contexto, poderá existir necessidade
+        de compartilhamento com profissionais envolvidos,
+        responsáveis, instituições, prestadores de serviços
+        tecnológicos ou outros destinatários necessários
+        à execução de determinada atividade, sempre considerando
+        a finalidade, a pertinência, as autorizações e demais
+        requisitos aplicáveis.
+      </p>
+
+      <p>
+        Também poderá ocorrer compartilhamento quando houver
+        obrigação legal, regulatória ou determinação válida
+        de autoridade competente.
+      </p>
+
+    </div>
+
+
+    <!-- 7 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        07
+      </div>
+
+      <h2>
+        Família, escola e clínica
+      </h2>
+
+      <p>
+        A integração entre família, escola e profissionais
+        pode ser importante em determinados acompanhamentos.
+      </p>
+
+      <p>
+        Essa integração, entretanto, não significa acesso
+        irrestrito às informações.
+      </p>
+
+      <p>
+        O compartilhamento deve considerar a necessidade,
+        a finalidade, a pertinência das informações,
+        as autorizações aplicáveis e os limites éticos,
+        profissionais e legais correspondentes.
+      </p>
+
+    </div>
+
+
+    <!-- 8 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        08
+      </div>
+
+      <h2>
+        Aplicativo e canais digitais
+      </h2>
+
+      <p>
+        O Espaço Montessoriano utiliza recursos digitais
+        para apoiar comunicação, organização e acompanhamento.
+      </p>
+
+      <p>
+        A utilização do aplicativo ou de outros sistemas
+        poderá envolver regras, termos, recursos e políticas
+        específicas da respectiva plataforma ou serviço.
+      </p>
+
+      <p>
+        O usuário deve observar também as informações
+        apresentadas no ambiente digital que estiver utilizando.
+      </p>
+
+    </div>
+
+
+    <!-- 9 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        09
+      </div>
+
+      <h2>
+        Serviços e plataformas de terceiros
+      </h2>
+
+      <p>
+        Este site pode direcionar o usuário para serviços
+        externos, como WhatsApp, Instagram ou outras
+        plataformas digitais.
+      </p>
+
+      <p>
+        Ao acessar um serviço externo, o tratamento de dados
+        realizado por essa plataforma estará sujeito também
+        aos seus próprios termos e políticas de privacidade.
+      </p>
+
+      <p>
+        Recomendamos que o usuário consulte essas políticas
+        quando utilizar serviços de terceiros.
+      </p>
+
+    </div>
+
+
+    <!-- 10 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        10
+      </div>
+
+      <h2>
+        Armazenamento e conservação
+      </h2>
+
+      <p>
+        O período de conservação das informações pode variar
+        conforme a natureza do dado, a finalidade do tratamento,
+        o serviço realizado e as obrigações legais, regulatórias,
+        contratuais ou profissionais aplicáveis.
+      </p>
+
+      <p>
+        Quando não houver necessidade legítima para manutenção
+        das informações, deverão ser observadas as providências
+        adequadas conforme o contexto e a legislação aplicável.
+      </p>
+
+    </div>
+
+
+    <!-- 11 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        11
+      </div>
+
+      <h2>
+        Segurança e responsabilidade
+      </h2>
+
+      <p>
+        A proteção de dados pessoais exige cuidados
+        organizacionais e tecnológicos compatíveis
+        com a natureza das informações tratadas.
+      </p>
+
+      <p>
+        Nenhum ambiente digital pode ser considerado
+        absolutamente imune a riscos. Por isso, usuários
+        também devem adotar cuidados com senhas, dispositivos,
+        acessos e informações compartilhadas.
+      </p>
+
+    </div>
+
+
+    <!-- 12 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        12
+      </div>
+
+      <h2>
+        Bases legais
+      </h2>
+
+      <p>
+        O tratamento de dados pessoais não depende
+        necessariamente de uma única base legal.
+      </p>
+
+      <p>
+        Conforme a situação, poderão ser aplicáveis
+        diferentes hipóteses previstas na legislação,
+        incluindo aquelas relacionadas à execução
+        de contratos e procedimentos preliminares,
+        cumprimento de obrigações legais ou regulatórias,
+        exercício regular de direitos, proteção da vida,
+        tutela da saúde, legítimo interesse quando cabível
+        e consentimento quando este for a base adequada.
+      </p>
+
+    </div>
+
+
+    <!-- 13 -->
+
+    <div class="bloco">
+
+      <div class="numero">
+        13
+      </div>
+
+      <h2>
+        Atualizações desta política
+      </h2>
+
+      <p>
+        Esta Política de Privacidade poderá ser atualizada
+        para refletir alterações nos serviços, processos,
+        tecnologias utilizadas ou requisitos legais aplicáveis.
+      </p>
+
+      <p>
+        A versão vigente será aquela disponibilizada
+        nesta página, acompanhada da indicação de sua
+        atualização.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CRIANÇAS E ADOLESCENTES -->
+
+<section class="criancas">
+
+  <div class="criancas-conteudo">
+
+    <div class="subtitulo">
+      Crianças e adolescentes
+    </div>
+
+    <h2 class="titulo">
+      Proteção de dados exige cuidado ainda maior.
+    </h2>
+
+    <p>
+      Parte relevante dos serviços do Espaço Montessoriano
+      é direcionada a crianças e adolescentes. Por isso,
+      informações relacionadas a esse público devem ser
+      tratadas considerando sua condição específica
+      e a proteção de seus direitos.
+    </p>
+
+    <p>
+      O tratamento de dados de crianças e adolescentes
+      deve observar a legislação aplicável, incluindo
+      os critérios pertinentes da LGPD e a consideração
+      de seu melhor interesse.
+    </p>
+
+    <p>
+      Pais, responsáveis e demais pessoas envolvidas
+      devem fornecer apenas informações pertinentes
+      e utilizar os canais disponibilizados de forma
+      responsável.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- DIREITOS -->
+
+<section class="direitos">
+
+  <div class="direitos-conteudo">
+
+    <div class="subtitulo">
+      Direitos dos titulares
+    </div>
+
+    <h2 class="titulo">
+      Transparência também faz parte da proteção de dados.
+    </h2>
+
+    <p style="color: var(--cinza); font-size: 18px;">
+      Nos termos e limites previstos pela legislação aplicável,
+      o titular dos dados ou seu representante legal poderá
+      apresentar solicitações relacionadas ao tratamento
+      de seus dados pessoais.
+    </p>
+
+
+    <div class="direitos-grid">
+
+      <div class="direito">
+        <h3>Informação</h3>
+        <p>
+          Solicitar informações sobre o tratamento
+          de dados pessoais, quando aplicável.
+        </p>
+      </div>
+
+      <div class="direito">
+        <h3>Acesso</h3>
+        <p>
+          Solicitar acesso aos dados nos termos
+          previstos pela legislação.
+        </p>
+      </div>
+
+      <div class="direito">
+        <h3>Correção</h3>
+        <p>
+          Solicitar correção de informações
+          incompletas, inexatas ou desatualizadas.
+        </p>
+      </div>
+
+      <div class="direito">
+        <h3>Demais solicitações</h3>
+        <p>
+          Exercer outros direitos previstos na LGPD,
+          observados os requisitos e as exceções legais.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CONTATO PRIVACIDADE -->
+
+<section class="contato-privacidade">
+
+  <div class="conteudo-central">
+
+    <div class="subtitulo">
+      Privacidade e dados
+    </div>
+
+    <h2 class="titulo">
+      Tem alguma dúvida sobre suas informações?
+    </h2>
+
+    <p>
+      Para dúvidas ou solicitações relacionadas
+      à privacidade e ao tratamento de dados pessoais,
+      entre em contato com o Espaço Montessoriano.
+    </p>
+
+    <a
+      class="btn"
+      href="https://wa.me/5561993183351?text=Olá%2C%20gostaria%20de%20falar%20sobre%20privacidade%20e%20proteção%20de%20dados."
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Entrar em contato
+    </a>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- RODAPÉ -->
+
+<footer>
+
+  <div class="footer-grid">
+
+    <div>
+
+      <h3>
+        ESPAÇO MONTESSORIANO
+      </h3>
+
+      <p>
+        Neurodesenvolvimento, aprendizagem,
+        Montessori e tecnologia.
+      </p>
+
+      <p>
+        Brasília — Distrito Federal
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h3>
+        Navegação
+      </h3>
+
+      <p>
+        <a href="index.html">Início</a>
+      </p>
+
+      <p>
+        <a href="o-espaco.html">O Espaço</a>
+      </p>
+
+      <p>
+        <a href="especialidades.html">Especialidades</a>
+      </p>
+
+      <p>
+        <a href="avaliacoes.html">Avaliações</a>
+      </p>
+
+      <p>
+        <a href="tecnologia.html">Tecnologia</a>
+      </p>
+
+      <p>
+        <a href="familia-escola.html">Família e Escola</a>
+      </p>
+
+      <p>
+        <a href="formacao-consultoria.html">
+          Formação e Consultoria
+        </a>
+      </p>
+
+      <p>
+        <a href="aplicativo.html">Aplicativo</a>
+      </p>
+
+      <p>
+        <a href="contato.html">Contato</a>
+      </p>
+
+    </div>
+
+
+    <div>
+
+      <h3>
+        Institucional
+      </h3>
+
+      <p>
+        <a href="privacidade.html">
+          Política de Privacidade
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://wa.me/5561993183351"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          WhatsApp
+        </a>
+      </p>
+
+      <p>
+        <a
+          href="https://app.espacomontessoriano.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Aplicativo
+        </a>
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <div class="copyright">
+    © 2026 Espaço Montessoriano.
+    Todos os direitos reservados.
+  </div>
+
+</footer>
+
+
+<!-- WHATSAPP FIXO -->
+
+<a
+  class="whatsapp"
+  href="https://wa.me/5561993183351"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Falar com o Espaço Montessoriano pelo WhatsApp"
+>
+  WhatsApp
+</a>
+
+</body>
+
+</html>
